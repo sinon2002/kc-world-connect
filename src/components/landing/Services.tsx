@@ -103,8 +103,9 @@ const tabs: { id: string; label: string; services: Service[] }[] = [
 ];
 
 export function Services() {
-  const [active, setActive] = useState(tabs[0].id);
-  const current = tabs.find((t) => t.id === active) ?? tabs[0];
+  const defaultTab = tabs[0]!;
+  const [active, setActive] = useState(defaultTab.id);
+  const current = tabs.find((t) => t.id === active) ?? defaultTab;
 
   return (
     <section id="services" className="bg-background section-pad">
