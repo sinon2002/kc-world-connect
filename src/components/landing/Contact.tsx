@@ -21,7 +21,7 @@ export function Contact() {
   const valid = form.name.trim().length > 1 && form.phone.trim().length > 5;
 
   return (
-    <section id="contact" className="section-pad bg-[--color-brand-navy] text-white">
+    <section id="consult" className="section-pad bg-navy text-white">
       <div className="shell grid gap-10 lg:grid-cols-2 lg:items-center">
         <Reveal>
           <h2 className="font-display text-3xl font-extrabold leading-tight sm:text-4xl">
@@ -32,7 +32,7 @@ export function Contact() {
             и составим план поступления. Консультация ни к чему не обязывает.
           </p>
           <p className="mt-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm text-white/85">
-            <span className="h-2 w-2 rounded-full bg-[--color-brand-gold]" aria-hidden="true" />
+            <span className="h-2 w-2 rounded-full bg-gold" aria-hidden="true" />
             Ответим в течение 30 минут в рабочее время
           </p>
           <div className="mt-6 flex gap-3">
@@ -61,10 +61,10 @@ export function Contact() {
           <div className="rounded-3xl bg-white p-6 shadow-2xl sm:p-8">
             {sent ? (
               <div role="status" className="py-10 text-center">
-                <p className="font-display text-xl font-bold text-[--color-brand-ink]">
+                <p className="font-display text-xl font-bold text-ink">
                   Спасибо, {form.name.trim()}!
                 </p>
-                <p className="mt-3 text-[--color-brand-muted]">
+                <p className="mt-3 text-muted-foreground">
                   Ваша заявка принята. Консультант свяжется с вами в ближайшее время.
                 </p>
                 <button
@@ -73,7 +73,7 @@ export function Contact() {
                     setSent(false);
                     setForm({ name: "", phone: "", country: "" });
                   }}
-                  className="mt-6 text-sm font-semibold text-[--color-brand-blue] underline"
+                  className="mt-6 text-sm font-semibold text-blue underline"
                 >
                   Отправить ещё одну заявку
                 </button>
@@ -90,7 +90,7 @@ export function Contact() {
                 <div>
                   <label
                     htmlFor="kc-name"
-                    className="block text-sm font-semibold text-[--color-brand-ink]"
+                    className="block text-sm font-semibold text-ink"
                   >
                     Имя
                   </label>
@@ -101,7 +101,7 @@ export function Contact() {
                     autoComplete="name"
                     value={form.name}
                     onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-                    className="mt-2 w-full rounded-2xl border border-black/10 bg-[--color-brand-cream] px-4 py-3 text-[--color-brand-ink] outline-none transition focus:border-[--color-brand-blue] focus:ring-2 focus:ring-[--color-brand-blue]/20"
+                    className="mt-2 w-full rounded-2xl border border-black/10 bg-cream px-4 py-3 text-ink outline-none transition focus:border-blue focus:ring-2 focus:ring-blue/20"
                     placeholder="Айсулуу"
                   />
                 </div>
@@ -109,7 +109,7 @@ export function Contact() {
                 <div>
                   <label
                     htmlFor="kc-phone"
-                    className="block text-sm font-semibold text-[--color-brand-ink]"
+                    className="block text-sm font-semibold text-ink"
                   >
                     Телефон / WhatsApp
                   </label>
@@ -121,7 +121,7 @@ export function Contact() {
                     autoComplete="tel"
                     value={form.phone}
                     onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
-                    className="mt-2 w-full rounded-2xl border border-black/10 bg-[--color-brand-cream] px-4 py-3 text-[--color-brand-ink] outline-none transition focus:border-[--color-brand-blue] focus:ring-2 focus:ring-[--color-brand-blue]/20"
+                    className="mt-2 w-full rounded-2xl border border-black/10 bg-cream px-4 py-3 text-ink outline-none transition focus:border-blue focus:ring-2 focus:ring-blue/20"
                     placeholder="+996 700 000 000"
                   />
                 </div>
@@ -129,7 +129,7 @@ export function Contact() {
                 <div>
                   <label
                     htmlFor="kc-country"
-                    className="block text-sm font-semibold text-[--color-brand-ink]"
+                    className="block text-sm font-semibold text-ink"
                   >
                     Интересующая страна
                   </label>
@@ -138,7 +138,7 @@ export function Contact() {
                     name="country"
                     value={form.country}
                     onChange={(e) => setForm((f) => ({ ...f, country: e.target.value }))}
-                    className="mt-2 w-full rounded-2xl border border-black/10 bg-[--color-brand-cream] px-4 py-3 text-[--color-brand-ink] outline-none transition focus:border-[--color-brand-blue] focus:ring-2 focus:ring-[--color-brand-blue]/20"
+                    className="mt-2 w-full rounded-2xl border border-black/10 bg-cream px-4 py-3 text-ink outline-none transition focus:border-blue focus:ring-2 focus:ring-blue/20"
                   >
                     <option value="">Выберите страну</option>
                     {countries.map((c) => (
@@ -152,11 +152,11 @@ export function Contact() {
                 <button
                   type="submit"
                   disabled={!valid}
-                  className="w-full rounded-2xl bg-[--color-brand-gold] px-6 py-4 font-display text-base font-bold text-[--color-brand-navy] shadow-lg transition-all hover:-translate-y-0.5 hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-50"
+                  className="w-full rounded-2xl bg-gold px-6 py-4 font-display text-base font-bold text-navy shadow-lg transition-all hover:-translate-y-0.5 hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   Отправить заявку
                 </button>
-                <p className="text-xs text-[--color-brand-muted]">
+                <p className="text-xs text-muted-foreground">
                   Нажимая кнопку, вы соглашаетесь на обработку персональных данных.
                 </p>
               </form>
@@ -170,7 +170,7 @@ export function Contact() {
 
 export function Footer() {
   return (
-    <footer className="bg-[--color-brand-navy-2] py-8 text-white/70">
+    <footer className="bg-navy-2 py-8 text-white/70">
       <div className="shell flex flex-col items-center justify-between gap-3 text-sm sm:flex-row">
         <p>© {new Date().getFullYear()} KC Education Abroad — часть бренда Kyrgyz Concept</p>
         <p className="text-white/50">Демонстрационный проект лендинга</p>
