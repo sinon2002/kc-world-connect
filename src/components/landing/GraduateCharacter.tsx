@@ -94,15 +94,16 @@ export function GraduateCharacter({ className }: { className?: string }) {
         <rect x="180" y="44" width="60" height="20" rx="8" fill="oklch(0.284 0.066 260.7)" />
         <path d="M210 16l86 34-86 34-86-34z" fill="oklch(0.284 0.066 260.7)" />
         <path d="M210 24l68 26-68 26-68-26z" fill="oklch(0.322 0.082 256.4)" />
-        <g className="kc-tassel">
+        <g className="kc-tassel" style={{ transformOrigin: "282px 50px" }}>
           <path
-            d="M214 96c0-24 22-30 34-38"
+            d="M282 50c14 10 18 26 16 44"
             fill="none"
             stroke="oklch(0.761 0.14 71.6)"
             strokeWidth="5"
             strokeLinecap="round"
           />
-          <circle cx="214" cy="100" r="8" fill="oklch(0.761 0.14 71.6)" />
+          <circle cx="298" cy="102" r="9" fill="oklch(0.761 0.14 71.6)" />
+          <rect x="291" y="98" width="14" height="20" rx="7" fill="oklch(0.86 0.09 78)" />
         </g>
       </g>
     </svg>
