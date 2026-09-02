@@ -1,109 +1,105 @@
 export function GraduateCharacter({ className }: { className?: string }) {
   return (
     <svg
-      viewBox="0 0 420 460"
+      viewBox="0 0 420 620"
       role="img"
-      aria-label="Улыбающийся студент-выпускник в мантии и академической шапке поднимает диплом"
+      aria-label="Улыбающийся студент-выпускник в длинной мантии и академической шапке поднимает диплом"
       className={className}
     >
       <defs>
-        <linearGradient id="kcGown" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="oklch(0.322 0.082 256.4)" />
-          <stop offset="100%" stopColor="oklch(0.239 0.058 256.7)" />
-        </linearGradient>
         <radialGradient id="kcGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="oklch(0.761 0.14 71.6 / 0.45)" />
+          <stop offset="0%" stopColor="oklch(0.761 0.14 71.6 / 0.35)" />
           <stop offset="100%" stopColor="oklch(0.761 0.14 71.6 / 0)" />
         </radialGradient>
       </defs>
 
-      <circle cx="210" cy="230" r="185" fill="url(#kcGlow)" />
+      <circle cx="210" cy="300" r="215" fill="url(#kcGlow)" />
 
       <g className="kc-breathe">
-        {/* shadow */}
-        <ellipse cx="210" cy="424" rx="112" ry="16" fill="oklch(0.239 0.058 256.7 / 0.18)" />
+        {/* floor shadow */}
+        <ellipse cx="210" cy="588" rx="96" ry="13" fill="oklch(0.239 0.058 256.7 / 0.16)" />
 
-        {/* gown body */}
+        {/* legs — straight simple lines */}
+        <rect x="185" y="470" width="16" height="96" rx="8" fill="oklch(0.284 0.066 260.7)" />
+        <rect x="219" y="470" width="16" height="96" rx="8" fill="oklch(0.284 0.066 260.7)" />
+        {/* shoes */}
+        <path d="M175 566h30a6 6 0 0 1 6 6v6h-42v-6a6 6 0 0 1 6-6z" fill="oklch(0.21 0.034 263.4)" />
+        <path d="M215 566h30a6 6 0 0 1 6 6v6h-42v-6a6 6 0 0 1 6-6z" fill="oklch(0.21 0.034 263.4)" />
+
+        {/* gown — long bell/trapeze silhouette, flat fill */}
         <path
-          d="M210 150c46 0 74 22 84 60l26 190c2 14-8 22-22 22H122c-14 0-24-8-22-22l26-190c10-38 38-60 84-60z"
-          fill="url(#kcGown)"
+          d="M172 176h76c26 0 40 16 44 42l40 234c2 12-6 20-18 20H106c-12 0-20-8-18-20l40-234c4-26 18-42 44-42z"
+          fill="oklch(0.239 0.058 256.7)"
         />
-        {/* stole */}
-        <path d="M186 156h18l-6 108-16-10z" fill="oklch(0.761 0.14 71.6)" />
-        <path d="M234 156h-18l6 108 16-10z" fill="oklch(0.761 0.14 71.6)" />
-        {/* collar */}
+        {/* front opening */}
+        <path d="M206 178h8l6 292h-20z" fill="oklch(0.284 0.066 260.7)" />
+
+        {/* left arm bent at the waist */}
         <path
-          d="M170 148h80l-40 44-40-44z"
-          fill="oklch(0.86 0.09 78)"
+          d="M154 190c-24 8-34 30-38 56l-8 52c-2 12 8 18 18 14l50-18-6-24-36 12 8-40z"
+          fill="oklch(0.284 0.066 260.7)"
+        />
+        <circle cx="182" cy="300" r="15" fill="oklch(0.88 0.05 62)" />
+
+        {/* collar with gold trim */}
+        <path
+          d="M178 172h64l-32 46-32-46z"
+          fill="oklch(0.284 0.066 260.7)"
           stroke="oklch(0.761 0.14 71.6)"
-          strokeWidth="4"
+          strokeWidth="7"
+          strokeLinejoin="round"
         />
-        {/* left arm */}
-        <path
-          d="M150 176c-24 12-38 40-40 72l-4 44c-1 12 18 14 20 2l10-56 22-30z"
-          fill="oklch(0.322 0.082 256.4)"
-        />
-        <circle cx="112" cy="296" r="15" fill="oklch(0.88 0.05 62)" />
 
-        {/* right arm + diploma group */}
-        <g className="kc-arm">
+        {/* right arm raised in an arc away from the face + diploma */}
+        <g className="kc-arm" style={{ transformOrigin: "252px 200px" }}>
           <path
-            d="M262 172c30 6 44 26 56 4 8-14 20-30 34-44 8-8 20 4 12 14-14 16-22 30-28 44-10 24-40 34-74 26z"
-            fill="oklch(0.322 0.082 256.4)"
+            d="M252 182c26 4 40 20 50 44l38 84c5 12-13 20-19 8l-38-76-16 22z"
+            fill="oklch(0.284 0.066 260.7)"
           />
-          <circle cx="350" cy="140" r="16" fill="oklch(0.88 0.05 62)" />
+          <circle cx="344" cy="308" r="15" fill="oklch(0.88 0.05 62)" />
           {/* scroll */}
-          <g transform="rotate(-28 352 132)">
-            <rect x="316" y="112" width="76" height="30" rx="15" fill="oklch(0.99 0.008 84)" />
-            <rect x="316" y="112" width="76" height="30" rx="15" fill="none" stroke="oklch(0.9 0.012 260)" strokeWidth="2" />
-            <rect x="346" y="104" width="14" height="46" rx="7" fill="oklch(0.761 0.14 71.6)" />
+          <g transform="rotate(-30 344 300)">
+            <rect x="308" y="288" width="76" height="26" rx="13" fill="oklch(0.99 0.008 84)" />
+            <rect x="338" y="282" width="13" height="38" rx="6" fill="oklch(0.761 0.14 71.6)" />
           </g>
           {/* sparkles */}
           <g fill="oklch(0.761 0.14 71.6)">
-            <path className="kc-spark" style={{ animationDelay: "0.1s" }} d="M300 78l5 12 12 5-12 5-5 12-5-12-12-5 12-5z" />
-            <path className="kc-spark" style={{ animationDelay: "0.45s" }} d="M392 92l4 9 9 4-9 4-4 9-4-9-9-4 9-4z" />
-            <circle className="kc-spark" style={{ animationDelay: "0.75s" }} cx="330" cy="60" r="5" />
-            <circle className="kc-spark" style={{ animationDelay: "0.3s" }} cx="378" cy="176" r="4" />
+            <path className="kc-spark" style={{ animationDelay: "0.1s" }} d="M300 244l5 12 12 5-12 5-5 12-5-12-12-5 12-5z" />
+            <path className="kc-spark" style={{ animationDelay: "0.45s" }} d="M388 262l4 9 9 4-9 4-4 9-4-9-9-4 9-4z" />
+            <circle className="kc-spark" style={{ animationDelay: "0.75s" }} cx="330" cy="220" r="5" />
+            <circle className="kc-spark" style={{ animationDelay: "0.3s" }} cx="376" cy="352" r="4" />
           </g>
         </g>
 
-        {/* neck + head */}
-        <rect x="196" y="118" width="28" height="34" rx="12" fill="oklch(0.82 0.055 62)" />
-        <circle cx="210" cy="90" r="52" fill="oklch(0.88 0.05 62)" />
-        {/* ears */}
-        <circle cx="159" cy="94" r="9" fill="oklch(0.85 0.052 62)" />
-        <circle cx="261" cy="94" r="9" fill="oklch(0.85 0.052 62)" />
+        {/* neck + head (approx 1/6.5 of figure height) */}
+        <rect x="200" y="152" width="20" height="26" rx="9" fill="oklch(0.82 0.055 62)" />
+        <circle cx="210" cy="128" r="42" fill="oklch(0.88 0.05 62)" />
         {/* hair */}
-        <path d="M162 66c8-26 30-40 48-40s40 14 48 40c-30-14-66-14-96 0z" fill="oklch(0.28 0.03 40)" />
+        <path d="M170 116c4-24 20-36 40-36s36 12 40 36c-26-12-54-12-80 0z" fill="oklch(0.28 0.03 40)" />
         {/* eyes */}
-        <circle cx="192" cy="88" r="6" fill="oklch(0.21 0.034 263.4)" />
-        <circle cx="228" cy="88" r="6" fill="oklch(0.21 0.034 263.4)" />
+        <circle cx="196" cy="128" r="4.5" fill="oklch(0.21 0.034 263.4)" />
+        <circle cx="224" cy="128" r="4.5" fill="oklch(0.21 0.034 263.4)" />
         {/* smile */}
         <path
-          d="M190 108c8 12 32 12 40 0"
+          d="M197 143c7 9 20 9 26 0"
           fill="none"
           stroke="oklch(0.21 0.034 263.4)"
-          strokeWidth="5"
+          strokeWidth="4"
           strokeLinecap="round"
         />
-        {/* cheeks */}
-        <circle cx="178" cy="102" r="7" fill="oklch(0.78 0.09 30 / 0.5)" />
-        <circle cx="242" cy="102" r="7" fill="oklch(0.78 0.09 30 / 0.5)" />
 
         {/* mortarboard */}
-        <rect x="180" y="44" width="60" height="20" rx="8" fill="oklch(0.284 0.066 260.7)" />
-        <path d="M210 16l86 34-86 34-86-34z" fill="oklch(0.284 0.066 260.7)" />
-        <path d="M210 24l68 26-68 26-68-26z" fill="oklch(0.322 0.082 256.4)" />
-        <g className="kc-tassel" style={{ transformOrigin: "282px 50px" }}>
+        <rect x="186" y="90" width="48" height="16" rx="6" fill="oklch(0.21 0.034 263.4)" />
+        <path d="M210 66l76 28-76 28-76-28z" fill="oklch(0.239 0.058 256.7)" />
+        <g className="kc-tassel" style={{ transformOrigin: "276px 94px" }}>
           <path
-            d="M282 50c14 10 18 26 16 44"
+            d="M276 94c12 8 15 22 14 38"
             fill="none"
             stroke="oklch(0.761 0.14 71.6)"
             strokeWidth="5"
             strokeLinecap="round"
           />
-          <circle cx="298" cy="102" r="9" fill="oklch(0.761 0.14 71.6)" />
-          <rect x="291" y="98" width="14" height="20" rx="7" fill="oklch(0.86 0.09 78)" />
+          <rect x="283" y="128" width="14" height="20" rx="7" fill="oklch(0.86 0.09 78)" />
         </g>
       </g>
     </svg>
