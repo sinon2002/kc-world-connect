@@ -185,6 +185,20 @@
   }
 }
 
+@keyframes kc-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(2deg);
+  }
+}
+
+.kc-float {
+  animation: kc-float 3s ease-in-out infinite;
+}
+
 .kc-breathe {
   animation: kc-breathe 3s ease-in-out infinite;
 }
@@ -205,6 +219,7 @@
     scroll-behavior: auto;
   }
   .kc-breathe,
+  .kc-float,
   .kc-arm,
   .kc-tassel,
   .kc-spark {

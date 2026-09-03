@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import logo from "@/assets/kc_logo_transparent.png.asset.json";
 
 const links = [
   { href: "#process", label: "Как мы работаем" },
