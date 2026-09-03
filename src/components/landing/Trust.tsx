@@ -1,4 +1,5 @@
 import { Reveal } from "./Reveal";
+import studyIllustration from "@/assets/about-study-illustration.png.asset.json";
 
 const cards = [
   {
@@ -32,31 +33,12 @@ const partners = [
 
 function StudyingPerson() {
   return (
-    <svg
-      viewBox="0 0 120 120"
-      role="img"
-      aria-label="Иллюстрация студента с ноутбуком"
-      className="kc-float size-[90px] md:size-[110px]"
-    >
-      {/* laptop / book */}
-      <ellipse cx="60" cy="104" rx="34" ry="5" fill="var(--teal)" opacity="0.18" />
-      {/* crossed legs */}
-      <path
-        d="M32 96c6-12 20-16 28-16s22 4 28 16c1 3-1 5-4 5H36c-3 0-5-2-4-5Z"
-        fill="var(--navy-2)"
-      />
-      {/* body */}
-      <path d="M60 44c12 0 20 9 20 21v18H40V65c0-12 8-21 20-21Z" fill="var(--teal)" />
-      {/* head */}
-      <circle cx="60" cy="30" r="13" fill="var(--gold-soft)" />
-      <path d="M47 28c0-8 6-13 13-13s13 5 13 13c-4-4-8-5-13-5s-9 1-13 5Z" fill="var(--navy)" />
-      {/* arms */}
-      <path d="M40 66c-5 6-6 12-4 17l8-3c-1-5 0-9 3-13l-7-1Z" fill="var(--teal)" />
-      <path d="M80 66c5 6 6 12 4 17l-8-3c1-5 0-9-3-13l7-1Z" fill="var(--teal)" />
-      {/* laptop */}
-      <path d="M42 84h36l6 10H36l6-10Z" fill="var(--gold)" />
-      <rect x="46" y="70" width="28" height="15" rx="2" fill="var(--cream)" />
-    </svg>
+    <img
+      src={studyIllustration.url}
+      alt="Иллюстрация студента с ноутбуком и книгами"
+      loading="eager"
+      className="kc-float w-[100px] md:w-[120px]"
+    />
   );
 }
 
