@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import logo from "@/assets/kc_logo_transparent.png.asset.json";
 
 const links = [
   { href: "#process", label: "Как мы работаем" },
@@ -28,29 +29,32 @@ export function Nav() {
         (solid ? "bg-navy/95 shadow-soft backdrop-blur-md" : "bg-transparent")
       }
     >
-      <div className="shell flex h-18 items-center justify-between py-3">
+      <div className="shell flex h-20 items-center justify-between py-3">
         <a href="#hero" className="flex items-center gap-3">
-          <span className="grid size-10 place-items-center rounded-xl bg-gold font-display text-sm font-extrabold text-navy">
-            KC
-          </span>
-          <span className="hidden text-sm leading-4 font-extrabold text-on-navy sm:block">
-            KC Education
-            <br />
-            <span className="text-gold">Abroad</span>
+          <img
+            src={logo.url}
+            alt="Kyrgyz Concept"
+            width={132}
+            height={44}
+            className="h-11 w-auto"
+          />
+          <span className="hidden text-xs font-semibold tracking-wide text-on-navy-muted sm:block">
+            Education Abroad
           </span>
         </a>
 
-        <nav aria-label="Основная навигация" className="hidden items-center gap-7 lg:flex">
+        <nav aria-label="Основная навигация" className="hidden items-center gap-9 lg:flex xl:gap-10">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="text-sm font-semibold text-on-navy-muted transition-colors hover:text-gold"
+              className="border-b-2 border-transparent pb-1 text-sm font-medium text-on-navy-muted transition-colors hover:border-gold hover:text-on-navy"
             >
               {l.label}
             </a>
           ))}
         </nav>
+
 
         <div className="flex items-center gap-2">
           <a
