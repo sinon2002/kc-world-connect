@@ -1,5 +1,4 @@
 import { Reveal } from "./Reveal";
-import logo from "@/assets/kc_logo_transparent.png.asset.json";
 
 const cards = [
   {
@@ -117,7 +116,6 @@ export function Trust() {
           </ul>
         </Reveal>
       </div>
-      <img src={logo.url} alt="" hidden />
     </section>
   );
 }
