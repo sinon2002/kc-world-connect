@@ -1,4 +1,5 @@
 import { Reveal } from "./Reveal";
+import studyIllustration from "@/assets/about-study-illustration.png.asset.json";
 
 const cards = [
   {
