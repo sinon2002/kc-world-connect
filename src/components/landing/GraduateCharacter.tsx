@@ -5,7 +5,7 @@ export function GraduateCharacter({ className }: { className?: string }) {
     <img
       src={graduateImg.url}
       alt="Улыбающийся студент-выпускник в мантии и академической шапке с дипломом"
-      className={className}
+      className={`kc-breathe ${className ?? ""}`}
       loading="eager"
       decoding="async"
     />
