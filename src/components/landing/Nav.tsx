@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import logo from "@/assets/kc_logo_transparent.png.asset.json";
 
 const links = [
@@ -16,89 +16,31 @@ export function Nav() {
   const [solid, setSolid] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setSolid(window.scrollY > 24);
+    const onScroll = () => setSolid(window.scrollY > 18);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <header
-      className={
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300 " +
-        (solid ? "bg-navy/95 shadow-soft backdrop-blur-md" : "bg-transparent")
-      }
-    >
-      <div className="shell flex h-20 items-center justify-between py-3">
-        <a href="#hero" className="flex items-center gap-3">
-          <img
-            src={logo.url}
-            alt="Kyrgyz Concept"
-            width={132}
-            height={44}
-            className="h-11 w-auto"
-          />
-          <span className="hidden text-xs font-semibold tracking-wide text-on-navy-muted sm:block">
-            Education Abroad
-          </span>
+    <header className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${solid || open ? "border-border bg-background/95 shadow-soft backdrop-blur-xl" : "border-transparent bg-background/75 backdrop-blur-sm"}`}>
+      <div className="shell flex h-[76px] items-center justify-between">
+        <a href="#hero" className="flex items-center gap-3" aria-label="KC Education Abroad — на главную">
+          <img src={logo.url} alt="Kyrgyz Concept" width={132} height={44} className="h-10 w-auto" />
+          <span className="hidden border-l border-border pl-3 text-[10px] font-bold uppercase text-muted-foreground sm:block">Education<br />Abroad</span>
         </a>
-
-        <nav aria-label="Основная навигация" className="hidden items-center gap-9 lg:flex xl:gap-10">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="border-b-2 border-transparent pb-1 text-sm font-medium text-on-navy-muted transition-colors hover:border-gold hover:text-on-navy"
-            >
-              {l.label}
-            </a>
-          ))}
+        <nav aria-label="Основная навигация" className="hidden items-center gap-8 lg:flex xl:gap-10">
+          {links.map((link) => <a key={link.href} href={link.href} className="border-b border-transparent py-2 text-[13px] font-semibold text-foreground transition-colors hover:border-primary hover:text-primary">{link.label}</a>)}
         </nav>
-
-
         <div className="flex items-center gap-2">
-          <a
-            href="#consult"
-            className="hidden rounded-full bg-gold px-5 py-2.5 text-sm font-bold text-navy shadow-gold transition-transform hover:-translate-y-0.5 sm:inline-flex"
-          >
-            Консультация
-          </a>
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            aria-expanded={open}
-            aria-controls="mobile-menu"
-            aria-label={open ? "Закрыть меню" : "Открыть меню"}
-            className="grid size-10 place-items-center rounded-xl bg-on-navy/10 text-on-navy lg:hidden"
-          >
-            {open ? <X className="size-5" /> : <Menu className="size-5" />}
-          </button>
+          <a href="#consult" className="hidden items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-bold text-primary-foreground shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:bg-accent hover:text-accent-foreground sm:inline-flex">Консультация <ArrowUpRight className="size-4" /></a>
+          <button type="button" onClick={() => setOpen((value) => !value)} aria-expanded={open} aria-controls="mobile-menu" aria-label={open ? "Закрыть меню" : "Открыть меню"} className="grid size-10 place-items-center rounded-md border border-border bg-background text-foreground lg:hidden">{open ? <X className="size-5" /> : <Menu className="size-5" />}</button>
         </div>
       </div>
-
-      <div
-        id="mobile-menu"
-        hidden={!open}
-        className="border-t border-on-navy/10 bg-navy px-5 pb-6 lg:hidden"
-      >
+      <div id="mobile-menu" hidden={!open} className="border-t border-border bg-background px-5 pb-6 lg:hidden">
         <nav aria-label="Мобильная навигация" className="flex flex-col">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              onClick={() => setOpen(false)}
-              className="border-b border-on-navy/10 py-3.5 text-base font-semibold text-on-navy"
-            >
-              {l.label}
-            </a>
-          ))}
-          <a
-            href="#consult"
-            onClick={() => setOpen(false)}
-            className="mt-5 rounded-full bg-gold px-5 py-3 text-center text-sm font-bold text-navy"
-          >
-            Консультация
-          </a>
+          {links.map((link) => <a key={link.href} href={link.href} onClick={() => setOpen(false)} className="border-b border-border py-3.5 text-base font-semibold text-foreground">{link.label}</a>)}
+          <a href="#consult" onClick={() => setOpen(false)} className="mt-5 rounded-md bg-primary px-5 py-3 text-center text-sm font-bold text-primary-foreground">Консультация</a>
         </nav>
       </div>
     </header>
