@@ -103,7 +103,7 @@
   100% { opacity: 1; transform: translateX(0); }
 }
 @keyframes hero-girl-split {
-  0%, 18% { transform: translateX(-43vw) scale(1.08); }
+  0%, 18% { transform: translateX(-20vw) scale(1.08); }
   100% { transform: translateX(0) scale(1); }
 }
 @keyframes hero-plane-arrive {
