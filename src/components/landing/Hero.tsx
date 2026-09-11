@@ -1,7 +1,7 @@
 import { ArrowDownRight, ArrowRight, Building2, GraduationCap, MapPin, Plane, Play } from "lucide-react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import heroGirl from "@/assets/hero-student-girl.png";
-import logo from "@/assets/kc_logo_transparent.png.asset.json";
+import logo from "@/assets/kc-logo.png";
 
 export function Hero() {
   const reduce = useReducedMotion();
@@ -33,18 +33,18 @@ export function Hero() {
           </div>
 
           <motion.div {...appear(1.65)} className="absolute top-[7%] right-[2%] z-30 text-primary sm:right-[5%]" aria-hidden="true">
-            <Plane className="hero-plane size-16 fill-secondary stroke-[1.4] sm:size-20" />
+            <Plane className="hero-plane size-20 fill-secondary stroke-[1.4] sm:size-28" />
           </motion.div>
 
           <motion.div {...appear(1.78)} className="absolute top-[20%] left-[1%] z-30 rounded-md bg-background/95 p-3 shadow-lift backdrop-blur-sm sm:left-[3%] sm:p-4">
-            <img src={logo.url} alt="Kyrgyz Concept" width={132} height={44} className="h-8 w-auto sm:h-10" />
+            <img src={logo} alt="Kyrgyz Concept" width={132} height={64} className="h-10 w-auto sm:h-12" />
           </motion.div>
 
-          <motion.div {...appear(1.92)} className="absolute top-[40%] right-0 z-30 flex items-center gap-2 rounded-md bg-background/95 px-3 py-2 shadow-soft backdrop-blur-sm">
-            <Building2 className="size-4 text-primary" /><span className="text-xs font-bold text-ink">Лондон</span>
+          <motion.div {...appear(1.92)} className="absolute top-[40%] right-0 z-30 flex items-center gap-2.5 rounded-md bg-background/95 px-4 py-3 shadow-soft backdrop-blur-sm">
+            <Building2 className="size-5 text-primary" /><span className="text-base font-bold text-ink">Лондон</span>
           </motion.div>
-          <motion.div {...appear(2.02)} className="absolute bottom-[26%] left-0 z-30 flex items-center gap-2 rounded-md bg-primary px-3 py-2 text-primary-foreground shadow-soft">
-            <MapPin className="size-4" /><span className="text-xs font-bold">Бишкек</span>
+          <motion.div {...appear(2.02)} className="absolute bottom-[26%] left-0 z-30 flex items-center gap-2.5 rounded-md bg-primary px-4 py-3 text-primary-foreground shadow-soft">
+            <MapPin className="size-5" /><span className="text-base font-bold">Бишкек</span>
           </motion.div>
           <motion.div {...appear(2.12)} className="absolute right-[3%] bottom-[10%] z-30 flex items-center gap-2 rounded-md bg-accent px-3 py-2 text-accent-foreground shadow-gold">
             <GraduationCap className="size-4" /><span className="text-xs font-bold">Кампус мечты</span>
