@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
-import logo from "@/assets/kc_logo_transparent.png.asset.json";
+import logo from "@/assets/kc-logo.png";
 
 const links = [
   { href: "#process", label: "Как мы работаем" },
@@ -26,7 +26,7 @@ export function Nav() {
     <header className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${solid || open ? "border-border bg-background/95 shadow-soft backdrop-blur-xl" : "border-transparent bg-background/75 backdrop-blur-sm"}`}>
       <div className="shell flex h-[76px] items-center justify-between">
         <a href="#hero" className="flex items-center gap-3" aria-label="KC Education Abroad — на главную">
-          <img src={logo.url} alt="Kyrgyz Concept" width={132} height={44} className="h-10 w-auto" />
+        <img src={logo} alt="Kyrgyz Concept" width={132} height={64} className="h-12 w-auto" />
           <span className="hidden border-l border-border pl-3 text-[10px] font-bold uppercase text-muted-foreground sm:block">Education<br />Abroad</span>
         </a>
         <nav aria-label="Основная навигация" className="hidden items-center gap-8 lg:flex xl:gap-10">
