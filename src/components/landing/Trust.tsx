@@ -33,7 +33,7 @@ function StudyingPerson() {
 
 export function Trust() {
   return (
-    <section id="about" className="section-pad bg-navy">
+    <section id="about" className="section-pad" style={{ backgroundColor: "#0078c3" }}>
       <div className="shell">
         <div className="flex items-start justify-between gap-6">
           <Reveal className="max-w-3xl space-y-4">
