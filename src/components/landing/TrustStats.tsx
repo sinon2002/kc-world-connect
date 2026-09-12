@@ -22,15 +22,15 @@ export function TrustStats() {
   return (
     <section id="trust-stats" className="section-pad bg-background">
       <div className="shell">
-        <Reveal className="relative overflow-hidden rounded-[2.5rem] bg-navy px-6 py-12 sm:px-10 md:px-14 md:py-16">
+       <Reveal className="relative overflow-hidden rounded-[2.5rem] bg-[#0078C3] px-6 py-12 sm:px-10 md:px-14 md:py-16">
           {/* декоративные кольца на фоне */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute -top-24 right-16 size-[340px] rounded-full border-[40px] border-primary/25"
+           className="pointer-events-none absolute -top-24 right-16 size-[340px] rounded-full border-[40px] border-white/15"
           />
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute -bottom-10 -right-24 h-28 w-[520px] rotate-[-15deg] rounded-full bg-gradient-to-r from-transparent via-primary/25 to-transparent"
+           className="pointer-events-none absolute -bottom-10 -right-24 h-28 w-[520px] rotate-[-15deg] rounded-full bg-gradient-to-r from-transparent via-white/15 to-transparent"
           />
 
           <div className="relative z-10">
