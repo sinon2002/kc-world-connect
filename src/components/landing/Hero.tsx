@@ -36,8 +36,8 @@ export function Hero() {
             <Plane className="hero-plane size-20 fill-secondary stroke-[1.4] sm:size-28" />
           </motion.div>
 
-         <motion.div {...appear(1.78)} className="absolute top-[20%] left-[1%] z-30 -rotate-6 rounded-md bg-background/95 p-4 shadow-lift backdrop-blur-sm sm:left-[3%] sm:p-5">
-  <img src={logo} alt="Kyrgyz Concept" width={132} height={64} className="h-14 w-auto sm:h-20" />
+         <<motion.div {...appear(1.78)} className="absolute top-[20%] left-[1%] z-30 -rotate-6 sm:left-[3%]">
+  <img src={logo} alt="Kyrgyz Concept" width={132} height={64} className="h-14 w-auto drop-shadow-[0_18px_34px_rgba(10,60,130,0.35)] sm:h-20" />
 </motion.div>
 
           <motion.div {...appear(1.92)} className="absolute top-[40%] right-0 z-30 flex items-center gap-2.5 rounded-md bg-background/95 px-4 py-3 shadow-soft backdrop-blur-sm">
