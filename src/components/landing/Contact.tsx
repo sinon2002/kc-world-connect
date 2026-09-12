@@ -23,7 +23,7 @@ export function Contact() {
 
   return (
     <section id="consult" className="section-pad bg-navy text-white">
-      <div className="shell grid items-center gap-8 lg:grid-cols-[1fr_260px_1fr] lg:gap-4">
+      <div className="shell grid items-center gap-8 lg:grid-cols-[1fr_320px_1fr] lg:gap-4">
         <Reveal>
           <h2 className="font-display text-3xl font-extrabold leading-tight sm:text-4xl">
             Записаться на бесплатную консультацию
@@ -62,7 +62,7 @@ export function Contact() {
             alt="Студент Kyrgyz Concept приглашает записаться на консультацию"
             width={895}
             height={1200}
-            className="h-[260px] w-auto drop-shadow-2xl sm:h-[320px] lg:h-[400px]"
+            className="h-[320px] w-auto drop-shadow-2xl sm:h-[400px] lg:h-[480px]"
           />
         </Reveal>
 
