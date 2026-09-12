@@ -1,12 +1,16 @@
+import bilkentPhoto from "@/assets/partners/bilkent.jpg";
+import uclPhoto from "@/assets/partners/ucl.jpg";
+import tuBerlinPhoto from "@/assets/partners/tu-berlin.jpg";
+
 const partners = [
-  "University of Toronto",
-  "TU Berlin",
-  "Sapienza University",
-  "Nanyang Poly",
-  "UCL",
-  "Bilkent University",
-  "Monash",
-  "Sungkyunkwan",
+  { name: "University of Toronto" },
+  { name: "TU Berlin", image: tuBerlinPhoto },
+  { name: "Sapienza University" },
+  { name: "Nanyang Poly" },
+  { name: "UCL", image: uclPhoto },
+  { name: "Bilkent University", image: bilkentPhoto },
+  { name: "Monash" },
+  { name: "Sungkyunkwan" },
 ];
 
 export function Partners() {
@@ -47,15 +51,26 @@ export function Partners() {
       {/* лента карточек, едет бесконечно вправо->влево */}
       <div className="relative w-full">
         <div className="partner-track flex w-max gap-6">
-          {track.map((name, i) => (
+          {track.map((p, i) => (
             <div
-              key={`${name}-${i}`}
-              className="w-[230px] flex-shrink-0 rounded-2xl border border-border/70 bg-card p-3 shadow-soft"
+              key={`${p.name}-${i}`}
+              className="w-[230px] flex-shrink-0 rounded-2xl border border-border/70 bg-card p-3 shadow-soft transition-transform duration-300 hover:-translate-y-1"
             >
-              <div className="flex h-[150px] items-center justify-center rounded-xl bg-gradient-to-br from-secondary to-muted text-xs font-semibold text-muted-foreground">
-                {name}
-              </div>
-              <div className="pt-3 pb-1 text-center text-sm font-bold text-ink">{name}</div>
+              {p.image ? (
+                <img
+                  src={p.image}
+                  alt={p.name}
+                  width={640}
+                  height={480}
+                  loading="lazy"
+                  className="h-[150px] w-full rounded-xl object-cover"
+                />
+              ) : (
+                <div className="flex h-[150px] items-center justify-center rounded-xl bg-gradient-to-br from-secondary to-muted text-xs font-semibold text-muted-foreground">
+                  {p.name}
+                </div>
+              )}
+              <div className="pt-3 pb-1 text-center text-sm font-bold text-ink">{p.name}</div>
             </div>
           ))}
         </div>
