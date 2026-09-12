@@ -20,17 +20,6 @@ const cards = [
   },
 ];
 
-const partners = [
-  "University of Toronto",
-  "TU Berlin",
-  "Sapienza",
-  "Nanyang Poly",
-  "UCL",
-  "Bilkent",
-  "Monash",
-  "Sungkyunkwan",
-];
-
 function StudyingPerson() {
   return (
     <img
@@ -81,22 +70,6 @@ export function Trust() {
             </Reveal>
           ))}
         </div>
-
-        <Reveal delay={0.1} className="mt-12">
-          <p className="text-center text-xs font-bold tracking-[0.18em] text-on-navy-muted uppercase">
-            Университеты-партнёры
-          </p>
-          <ul className="mt-6 flex gap-4 overflow-x-auto pb-3 [scrollbar-width:none]">
-            {partners.map((p) => (
-              <li
-                key={p}
-                className="grid h-20 min-w-[11rem] flex-shrink-0 place-items-center rounded-2xl border border-on-navy/12 bg-on-navy/6 px-5 text-center text-sm font-semibold text-on-navy-muted"
-              >
-                {p}
-              </li>
-            ))}
-          </ul>
-        </Reveal>
       </div>
     </section>
   );
