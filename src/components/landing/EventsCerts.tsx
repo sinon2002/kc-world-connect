@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { CalendarDays, ChevronDown, ShieldCheck } from "lucide-react";
+import { CalendarDays, Check, ChevronDown, ShieldCheck } from "lucide-react";
 import { Reveal, SectionHeading } from "./Reveal";
+import eventsPhoto from "@/assets/events/students-library.jpg";
 
 const certs = [
   {
@@ -18,25 +19,50 @@ const certs = [
 ];
 
 export function Events() {
+  const points = [
+    "Прямой диалог с приёмными комиссиями",
+    "Честные отзывы об учёбе и быте из первых уст",
+  ];
+
   return (
     <section id="events" className="section-pad">
       <div className="shell">
-        <Reveal className="relative overflow-hidden rounded-4xl bg-gradient-to-br from-navy via-navy-2 to-blue p-8 md:p-14">
-          <span
-            aria-hidden="true"
-            className="pointer-events-none absolute -top-20 -right-16 size-72 rounded-full bg-gold/20 blur-3xl"
-          />
-          <div className="relative max-w-3xl">
-            <span className="inline-flex items-center gap-2 rounded-full bg-gold/15 px-4 py-1.5 text-xs font-bold tracking-[0.16em] text-gold uppercase">
+        <Reveal className="overflow-hidden rounded-4xl bg-card shadow-soft md:flex">
+          <div className="h-64 md:h-auto md:w-[42%] md:flex-shrink-0">
+            <img
+              src={eventsPhoto}
+              alt="Студенты готовятся к поступлению за рубежом"
+              width={720}
+              height={900}
+              loading="lazy"
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <div className="p-8 md:w-[58%] md:p-14">
+            <span className="inline-flex items-center gap-2 rounded bg-secondary px-4 py-1.5 text-xs font-bold tracking-[0.16em] text-primary uppercase">
               Мероприятия
             </span>
-            <h2 className="mt-5 text-2xl leading-snug text-on-navy md:text-4xl">
+            <h2
+              className="mt-5 text-2xl leading-snug text-ink md:text-3xl"
+              style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+            >
               Регулярно проводим встречи с лидерами мнений, представителями университетов и
-              студентами, которые уже учатся за рубежом
+              студентами
             </h2>
-            <a
+            <p className="mt-4 border-l-2 border-primary pl-3 text-xs font-bold tracking-[0.1em] text-primary uppercase">
+              Которые уже учатся за рубежом
+            </p>
+            <ul className="mt-5 space-y-2.5">
+              {points.map((p) => (
+                <li key={p} className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                  <Check className="mt-0.5 size-4 flex-shrink-0 text-primary" aria-hidden="true" />
+                  {p}
+                </li>
+              ))}
+            </ul>
+            
               href="#consult"
-              className="mt-8 inline-flex items-center gap-2.5 rounded-full bg-gold px-7 py-4 text-sm font-bold text-navy shadow-gold transition-transform duration-200 hover:-translate-y-1"
+              className="mt-8 inline-flex items-center gap-2.5 rounded-full bg-primary px-7 py-4 text-sm font-bold text-primary-foreground shadow-soft transition-transform duration-200 hover:-translate-y-1"
             >
               <CalendarDays className="size-5" aria-hidden="true" />
               Смотреть ближайшие мероприятия
