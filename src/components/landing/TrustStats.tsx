@@ -34,10 +34,10 @@ export function TrustStats() {
           />
 
           <div className="relative z-10">
-            <h2 className="max-w-3xl text-lg font-extrabold uppercase leading-snug tracking-tight text-on-navy sm:text-2xl">
+           <h2 className="max-w-3xl text-lg font-extrabold uppercase leading-snug tracking-tight text-white sm:text-2xl">
               Учёба за границей. Получите образование в лучших университетах мира
             </h2>
-            <p className="mt-2 text-sm font-semibold uppercase tracking-wide text-on-navy-muted">
+           <p className="mt-2 text-sm font-semibold uppercase tracking-wide text-white/75">
               Нам доверяют абитуриенты и университеты по всему миру
             </p>
 
