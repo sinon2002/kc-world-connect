@@ -38,7 +38,7 @@ const stories = [
 
 export function Stories() {
   return (
-    <section id="stories" className="bg-navy section-pad">
+   <section id="stories" className="section-pad" style={{ backgroundColor: "#0078c3" }}>
       <div className="shell">
         <SectionHeading
           tone="dark"
