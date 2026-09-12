@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Reveal } from "./Reveal";
+import guyPhoto from "@/assets/contact/kc-guy.png";
 
 const countries = [
   "Великобритания",
@@ -22,7 +23,7 @@ export function Contact() {
 
   return (
     <section id="consult" className="section-pad bg-navy text-white">
-      <div className="shell grid gap-10 lg:grid-cols-2 lg:items-center">
+      <div className="shell grid items-center gap-8 lg:grid-cols-[1fr_260px_1fr] lg:gap-4">
         <Reveal>
           <h2 className="font-display text-3xl font-extrabold leading-tight sm:text-4xl">
             Записаться на бесплатную консультацию
@@ -36,7 +37,7 @@ export function Contact() {
             Ответим в течение 30 минут в рабочее время
           </p>
           <div className="mt-6 flex gap-3">
-            <a
+            
               href="#"
               aria-label="WhatsApp"
               className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 transition-colors hover:bg-white/20"
@@ -45,7 +46,7 @@ export function Contact() {
                 <path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.1 14.1c-.2.6-1.2 1.2-1.9 1.2-.5 0-1.2-.1-3.2-1s-3.4-3-3.5-3.2c-.6-.9-1-1.9-.9-2.8 0-.8.5-1.4.8-1.7.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.7 1.7c.1.2 0 .4-.1.6l-.4.5c-.1.2-.2.3 0 .6.3.5.8 1.1 1.3 1.5.6.5 1.1.7 1.4.8.2.1.4.1.5 0l.7-.8c.2-.2.4-.2.6-.1l1.6.8c.3.2.4.3.4.5 0 .2 0 .8-.3 1.1Z" />
               </svg>
             </a>
-            <a
+            
               href="#"
               aria-label="Instagram"
               className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 transition-colors hover:bg-white/20"
@@ -57,7 +58,17 @@ export function Contact() {
           </div>
         </Reveal>
 
-        <Reveal delay={0.1}>
+        <Reveal delay={0.08} className="order-first justify-self-center lg:order-none">
+          <img
+            src={guyPhoto}
+            alt="Студент Kyrgyz Concept приглашает записаться на консультацию"
+            width={895}
+            height={1200}
+            className="h-[260px] w-auto drop-shadow-2xl sm:h-[320px] lg:h-[400px]"
+          />
+        </Reveal>
+
+        <Reveal delay={0.15}>
           <div className="rounded-3xl bg-white p-6 shadow-2xl sm:p-8">
             {sent ? (
               <div role="status" className="py-10 text-center">
