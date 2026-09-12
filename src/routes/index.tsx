@@ -4,6 +4,7 @@ import { Nav } from "@/components/landing/Nav";
 import { Hero } from "@/components/landing/Hero";
 import { TrustStats } from "@/components/landing/TrustStats";
 import { Trust } from "@/components/landing/Trust";
+import { Partners } from "@/components/landing/Partners";
 import { Process } from "@/components/landing/Process";
 import { Stories } from "@/components/landing/Stories";
 import { Services } from "@/components/landing/Services";
@@ -38,6 +39,7 @@ function Index() {
         <Hero />
         <TrustStats />
         <Trust />
+        <Partners />
         <Process />
         <Stories />
         <Services />
