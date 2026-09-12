@@ -152,7 +152,7 @@ export function Services() {
               delay={i * 0.08}
               className="flex h-full flex-col rounded-3xl bg-card p-7 shadow-soft transition-transform duration-300 hover:-translate-y-1 hover:shadow-lift"
             >
-              <span className="grid size-14 place-items-center rounded-2xl bg-navy">
+         <span className="grid size-14 place-items-center rounded-2xl" style={{ backgroundColor: "#0078c3" }}>
                 <s.icon className="size-7 text-gold" aria-hidden="true" />
               </span>
               <h3 className="mt-5 text-xl text-ink">{s.title}</h3>
