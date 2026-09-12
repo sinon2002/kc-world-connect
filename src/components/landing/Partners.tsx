@@ -51,28 +51,28 @@ export function Partners() {
       {/* лента карточек, едет бесконечно вправо->влево */}
       <div className="relative w-full">
         <div className="partner-track flex w-max gap-7">
-          {track.map((p, i) => (
-            <div
-              key={`${p.name}-${i}`}
-              className="w-[280px] flex-shrink-0 rounded-2xl border border-border/70 bg-card p-3 shadow-soft transition-transform duration-300 hover:-translate-y-1"
-            >
-              {p.image ? (
-                <img
-                  src={p.image}
-                  alt={p.name}
-                  width={640}
-                  height={480}
-                  loading="lazy"
-                  className="h-[190px] w-full rounded-xl object-cover"
-                />
-              ) : (
-                <div className="flex h-[190px] items-center justify-center rounded-xl bg-gradient-to-br from-secondary to-muted text-xs font-semibold text-muted-foreground">
-                  {p.name}
-                </div>
-              )}
-              <div className="pt-3 pb-1 text-center text-sm font-bold text-ink">{p.name}</div>
-            </div>
-          ))}
+         {track.map((p, i) => (
+  <div
+    key={`${p.name}-${i}`}
+    className="w-[280px] flex-shrink-0 rounded-2xl border border-border/70 bg-card p-3 shadow-soft transition-transform duration-300 hover:-translate-y-1"
+  >
+    {p.image ? (
+      <img
+        src={p.image}
+        alt={p.name}
+        width={640}
+        height={480}
+        loading="lazy"
+        className="h-[190px] w-full rounded-xl object-cover"
+      />
+    ) : (
+      <div className="flex h-[190px] items-center justify-center rounded-xl bg-gradient-to-br from-secondary to-muted text-xs font-semibold text-muted-foreground">
+        {p.name}
+      </div>
+    )}
+    <div className="pt-3 pb-1 text-center text-sm font-bold text-ink">{p.name}</div>
+  </div>
+))}
         </div>
       </div>
     </section>
