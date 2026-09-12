@@ -35,8 +35,8 @@ export function Hero() {
           <motion.div {...appear(1.65)} className="absolute top-[7%] right-[2%] z-30 text-primary sm:right-[5%]" aria-hidden="true">
             <Plane className="hero-plane size-20 fill-secondary stroke-[1.4] sm:size-28" />
           </motion.div>
-
-         <<motion.div {...appear(1.78)} className="absolute top-[20%] left-[1%] z-30 -rotate-6 sm:left-[3%]">
+          
+<motion.div {...appear(1.78)} className="absolute top-[20%] left-[1%] z-30 -rotate-6 sm:left-[3%]">
   <img src={logo} alt="Kyrgyz Concept" width={132} height={64} className="h-14 w-auto drop-shadow-[0_18px_34px_rgba(10,60,130,0.35)] sm:h-20" />
 </motion.div>
 
