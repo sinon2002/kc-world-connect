@@ -1,5 +1,4 @@
 import { Reveal } from "./Reveal";
-import studyIllustration from "@/assets/about-study-illustration.png.asset.json";
 
 const cards = [
   {
@@ -20,8 +19,6 @@ const cards = [
   },
 ];
 
-
-
 export function Trust() {
   return (
     <section id="about" className="section-pad" style={{ backgroundColor: "#0078c3" }}>
@@ -39,9 +36,6 @@ export function Trust() {
               Кыргызстана
             </p>
           </Reveal>
-          <div className="hidden shrink-0 sm:block">
-            <StudyingPerson />
-          </div>
         </div>
 
         <div className="mt-12 grid gap-5 md:grid-cols-2">
