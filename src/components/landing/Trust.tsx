@@ -22,13 +22,14 @@ const cards = [
 
 export function Trust() {
   return (
-    <section id="about" className="relative overflow-hidden section-pad" style={{ backgroundColor: "#0078c3" }}>
+    <section id="about" className="section-pad relative overflow-hidden" style={{ backgroundColor: "#0078c3" }}>
       <GraduationCap
         aria-hidden="true"
-        className="pointer-events-none absolute -top-10 right-0 size-[340px] text-white/10 md:size-[440px] lg:-top-16 lg:right-10"
         strokeWidth={1}
+        className="pointer-events-none absolute -top-12 right-[-50px] size-[420px] rotate-[18deg] text-white/10 md:size-[480px]"
       />
-      <div className="shell relative">
+
+      <div className="shell relative z-10">
         <div className="flex items-start justify-between gap-6">
           <Reveal className="max-w-3xl space-y-4">
             <span className="inline-flex items-center rounded-full bg-gold/15 px-4 py-1.5 text-xs font-bold tracking-[0.16em] text-gold uppercase">
