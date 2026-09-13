@@ -20,11 +20,7 @@ const cards = [
   },
 ];
 
-function StudyingPerson() {
-  return (
-    
-  );
-}
+
 
 export function Trust() {
   return (
