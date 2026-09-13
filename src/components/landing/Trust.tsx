@@ -22,12 +22,7 @@ const cards = [
 
 function StudyingPerson() {
   return (
-    <img
-      src={studyIllustration.url}
-      alt="Иллюстрация студента с ноутбуком и книгами"
-      loading="eager"
-      className="kc-float w-[100px] md:w-[120px]"
-    />
+    
   );
 }
 
