@@ -1,6 +1,61 @@
-import { GraduationCap, Quote } from "lucide-react";
+import { useRef, useState } from "react";
+import { GraduationCap, Play, Quote } from "lucide-react";
 import { Reveal, SectionHeading } from "./Reveal";
 import { useContentSection } from "@/lib/content";
+
+function StoryVideo({ src, name }: { src: string; name: string }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
+
+  async function handlePlay() {
+    const el = videoRef.current;
+    if (!el) return;
+    setPlaying(true);
+    try {
+      await el.play();
+    } catch {
+      // автоплей может быть заблокирован — плеер всё равно откроется
+    }
+    // Открываем видео на весь экран одним нажатием
+    const anyEl = el as HTMLVideoElement & {
+      webkitRequestFullscreen?: () => Promise<void> | void;
+      webkitEnterFullscreen?: () => void;
+    };
+    try {
+      if (el.requestFullscreen) await el.requestFullscreen();
+      else if (anyEl.webkitRequestFullscreen) await anyEl.webkitRequestFullscreen();
+      else if (anyEl.webkitEnterFullscreen) anyEl.webkitEnterFullscreen();
+    } catch {
+      // если полноэкранный режим недоступен — видео всё равно уже играет
+    }
+  }
+
+  return (
+    <div className="relative h-full w-full">
+      <video
+        ref={videoRef}
+        src={src}
+        className="h-full w-full object-cover"
+        controls={playing}
+        playsInline
+        onPause={() => setPlaying(false)}
+        onEnded={() => setPlaying(false)}
+      />
+      {!playing && (
+        <button
+          type="button"
+          onClick={handlePlay}
+          aria-label={`Смотреть видео: ${name}`}
+          className="absolute inset-0 flex items-center justify-center bg-black/25 transition-colors hover:bg-black/35"
+        >
+          <span className="grid size-16 place-items-center rounded-full bg-black/70 shadow-lg transition-transform duration-200 hover:scale-105">
+            <Play className="ml-1 size-7 fill-white text-white" aria-hidden="true" />
+          </span>
+        </button>
+      )}
+    </div>
+  );
+}
 
 export function Stories() {
   const [stories] = useContentSection("stories");
@@ -20,7 +75,7 @@ export function Stories() {
             >
               <div className="grid aspect-video place-items-center overflow-hidden rounded-2xl bg-on-navy/8">
                 {s.video ? (
-                  <video src={s.video} className="h-full w-full object-cover" controls />
+                  <StoryVideo src={s.video} name={s.name} />
                 ) : s.photo ? (
                   <img src={s.photo} alt={s.name} className="h-full w-full object-cover" />
                 ) : (
