@@ -1,21 +1,11 @@
 import { useState } from "react";
 import { Reveal } from "./Reveal";
 import guyPhoto from "@/assets/contact/kc-guy.png";
-
-const countries = [
-  "Великобритания",
-  "США",
-  "Канада",
-  "Германия",
-  "Турция",
-  "Китай",
-  "ОАЭ",
-  "Малайзия",
-  "Южная Корея",
-  "Ещё не определился(ась)",
-];
+import { useContentSection } from "@/lib/content";
 
 export function Contact() {
+  const [contact] = useContentSection("contact");
+  const countries = contact.countries;
   const [sent, setSent] = useState(false);
   const [form, setForm] = useState({ name: "", phone: "", country: "" });
 
@@ -26,12 +16,9 @@ export function Contact() {
       <div className="shell grid items-center gap-8 lg:grid-cols-[1fr_320px_1fr] lg:gap-4">
         <Reveal>
           <h2 className="font-display text-3xl font-extrabold leading-tight sm:text-4xl">
-            Записаться на бесплатную консультацию
+            {contact.heading}
           </h2>
-          <p className="mt-4 max-w-xl text-white/75">
-            Обсудим ваши цели, бюджет и академический бэкграунд, подберём реальные варианты вузов
-            и составим план поступления. Консультация ни к чему не обязывает.
-          </p>
+          <p className="mt-4 max-w-xl text-white/75">{contact.paragraph}</p>
           <p className="mt-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm text-white/85">
             <span className="h-2 w-2 rounded-full bg-gold" aria-hidden="true" />
             Ответим в течение 30 минут в рабочее время
@@ -171,10 +158,12 @@ export function Contact() {
 }
 
 export function Footer() {
+  const [footer] = useContentSection("footer");
+  const text = footer.text.replace("{year}", String(new Date().getFullYear()));
   return (
     <footer className="bg-navy-2 py-8 text-white/70">
       <div className="shell flex flex-col items-center justify-between gap-3 text-sm sm:flex-row">
-        <p>© {new Date().getFullYear()} KC Education Abroad — часть бренда Kyrgyz Concept</p>
+        <p>{text}</p>
         <p className="text-white/50">Демонстрационный проект лендинга</p>
       </div>
     </footer>

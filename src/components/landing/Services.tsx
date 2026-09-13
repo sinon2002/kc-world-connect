@@ -1,119 +1,26 @@
 import { useState } from "react";
-import { BadgeCheck, Building2, Languages, Sun } from "lucide-react";
+import { BadgeCheck, Building2, Languages, Sun, GraduationCap } from "lucide-react";
 import { Reveal, SectionHeading } from "./Reveal";
+import { useContentSection } from "@/lib/content";
 
-type Service = {
-  icon: typeof Building2;
-  title: string;
-  includes: string[];
-  priceUsd: string;
-  priceKgs: string;
+const tabIcon: Record<string, typeof Building2> = {
+  uni: Building2,
+  lang: Languages,
+  camps: Sun,
 };
 
-const tabs: { id: string; label: string; services: Service[] }[] = [
-  {
-    id: "uni",
-    label: "Университеты и школы",
-    services: [
-      {
-        icon: Building2,
-        title: "Партнёрские университеты и школы",
-        includes: [
-          "Подбор 3–5 программ с реальными шансами",
-          "Полная подготовка пакета документов",
-          "Эссе, резюме, рекомендательные письма",
-          "Подача заявок и переписка с вузом",
-          "Визовое сопровождение и подготовка к интервью",
-        ],
-        priceUsd: "от 400 USD",
-        priceKgs: "в сомах — уточняется",
-      },
-      {
-        icon: BadgeCheck,
-        title: "Непартнёрские университеты",
-        includes: [
-          "Индивидуальный подбор вуза вне партнёрской сети",
-          "Проверка требований и дедлайнов",
-          "Ведение заявки под ключ",
-          "Поддержка до зачисления и отъезда",
-        ],
-        priceUsd: "по запросу",
-        priceKgs: "в сомах — уточняется",
-      },
-    ],
-  },
-  {
-    id: "lang",
-    label: "Языковые курсы",
-    services: [
-      {
-        icon: Languages,
-        title: "Языковые курсы за рубежом",
-        includes: [
-          "Подбор школы и интенсивности курса",
-          "Бронирование обучения и проживания",
-          "Оформление документов и страховки",
-          "Визовая поддержка",
-        ],
-        priceUsd: "от 400 USD",
-        priceKgs: "в сомах — уточняется",
-      },
-      {
-        icon: BadgeCheck,
-        title: "Подготовка к IELTS / TOEFL / SAT",
-        includes: [
-          "Диагностика текущего уровня",
-          "План подготовки под целевой балл",
-          "Подбор курсов и регистрация на экзамен",
-        ],
-        priceUsd: "по запросу",
-        priceKgs: "в сомах — уточняется",
-      },
-    ],
-  },
-  {
-    id: "camps",
-    label: "Каникулярные лагеря",
-    services: [
-      {
-        icon: Sun,
-        title: "Летние и зимние лагеря",
-        includes: [
-          "Подбор лагеря по возрасту и интересам",
-          "Язык + экскурсии и активности",
-          "Трансферы, страховка, сопровождение группы",
-          "Полное информирование родителей",
-        ],
-        priceUsd: "от 400 USD",
-        priceKgs: "в сомах — уточняется",
-      },
-      {
-        icon: BadgeCheck,
-        title: "Индивидуальные программы для школьников",
-        includes: [
-          "Программы Junior 8–17 лет",
-          "Проживание в резиденции или семье",
-          "Персональный менеджер на весь период",
-        ],
-        priceUsd: "по запросу",
-        priceKgs: "в сомах — уточняется",
-      },
-    ],
-  },
-];
-
 export function Services() {
+  const [services] = useContentSection("services");
+  const tabs = services.tabs;
   const defaultTab = tabs[0]!;
   const [active, setActive] = useState(defaultTab.id);
   const current = tabs.find((t) => t.id === active) ?? defaultTab;
+  const Icon = tabIcon[current.id] ?? GraduationCap;
 
   return (
     <section id="services" className="bg-background section-pad">
       <div className="shell">
-        <SectionHeading
-          eyebrow="Услуги и стоимость"
-          title="Консультационные пакеты для успешного поступления в учебные заведения"
-        />
+        <SectionHeading eyebrow="Услуги и стоимость" title={services.heading} />
 
         <div
           role="tablist"
@@ -148,12 +55,12 @@ export function Services() {
         >
           {current.services.map((s, i) => (
             <Reveal
-              key={s.title}
+              key={s.id}
               delay={i * 0.08}
               className="flex h-full flex-col rounded-3xl bg-card p-7 shadow-soft transition-transform duration-300 hover:-translate-y-1 hover:shadow-lift"
             >
-         <span className="grid size-14 place-items-center rounded-2xl" style={{ backgroundColor: "#0078c3" }}>
-                <s.icon className="size-7 text-gold" aria-hidden="true" />
+              <span className="grid size-14 place-items-center rounded-2xl" style={{ backgroundColor: "#0078c3" }}>
+                {i === 0 ? <Icon className="size-7 text-gold" aria-hidden="true" /> : <BadgeCheck className="size-7 text-gold" aria-hidden="true" />}
               </span>
               <h3 className="mt-5 text-xl text-ink">{s.title}</h3>
               <ul className="mt-4 flex-1 space-y-2.5">
