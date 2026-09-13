@@ -44,7 +44,7 @@ export function Hero() {
               alt="Kyrgyz Concept"
               width={132}
               height={64}
-              className="h-12 w-auto drop-shadow-xl sm:h-14"
+                            className="h-16 w-auto drop-shadow-xl sm:h-20"
             />
           </motion.div>
 
