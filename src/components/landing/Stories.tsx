@@ -61,7 +61,7 @@ export function Stories() {
   const [stories] = useContentSection("stories");
 
   return (
-    <section id="stories" className="bg-navy section-pad">
+       <section id="stories" className="section-pad" style={{ backgroundColor: "#0078c3" }}>
       <div className="shell">
         <SectionHeading tone="dark" eyebrow="Истории студентов" title={stories.heading} />
 
