@@ -12,7 +12,7 @@ export function Contact() {
   const valid = form.name.trim().length > 1 && form.phone.trim().length > 5;
 
   return (
-    <section id="consult" className="section-pad bg-navy text-white">
+       <section id="consult" className="section-pad text-white" style={{ backgroundColor: "#0078c3" }}>
       <div className="shell grid items-center gap-8 lg:grid-cols-[1fr_320px_1fr] lg:gap-4">
         <Reveal>
           <h2 className="font-display text-3xl font-extrabold leading-tight sm:text-4xl">
