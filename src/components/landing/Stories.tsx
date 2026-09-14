@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { GraduationCap, Play, Quote } from "lucide-react";
+import { GraduationCap, Play, Quote, BookMarked } from "lucide-react";
 import { Reveal, SectionHeading } from "./Reveal";
 import { useContentSection } from "@/lib/content";
 
@@ -61,8 +61,14 @@ export function Stories() {
   const [stories] = useContentSection("stories");
 
   return (
-       <section id="stories" className="section-pad" style={{ backgroundColor: "#0078c3" }}>
-      <div className="shell">
+    <section id="stories" className="section-pad relative overflow-hidden" style={{ backgroundColor: "#0078c3" }}>
+      <BookMarked
+        aria-hidden="true"
+        strokeWidth={1}
+        className="pointer-events-none absolute -top-10 right-[-40px] size-[360px] rotate-[12deg] text-white/10 md:size-[420px]"
+      />
+
+      <div className="shell relative z-10">
         <SectionHeading tone="dark" eyebrow="Истории студентов" title={stories.heading} />
 
         <ul className="mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 sm:grid sm:grid-cols-2 sm:overflow-visible lg:grid-cols-3">
