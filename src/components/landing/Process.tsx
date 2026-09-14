@@ -1,4 +1,4 @@
-import { ArrowDownRight } from "lucide-react";
+import { ArrowDownRight, Plane } from "lucide-react";
 import { Reveal, SectionHeading } from "./Reveal";
 
 const steps = [
@@ -12,8 +12,13 @@ const steps = [
 
 export function Process() {
   return (
-    <section id="process" className="section-pad bg-background">
-      <div className="shell">
+    <section id="process" className="section-pad relative overflow-hidden bg-background">
+      <Plane
+        aria-hidden="true"
+        strokeWidth={1}
+        className="pointer-events-none absolute -top-12 right-[-60px] size-[380px] rotate-[35deg] text-primary/10 md:size-[440px]"
+      />
+      <div className="shell relative z-10">
         <SectionHeading eyebrow="Маршрут поступления" title="Учёба за границей. Получите образование в лучших университетах мира" subtitle="Шесть понятных шагов — вы всегда знаете, что происходит сейчас и что будет дальше." align="left" />
         <ol className="relative mt-16 grid gap-x-8 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
           <svg aria-hidden="true" className="pointer-events-none absolute inset-0 hidden h-full w-full text-primary/25 lg:block" preserveAspectRatio="none"><path d="M40 100 C 220 0, 310 180, 470 80 S 720 0, 920 100 S 1110 180, 1260 65" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="8 10" className="route-dash" /></svg>
