@@ -8,8 +8,43 @@ export function Faq() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="bg-cream section-pad">
-      <div className="shell">
+    <section id="faq" className="bg-cream section-pad relative overflow-hidden">
+      {/* Левый декоративный восклицательный знак в стиле самолётика */}
+      <div 
+        className="absolute left-[-2%] select-none pointer-events-none hidden md:block" 
+        style={{
+          top: '30%',
+          fontSize: '320px',
+          fontWeight: 900,
+          lineHeight: 1,
+          fontFamily: 'system-ui, sans-serif',
+          WebkitTextStroke: '2px rgba(14, 165, 233, 0.2)', // Тонкий полупрозрачный голубой контур
+          WebkitTextFillColor: 'transparent',
+          opacity: 0.7,
+        }}
+      >
+        !
+      </div>
+
+      {/* Правый декоративный вопросительный знак (немного кривой/наклоненный) */}
+      <div 
+        className="absolute right-[-2%] select-none pointer-events-none hidden md:block" 
+        style={{
+          top: '35%',
+          fontSize: '340px',
+          fontWeight: 900,
+          lineHeight: 1,
+          fontFamily: 'system-ui, sans-serif',
+          WebkitTextStroke: '2px rgba(14, 165, 233, 0.2)',
+          WebkitTextFillColor: 'transparent',
+          transform: 'rotate(15deg) scaleX(-1)', // Наклон знака вбок + легкое отражение
+          opacity: 0.7,
+        }}
+      >
+        ?
+      </div>
+
+      <div className="shell relative z-10">
         <SectionHeading eyebrow="FAQ" title="Отвечаем на частые вопросы" />
 
         <div className="mx-auto mt-10 max-w-3xl space-y-3">
