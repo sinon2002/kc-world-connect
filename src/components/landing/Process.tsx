@@ -16,7 +16,7 @@ export function Process() {
 <Plane
   aria-hidden="true"
   strokeWidth={1}
-  className="pointer-events-none absolute top-6 left-[-60px] size-[380px] text-primary/10 md:size-[440px]"
+  className="pointer-events-none absolute top-42 left-[-60px] size-[380px] text-primary/10 md:size-[440px]"
 />
       <div className="shell relative z-10">
         <SectionHeading eyebrow="Маршрут поступления" title="Учёба за границей. Получите образование в лучших университетах мира" subtitle="Шесть понятных шагов — вы всегда знаете, что происходит сейчас и что будет дальше." align="left" />
