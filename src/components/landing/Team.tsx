@@ -10,7 +10,7 @@ export function Team() {
       <Heart
         aria-hidden="true"
         strokeWidth={1}
-        className="pointer-events-none absolute -top-10 left-[-60px] size-[360px] rotate-[-12deg] text-primary/10 md:size-[420px]"
+        className="pointer-events-none absolute -top-10 left-[-80px] size-[360px] rotate-[-12deg] text-primary/10 md:size-[420px]"
       />
 
       <div className="shell relative z-10">
