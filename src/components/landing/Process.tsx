@@ -13,10 +13,10 @@ const steps = [
 export function Process() {
   return (
     <section id="process" className="section-pad relative overflow-hidden bg-background">
-    <Plane
+  <Plane
   aria-hidden="true"
   strokeWidth={1}
-  className="pointer-events-none absolute -top-12 left-[-60px] size-[380px] -rotate-[35deg] scale-x-[-1] text-primary/10 md:size-[440px]"
+  className="pointer-events-none absolute top-6 left-[-60px] size-[380px] rotate-[35deg] scale-x-[-1] text-primary/10 md:size-[440px]"
 />
       <div className="shell relative z-10">
         <SectionHeading eyebrow="Маршрут поступления" title="Учёба за границей. Получите образование в лучших университетах мира" subtitle="Шесть понятных шагов — вы всегда знаете, что происходит сейчас и что будет дальше." align="left" />
