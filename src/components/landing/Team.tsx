@@ -1,4 +1,4 @@
-import { User } from "lucide-react";
+import { User, Heart } from "lucide-react";
 import { Reveal, SectionHeading } from "./Reveal";
 import { useContentSection } from "@/lib/content";
 
@@ -6,8 +6,14 @@ export function Team() {
   const [team] = useContentSection("team");
 
   return (
-    <section id="team" className="bg-background section-pad">
-      <div className="shell">
+    <section id="team" className="bg-background section-pad relative overflow-hidden">
+      <Heart
+        aria-hidden="true"
+        strokeWidth={1}
+        className="pointer-events-none absolute -top-10 left-[-60px] size-[360px] rotate-[-12deg] text-primary/10 md:size-[420px]"
+      />
+
+      <div className="shell relative z-10">
         <SectionHeading eyebrow="Команда" title={team.heading} />
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
