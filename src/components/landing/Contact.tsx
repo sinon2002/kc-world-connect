@@ -161,11 +161,13 @@ export function Footer() {
   const [footer] = useContentSection("footer");
   const text = footer.text.replace("{year}", String(new Date().getFullYear()));
   return (
-    <footer className="bg-navy-2 py-8 text-white/70">
-      <div className="shell flex flex-col items-center justify-between gap-3 text-sm sm:flex-row">
-        <p>{text}</p>
-        <p className="text-white/50">Демонстрационный проект лендинга</p>
-      </div>
-    </footer>
+    <footer className="bg-sky-600 py-6 border-t border-sky-500/30">
+        <div className="shell flex flex-col items-center justify-between gap-4 sm:flex-row">
+          <p className="text-xs text-white/90">
+            &copy; {new Date().getFullYear()} KC Education Abroad — часть бренда Kyrgyz Concept
+          </p>
+          {/* Надпись "Демонстрационный проект лендинга" успешно удалена */}
+        </div>
+      </footer>
   );
 }
