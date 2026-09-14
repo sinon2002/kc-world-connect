@@ -65,7 +65,7 @@ export function Stories() {
       <BookMarked
         aria-hidden="true"
         strokeWidth={1}
-        className="pointer-events-none absolute -top-42 right-[-40px] size-[360px] rotate-[12deg] text-white/10 md:size-[420px]"
+        className="pointer-events-none absolute -top-2 right-[-40px] size-[360px] rotate-[12deg] text-white/10 md:size-[420px]"
       />
 
       <div className="shell relative z-10">
