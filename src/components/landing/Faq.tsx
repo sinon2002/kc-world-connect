@@ -21,7 +21,7 @@ export function Faq() {
             fontWeight: 900,
             lineHeight: 1,
             fontFamily: 'system-ui, sans-serif',
-            WebkitTextStroke: '2px rgba(14, 165, 233, 0.2)', // Тонкий полупрозрачный голубой контур
+            WebkitTextStroke: '2px rgba(14, 165, 233, 0.2)',
             WebkitTextFillColor: 'transparent',
             opacity: 0.7,
           }}
@@ -40,7 +40,7 @@ export function Faq() {
             fontFamily: 'system-ui, sans-serif',
             WebkitTextStroke: '2px rgba(14, 165, 233, 0.2)',
             WebkitTextFillColor: 'transparent',
-            transform: 'rotate(15deg) scaleX(-1)', // Наклон знака вбок + легкое отражение
+            transform: 'rotate(15deg) scaleX(-1)',
             opacity: 0.7,
           }}
         >
