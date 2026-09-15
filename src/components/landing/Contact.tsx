@@ -13,17 +13,7 @@ export function Contact() {
 
   return (
     <section id="consult" className="relative overflow-hidden section-pad text-white" style={{ backgroundColor: "#0078c3" }}>
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
-          backgroundSize: "44px 44px",
-          opacity: 0.15,
-          maskImage: "linear-gradient(to bottom, black, transparent 92%)",
-          WebkitMaskImage: "linear-gradient(to bottom, black, transparent 92%)",
-        }}/>
+      <div aria-hidden="true" className="route-grid pointer-events-none absolute inset-0 opacity-20" />
       <svg
         aria-hidden="true"
         viewBox="0 0 1400 520"
