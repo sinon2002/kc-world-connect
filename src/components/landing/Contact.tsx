@@ -12,8 +12,37 @@ export function Contact() {
   const valid = form.name.trim().length > 1 && form.phone.trim().length > 5;
 
   return (
-       <section id="consult" className="section-pad text-white" style={{ backgroundColor: "#0078c3" }}>
-      <div className="shell grid items-center gap-8 lg:grid-cols-[1fr_320px_1fr] lg:gap-4">
+    <section id="consult" className="relative overflow-hidden section-pad text-white" style={{ backgroundColor: "#0078c3" }}>
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
+          backgroundSize: "44px 44px",
+          opacity: 0.15,
+          maskImage: "linear-gradient(to bottom, black, transparent 92%)",
+          WebkitMaskImage: "linear-gradient(to bottom, black, transparent 92%)",
+        }}
+      />
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 1400 520"
+        preserveAspectRatio="none"
+        className="pointer-events-none absolute inset-0 hidden h-full w-full text-white/35 lg:block"
+      >
+        <path
+          d="M20 70 C 300 40, 480 230, 740 270 S 1140 400, 1330 460"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeDasharray="8 10"
+        />
+        <circle cx="20" cy="70" r="6" fill="var(--gold)" />
+        <circle cx="1330" cy="460" r="7" fill="var(--gold)" />
+      </svg>
+
+      <div className="shell relative grid items-center gap-8 lg:grid-cols-[1fr_320px_1fr] lg:gap-4">
         <Reveal>
           <h2 className="font-display text-3xl font-extrabold leading-tight sm:text-4xl">
             {contact.heading}
@@ -24,7 +53,7 @@ export function Contact() {
             Ответим в течение 30 минут в рабочее время
           </p>
           <div className="mt-6 flex gap-3">
-            <a
+            
               href="#"
               aria-label="WhatsApp"
               className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 transition-colors hover:bg-white/20">
@@ -32,7 +61,7 @@ export function Contact() {
                 <path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.1 14.1c-.2.6-1.2 1.2-1.9 1.2-.5 0-1.2-.1-3.2-1s-3.4-3-3.5-3.2c-.6-.9-1-1.9-.9-2.8 0-.8.5-1.4.8-1.7.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.7 1.7c.1.2 0 .4-.1.6l-.4.5c-.1.2-.2.3 0 .6.3.5.8 1.1 1.3 1.5.6.5 1.1.7 1.4.8.2.1.4.1.5 0l.7-.8c.2-.2.4-.2.6-.1l1.6.8c.3.2.4.3.4.5 0 .2 0 .8-.3 1.1Z" />
               </svg>
             </a>
-            <a
+            
               href="#"
               aria-label="Instagram"
               className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 transition-colors hover:bg-white/20">
@@ -161,13 +190,11 @@ export function Footer() {
   const [footer] = useContentSection("footer");
   const text = footer.text.replace("{year}", String(new Date().getFullYear()));
   return (
-    <footer className="bg-sky-600 py-6 border-t border-sky-500/30">
-        <div className="shell flex flex-col items-center justify-between gap-4 sm:flex-row">
-          <p className="text-xs text-white/90">
-            &copy; {new Date().getFullYear()} KC Education Abroad — часть бренда Kyrgyz Concept
-          </p>
-          {/* Надпись "Демонстрационный проект лендинга" успешно удалена */}
-        </div>
-      </footer>
+    <footer className="bg-navy-2 py-8 text-white/70">
+      <div className="shell flex flex-col items-center justify-between gap-3 text-sm sm:flex-row">
+        <p>{text}</p>
+        <p className="text-white/50">Демонстрационный проект лендинга</p>
+      </div>
+    </footer>
   );
 }
