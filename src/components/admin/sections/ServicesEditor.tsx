@@ -10,6 +10,15 @@ export function ServicesEditor() {
   const updateTabLabel = (tabId: string, label: string) =>
     setLocal((l) => ({ ...l, tabs: l.tabs.map((t) => (t.id === tabId ? { ...t, label } : t)) }));
 
+  const removeTab = (tabId: string) =>
+    setLocal((l) => ({ ...l, tabs: l.tabs.filter((t) => t.id !== tabId) }));
+
+  const addTab = () =>
+    setLocal((l) => ({
+      ...l,
+      tabs: [...l.tabs, { id: newId("tab"), label: "Новая вкладка", services: [] }],
+    }));
+
   const updateService = (tabId: string, serviceId: string, patch: Partial<ServiceItem>) =>
     setLocal((l) => ({
       ...l,
@@ -52,7 +61,17 @@ export function ServicesEditor() {
 
       <div className="mt-6 space-y-6">
         {local.tabs.map((tab) => (
-          <div key={tab.id} className="rounded-xl border border-border/70 p-4">
+          <div key={tab.id} className="relative rounded-xl border border-border/70 p-4">
+            <button
+              type="button"
+              onClick={() => removeTab(tab.id)}
+              className="absolute top-4 right-4 inline-flex size-8 items-center justify-center rounded-full bg-white text-red-500 shadow-sm transition-colors hover:bg-red-50"
+              aria-label="Удалить вкладку"
+              title="Удалить всю вкладку"
+            >
+              <Trash2 className="size-4" />
+            </button>
+
             <Field label="Название вкладки">
               <TextInput value={tab.label} onChange={(e) => updateTabLabel(tab.id, e.target.value)} />
             </Field>
@@ -120,6 +139,10 @@ export function ServicesEditor() {
             </div>
           </div>
         ))}
+      </div>
+
+      <div className="mt-4">
+        <AddButton onClick={addTab} label="Добавить новую вкладку" />
       </div>
 
       <SaveBar onSave={() => save(local)} />
