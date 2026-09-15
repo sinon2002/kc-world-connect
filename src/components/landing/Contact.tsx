@@ -23,21 +23,18 @@ export function Contact() {
           opacity: 0.15,
           maskImage: "linear-gradient(to bottom, black, transparent 92%)",
           WebkitMaskImage: "linear-gradient(to bottom, black, transparent 92%)",
-        }}
-      />
+        }}/>
       <svg
         aria-hidden="true"
         viewBox="0 0 1400 520"
         preserveAspectRatio="none"
-        className="pointer-events-none absolute inset-0 hidden h-full w-full text-white/35 lg:block"
-      >
+        className="pointer-events-none absolute inset-0 hidden h-full w-full text-white/35 lg:block">
         <path
           d="M20 70 C 300 40, 480 230, 740 270 S 1140 400, 1330 460"
           fill="none"
           stroke="currentColor"
           strokeWidth="2"
-          strokeDasharray="8 10"
-        />
+          strokeDasharray="8 10"/>
         <circle cx="20" cy="70" r="6" fill="var(--gold)" />
         <circle cx="1330" cy="460" r="7" fill="var(--gold)" />
       </svg>
@@ -78,8 +75,7 @@ export function Contact() {
             alt="Студент Kyrgyz Concept приглашает записаться на консультацию"
             width={895}
             height={1200}
-            className="h-[320px] w-auto drop-shadow-2xl sm:h-[400px] lg:h-[480px]"
-          />
+            className="h-[320px] w-auto drop-shadow-2xl sm:h-[400px] lg:h-[480px]"/>
         </Reveal>
 
         <Reveal delay={0.15}>
@@ -124,8 +120,7 @@ export function Contact() {
                     value={form.name}
                     onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
                     className="mt-2 w-full rounded-2xl border border-black/10 bg-cream px-4 py-3 text-ink outline-none transition focus:border-blue focus:ring-2 focus:ring-blue/20"
-                    placeholder="Айсулуу"
-                  />
+                    placeholder="Айсулуу"/>
                 </div>
 
                 <div>
@@ -143,8 +138,7 @@ export function Contact() {
                     value={form.phone}
                     onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
                     className="mt-2 w-full rounded-2xl border border-black/10 bg-cream px-4 py-3 text-ink outline-none transition focus:border-blue focus:ring-2 focus:ring-blue/20"
-                    placeholder="+996 700 000 000"
-                  />
+                    placeholder="+996 700 000 000"/>
                 </div>
 
                 <div>
