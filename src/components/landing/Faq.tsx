@@ -12,7 +12,7 @@ export function Faq() {
       <svg
         aria-hidden="true"
         viewBox="0 0 120 260"
-                        className="pointer-events-none absolute top-1/2 left-33 h-[300px] w-auto -translate-y-1/2 -rotate-6 text-primary/25 sm:h-[380px]"
+                               className="pointer-events-none absolute top-[60%] left-6 h-[300px] w-auto -translate-y-1/2 -rotate-6 text-primary/25 sm:h-[380px]"
       >
         <text x="0" y="200" fontSize="260" fontWeight="300" fill="none" stroke="currentColor" strokeWidth="2">
           !
@@ -21,7 +21,7 @@ export function Faq() {
       <svg
         aria-hidden="true"
         viewBox="0 0 220 260"
-               className="pointer-events-none absolute top-1/2 -right-8 hidden h-[320px] w-auto -translate-y-1/2 rotate-6 text-primary/25 sm:block sm:h-[400px]"
+                       className="pointer-events-none absolute top-[40%] -right-8 hidden h-[320px] w-auto -translate-y-1/2 rotate-6 text-primary/25 sm:block sm:h-[400px]"
       >
         <text x="0" y="200" fontSize="260" fontWeight="300" fill="none" stroke="currentColor" strokeWidth="2">
           ?
