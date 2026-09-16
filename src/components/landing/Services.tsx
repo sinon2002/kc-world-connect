@@ -74,7 +74,7 @@ export function Services() {
               </ul>
 
               <a
-                href={`https://wa.me{encodeURIComponent(`Здравствуйте! Меня интересует услуга "${s.title}"`)}`}
+                href="https://wa.me."
                 target="_blank"
                 rel="noreferrer"
                 className="group relative mt-6 block overflow-hidden rounded-2xl bg-gold px-5 py-4 transition-transform duration-200 hover:-translate-y-0.5"
