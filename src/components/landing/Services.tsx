@@ -13,7 +13,6 @@ export function Services() {
   const [services] = useContentSection("services");
   const tabs = services.tabs;
   
-  // Добавлена безопасная проверка на случай, если данные не успели загрузиться
   if (!tabs || tabs.length === 0) return null;
 
   const defaultTab = tabs[0]!;
@@ -21,9 +20,6 @@ export function Services() {
 
   const current = tabs.find((t) => t.id === active) ?? defaultTab;
   const Icon = tabIcon[current.id] ?? GraduationCap;
-
-  // Формируем чистую ссылку отдельно от JSX разметки, чтобы компилятор не ругался
-  const whatsappUrl = "https://wa.me" + encodeURIComponent("Здравствуйте! Я хочу узнать подробнее про услуги и стоимость.");
 
   return (
     <section id="services" className="bg-background section-pad">
@@ -81,7 +77,7 @@ export function Services() {
               </ul>
 
               <a
-                href={whatsappUrl}
+                href="https://whatsapp.com."
                 target="_blank"
                 rel="noreferrer"
                 className="group relative mt-6 block overflow-hidden rounded-2xl bg-gold px-5 py-4 transition-transform duration-200 hover:-translate-y-0.5"
