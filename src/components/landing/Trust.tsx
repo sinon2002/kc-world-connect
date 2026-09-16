@@ -45,26 +45,22 @@ export function Trust() {
           </Reveal>
         </div>
 
-        {/* Изменено: grid-cols-2 заставляет сетку всегда быть в две колонки, gap уменьшен на мобильных */}
         <div className="mt-12 grid grid-cols-2 gap-3 md:gap-5">
           {cards.map((c, i) => (
             <Reveal
               key={c.title}
               delay={i * 0.08}
-              {/* Изменено: p-4 на мобильных вместо p-7, скругление rounded-2xl аккуратнее на смартфонах */}
               className="rounded-2xl bg-card p-4 md:p-7 shadow-soft transition-transform duration-300 hover:-translate-y-1 flex flex-col justify-between"
             >
               <div>
-                {/* Изменено: gap уменьшен на мобильных */}
                 <div className="flex items-center gap-2 md:gap-4">
-                  {/* Изменено: размер кружка уменьшен до size-7 на мобильных, текст text-xs */}
                   <span className="grid size-7 md:size-10 shrink-0 place-items-center rounded-full bg-gold font-display text-xs md:text-sm font-extrabold text-navy">
                     {i + 1}
                   </span>
-                  {/* Изменено: размер заголовка text-xs на мобильных с плотным межстрочным интервалом */}
-                  <h3 className="text-xs md:text-xl font-semibold md:font-normal text-ink leading-tight">{c.title}</h3>
+                  <h3 className="text-xs md:text-xl font-semibold md:font-normal text-ink leading-tight">
+                    {c.title}
+                  </h3>
                 </div>
-                {/* Изменено:mt-2 и text-[11px] на мобильных, чтобы текст не сжимался и легко читался */}
                 <p className="mt-2 md:mt-4 text-[11px] sm:text-xs md:text-sm leading-snug md:leading-relaxed text-muted-foreground">
                   {c.text}
                 </p>
