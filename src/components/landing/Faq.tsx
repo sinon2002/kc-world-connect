@@ -8,7 +8,8 @@ export function Faq() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="relative overflow-hidden bg-cream section-pad">
+    <section id="faq" className="relative overflow-hidden bg-background section-pad">
+
       <svg
         aria-hidden="true"
         viewBox="0 0 120 260"
