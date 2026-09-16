@@ -73,19 +73,18 @@ export function Services() {
                 ))}
               </ul>
 
-             <a
-  href={`https://wa.me{encodeURIComponent(`Здравствуйте! Меня интересует услуга "${s.title}"`)}`}
-  target="_blank"
-  rel="noreferrer"
-  className="group relative mt-6 block overflow-hidden rounded-2xl bg-gold px-5 py-4 transition-transform duration-200 hover:-translate-y-0.5"
->
-  <p className="font-display text-xl font-extrabold text-navy">{s.priceUsd}</p>
-  <p className="mt-0.5 text-xs font-semibold text-navy/70">{s.priceKgs}</p>
-  <span aria-hidden="true" className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 translate-x-1 text-xs font-bold text-navy/70 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100" >
-    нажми →
-  </span>
-</a>
-
+              <a
+                href={`https://wa.me{encodeURIComponent(`Здравствуйте! Меня интересует услуга "${s.title}"`)}`}
+                target="_blank"
+                rel="noreferrer"
+                className="group relative mt-6 block overflow-hidden rounded-2xl bg-gold px-5 py-4 transition-transform duration-200 hover:-translate-y-0.5"
+              >
+                <p className="font-display text-xl font-extrabold text-navy">{s.priceUsd}</p>
+                <p className="mt-0.5 text-xs font-semibold text-navy/70">{s.priceKgs}</p>
+                <span aria-hidden="true" className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 translate-x-1 text-xs font-bold text-navy/70 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100" >
+                  нажми →
+                </span>
+              </a>
 
               <p className="mt-6 text-center text-xs text-muted-foreground">
                 Точная стоимость определяется на консультации — она зависит от страны, программы и объёма сопровождения.
