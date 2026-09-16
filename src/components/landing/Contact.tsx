@@ -1,3 +1,4 @@
+```tsx
 import { useState } from "react";
 import { Reveal } from "./Reveal";
 import guyPhoto from "@/assets/contact/kc-guy.png";
@@ -8,15 +9,49 @@ export function Contact() {
   const countries = contact.countries;
 
   const [sent, setSent] = useState(false);
+
   const [form, setForm] = useState({
     name: "",
     phone: "",
     country: "",
   });
 
+  // ==========================================
+  // НОМЕР WHATSAPP МЕНЕДЖЕРА
+  // Формат: код страны + номер, без + и пробелов
+  // Например: 996555123456
+  // ==========================================
+  const whatsappNumber = "996555123456";
+
   const valid =
     form.name.trim().length > 1 &&
     form.phone.trim().length > 5;
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!valid) return;
+
+    // Формируем сообщение для WhatsApp
+    const message = `Новая заявка с сайта
+
+Имя: ${form.name.trim()}
+Телефон: ${form.phone.trim()}
+Интересующая страна: ${
+      form.country ? form.country : "Не выбрана"
+    }`;
+
+    // Кодируем сообщение для URL
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+      message
+    )}`;
+
+    // Открываем WhatsApp
+    window.open(whatsappUrl, "_blank");
+
+    // Показываем экран "Спасибо"
+    setSent(true);
+  };
 
   return (
     <section
@@ -98,7 +133,9 @@ export function Contact() {
 
             {/* WhatsApp */}
             <a
-              href="#"
+              href={`https://wa.me/${whatsappNumber}`}
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="WhatsApp"
               className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 transition-colors hover:bg-white/20"
             >
@@ -122,7 +159,7 @@ export function Contact() {
                 className="h-5 w-5 fill-current"
                 aria-hidden="true"
               >
-                <path d="M12 2.2c-2.7 0-3 0-4.1.1-1 0-1.8.2-2.4.5-.7.2-1.2.6-1.7 1.1S3 5 2.8 5.6c-.3.6-.4 1.4-.5 2.4-.1 1-.1 1.4-.1 4.1s0 3 .1 4.1c0 1 .2 1.8.5 2.4.2.7.6 1.2 1.1 1.7s1 .8 1.7 1.1c.6.3 1.4.4 2.4.5 1 0 1.4.1 4.1.1s3 0 4.1-.1c1 0 1.8-.2 2.4-.5.7-.3 1.2-.6 1.7-1.1s.8-1 1.1-1.7c.3-.6.4-1.4.5-2.4 0-1 .1-1.4.1-4.1s0-3-.1-4.1c0-1-.2-1.8-.5-2.4-.2-.7-.6-1.2-1.1-1.7s-1-.8-1.7-1.1c-.6-.3-1.4-.5-2.4-.5-.1-.1-1.4-.1-4.1-.1Zm0 5.1a4.7 4.7 0 1 1 0 9.4 4.7 4.7 0 0 1 0-9.4Zm0 1.8a2.9 2.9 0 1 0 0 5.8 2.9 2.9 0 0 0 0-5.8Zm5.1-2.3a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2Z" />
+                <path d="M12 2.2c-2.7 0-3 0-4.1.1-1 0-1.8.2-2.4.5-.7.2-1.2.6-1.7 1.1S3 5 2.8 5.6c-.3.6-.4 1.4-.5 2.4-.1 1-.1 1.4-.1 4.1s0 3 .1 4.1c0 1 .2 1.8.5 2.4.2.7.6 1.2 1.1 1.7s1 .8 1.7 1.1c.6.3 1.4.4 2.4.5 1 0 1.4.1 4.1.1s3 0 4.1-.1c1 0 1.8-.2 2.4-.5.7-.3 1.2-.6 1.7-1.1s.8-1 1.1-1.7c.3-.6.4-1.4.5-2.4 0-1 .1-1.4-.1-4.1s0-3-.1-4.1c0-1-.2-1.8-.5-2.4-.2-.7-.6-1.2-1.1-1.7s-1-.8-1.7-1.1c-.6-.3-1.4-.5-2.4-.5-.1-.1-1.4-.1-4.1-.1Zm0 5.1a4.7 4.7 0 1 1 0 9.4 4.7 4.7 0 0 1 0-9.4Zm0 1.8a2.9 2.9 0 1 0 0 5.8 2.9 2.9 0 0 0 0-5.8Zm5.1-2.3a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2Z" />
               </svg>
             </a>
 
@@ -157,13 +194,16 @@ export function Contact() {
                 </p>
 
                 <p className="mt-3 text-muted-foreground">
-                  Ваша заявка принята. Консультант свяжется с вами в ближайшее время.
+                  Ваша заявка открыта в WhatsApp.
+                  <br />
+                  Осталось только нажать кнопку отправки сообщения.
                 </p>
 
                 <button
                   type="button"
                   onClick={() => {
                     setSent(false);
+
                     setForm({
                       name: "",
                       phone: "",
@@ -179,13 +219,7 @@ export function Contact() {
               <form
                 className="space-y-5"
                 noValidate
-                onSubmit={(e) => {
-                  e.preventDefault();
-
-                  if (valid) {
-                    setSent(true);
-                  }
-                }}
+                onSubmit={handleSubmit}
               >
 
                 {/* Имя */}
@@ -318,3 +352,4 @@ export function Footer() {
     </footer>
   );
 }
+```
