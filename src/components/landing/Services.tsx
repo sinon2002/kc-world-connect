@@ -12,13 +12,13 @@ const tabIcon: Record<string, typeof Building2> = {
 export function Services() {
   const [services] = useContentSection("services");
   const tabs = services.tabs;
-  
-  // Добавлена безопасная проверка на случай, если данные не успели загрузиться
+
+  const [active, setActive] = useState(tabs?.[0]?.id ?? "");
+
+  // Безопасная проверка на случай, если данные не успели загрузиться
   if (!tabs || tabs.length === 0) return null;
 
   const defaultTab = tabs[0];
-  const [active, setActive] = useState(defaultTab.id);
-
   const current = tabs.find((t) => t.id === active) ?? defaultTab;
   const Icon = tabIcon[current.id] ?? GraduationCap;
 
@@ -26,22 +26,22 @@ export function Services() {
     <section id="services" className="bg-background section-pad">
       <div className="shell">
         <SectionHeading eyebrow="Услуги и стоимость" title={services.heading} />
-        
-        <div 
-          role="tablist" 
-          aria-label="Категории услуг" 
+
+        <div
+          role="tablist"
+          aria-label="Категории услуг"
           className="mx-auto mt-10 flex max-w-2xl flex-wrap justify-center gap-2 rounded-full bg-secondary p-2"
         >
           {tabs.map((t) => (
-            <button 
-              key={t.id} 
-              role="tab" 
-              id={`tab-${t.id}`} 
-              aria-selected={active === t.id} 
-              aria-controls={`panel-${t.id}`} 
-              onClick={() => setActive(t.id)} 
+            <button
+              key={t.id}
+              role="tab"
+              id={`tab-${t.id}`}
+              aria-selected={active === t.id}
+              aria-controls={`panel-${t.id}`}
+              onClick={() => setActive(t.id)}
               className={
-                "rounded-full px-5 py-2.5 text-sm font-bold transition-colors duration-200 " + 
+                "rounded-full px-5 py-2.5 text-sm font-bold transition-colors duration-200 " +
                 (active === t.id ? "bg-navy text-on-navy" : "text-muted-foreground hover:text-ink")
               }
             >
@@ -50,24 +50,24 @@ export function Services() {
           ))}
         </div>
 
-        <div 
-          role="tabpanel" 
-          id={`panel-${current.id}`} 
-          aria-labelledby={`tab-${current.id}`} 
+        <div
+          role="tabpanel"
+          id={`panel-${current.id}`}
+          aria-labelledby={`tab-${current.id}`}
           className="mt-10 grid gap-6 md:grid-cols-2"
         >
           {current.services.map((s, i) => (
-            <Reveal 
-              key={s.id} 
-              delay={i * 0.08} 
+            <Reveal
+              key={s.id}
+              delay={i * 0.08}
               className="flex h-full flex-col rounded-3xl bg-card p-7 shadow-soft transition-transform duration-300 hover:-translate-y-1 hover:shadow-lift"
             >
               <span className="grid size-14 place-items-center rounded-2xl" style={{ backgroundColor: "#0078c3" }}>
                 {i === 0 ? <Icon className="size-7 text-gold" aria-hidden="true" /> : <BadgeCheck className="size-7 text-gold" aria-hidden="true" />}
               </span>
-              
+
               <h3 className="mt-5 text-xl text-ink">{s.title}</h3>
-              
+
               <ul className="mt-4 flex-1 space-y-2.5">
                 {s.includes.map((it) => (
                   <li key={it} className="flex gap-2.5 text-sm text-muted-foreground">
@@ -77,8 +77,8 @@ export function Services() {
                 ))}
               </ul>
 
-              <a
-                href="https://wa.me."
+              
+                href="https://wa.me/996999490039"
                 target="_blank"
                 rel="noreferrer"
                 className="group relative mt-6 block overflow-hidden rounded-2xl bg-gold px-5 py-4 transition-transform duration-200 hover:-translate-y-0.5"
