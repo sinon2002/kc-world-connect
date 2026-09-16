@@ -108,10 +108,10 @@ export function Contact() {
       </svg>
 
       {/* Основное содержимое */}
-      <div className="shell relative z-10 grid items-center gap-8 lg:grid-cols-[1fr_320px_1fr] lg:gap-4">
+  <div className="shell relative z-10 flex overflow-x-auto gap-6 pb-6 snap-x snap-mandatory scrollbar-none lg:grid lg:grid-cols-[1fr_320px_1fr] lg:gap-4 lg:pb-0 items-center">
 
         {/* Левая часть */}
-        <Reveal>
+        <Reveal className="w-[85vw] shrink-0 snap-start lg:w-auto lg:shrink font-sans">
           <h2 className="font-display text-3xl font-extrabold leading-tight sm:text-4xl">
             {contact.heading}
           </h2>
@@ -129,62 +129,61 @@ export function Contact() {
           </p>
 
           {/* Соцсети */}
-          {/* Соцсети */}
-<div className="mt-6 flex gap-3">
+          <div className="mt-6 flex gap-3">
 
-  {/* WhatsApp */}
-  <a
-    href={` https://wa.me/996999490039`}
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="WhatsApp"
-    className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 transition-colors hover:bg-white/20"
-  >
-    <svg
-      viewBox="0 0 24 24"
-      className="h-5 w-5 fill-current"
-      aria-hidden="true"
-    >
-      <path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.1 14.1c-.2.6-1.2 1.2-1.9 1.2-.5 0-1.2-.1-3.2-1s-3.4-3-3.5-3.2c-.6-.9-1-1.9-.9-2.8 0-.8.5-1.4.8-1.7.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.7 1.7c.1.2 0 .4-.1.6l-.4.5c-.1.2-.2.3 0 .6.3.5.8 1.1 1.3 1.5.6.5 1.1.7 1.4.8.2.1.4.1.5 0l.7-.8c.2-.2.4-.2.6-.1l1.6.8c.3.2.4.3.4.5 0 .2 0 .8-.3 1.1Z" />
-    </svg>
-  </a>
+            {/* WhatsApp */}
+            <a
+              href={` https://wa.me/996999490039`}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 transition-colors hover:bg-white/20"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                className="h-5 w-5 fill-current"
+                aria-hidden="true"
+              >
+                <path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.1 14.1c-.2.6-1.2 1.2-1.9 1.2-.5 0-1.2-.1-3.2-1s-3.4-3-3.5-3.2c-.6-.9-1-1.9-.9-2.8 0-.8.5-1.4.8-1.7.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.7 1.7c.1.2 0 .4-.1.6l-.4.5c-.1.2-.2.3 0 .6.3.5.8 1.1 1.3 1.5.6.5 1.1.7 1.4.8.2.1.4.1.5 0l.7-.8c.2-.2.4-.2.6-.1l1.6.8c.3.2.4.3.4.5 0 .2 0 .8-.3 1.1Z" />
+              </svg>
+            </a>
 
-  {/* Instagram */}
-  <a
-    href="https://www.instagram.com/education_kyrgyzconcept/"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Instagram Kyrgyz Concept"
-    className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 transition-colors hover:bg-white/20"
-  >
-    <svg
-      viewBox="0 0 24 24"
-      className="h-5 w-5 fill-current"
-      aria-hidden="true"
-    >
-      <path d="M12 2.2c-2.7 0-3 0-4.1.1-1 0-1.8.2-2.4.5-.7.2-1.2.6-1.7 1.1S3 5 2.8 5.6c-.3.6-.4 1.4-.5 2.4-.1 1-.1 1.4-.1 4.1s0 3 .1 4.1c0 1 .2 1.8.5 2.4.2.7.6 1.2 1.1 1.7s1 .8 1.7 1.1c.6.3 1.4.4 2.4.5 1 0 1.4.1 4.1.1s3 0 4.1-.1c1 0 1.8-.2 2.4-.5.7-.3 1.2-.6 1.7-1.1s.8-1 1.1-1.7c.3-.6.4-1.4.5-2.4 0-1 .1-1.4-.1-4.1s0-3-.1-4.1c0-1-.2-1.8-.5-2.4-.2-.7-.6-1.2-1.1-1.7s-1-.8-1.7-1.1c-.6-.3-1.4-.5-2.4-.5-.1-.1-1.4-.1-4.1-.1Zm0 5.1a4.7 4.7 0 1 1 0 9.4 4.7 4.7 0 0 1 0-9.4Zm0 1.8a2.9 2.9 0 1 0 0 5.8 2.9 2.9 0 0 0 0-5.8Zm5.1-2.3a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2Z" />
-    </svg>
-  </a>
+            {/* Instagram */}
+            <a
+              href="https://www.instagram.com/education_kyrgyzconcept/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram Kyrgyz Concept"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 transition-colors hover:bg-white/20"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                className="h-5 w-5 fill-current"
+                aria-hidden="true"
+              >
+                <path d="M12 2.2c-2.7 0-3 0-4.1.1-1 0-1.8.2-2.4.5-.7.2-1.2.6-1.7 1.1S3 5 2.8 5.6c-.3.6-.4 1.4-.5 2.4-.1 1-.1 1.4-.1 4.1s0 3 .1 4.1c0 1 .2 1.8.5 2.4.2.7.6 1.2 1.1 1.7s1 .8 1.7 1.1c.6.3 1.4.4 2.4.5 1 0 1.4.1 4.1.1s3 0 4.1-.1c1 0 1.8-.2 2.4-.5.7-.3 1.2-.6 1.7-1.1s.8-1 1.1-1.7c.3-.6.4-1.4.5-2.4 0-1 .1-1.4-.1-4.1s0-3-.1-4.1c0-1-.2-1.8-.5-2.4-.2-.7-.6-1.2-1.1-1.7s-1-.8-1.7-1.1c-.6-.3-1.4-.5-2.4-.5-.1-.1-1.4-.1-4.1-.1Zm0 5.1a4.7 4.7 0 1 1 0 9.4 4.7 4.7 0 0 1 0-9.4Zm0 1.8a2.9 2.9 0 1 0 0 5.8 2.9 2.9 0 0 0 0-5.8Zm5.1-2.3a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2Z" />
+              </svg>
+            </a>
 
-</div>
+          </div>
         </Reveal>
 
         {/* Фото */}
         <Reveal
           delay={0.08}
-          className="order-first justify-self-center lg:order-none"
+          className="w-[50vw] shrink-0 snap-center justify-self-center lg:w-auto lg:shrink lg:order-none"
         >
           <img
             src={guyPhoto}
             alt="Студент Kyrgyz Concept приглашает записаться на консультацию"
             width={895}
             height={1200}
-            className="h-[320px] w-auto drop-shadow-2xl sm:h-[400px] lg:h-[480px]"
+            className="h-[280px] sm:h-[400px] lg:h-[480px] w-auto drop-shadow-2xl mx-auto"
           />
         </Reveal>
 
         {/* Форма */}
-        <Reveal delay={0.15}>
+        <Reveal delay={0.15} className="w-[85vw] shrink-0 snap-end lg:w-auto lg:shrink">
           <div className="rounded-3xl bg-white p-6 shadow-2xl sm:p-8">
 
             {sent ? (
@@ -331,9 +330,6 @@ export function Contact() {
         </Reveal>
 
       </div>
-    </section>
-  );
-}
 
 export function Footer() {
   const [footer] = useContentSection("footer");
