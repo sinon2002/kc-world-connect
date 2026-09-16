@@ -16,26 +16,42 @@ export function Team() {
       <div className="shell relative z-10">
         <SectionHeading eyebrow="Команда" title={team.heading} />
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Изменено: grid-cols-2 заставляет сетку на смартфонах отображаться в 2 колонки, уменьшен gap */}
+        <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4">
           {team.items.map((m, i) => (
             <Reveal
               key={m.id}
               delay={i * 0.07}
-              className="rounded-3xl bg-card p-6 shadow-soft transition-transform duration-300 hover:-translate-y-1 hover:shadow-lift"
+              {/* Изменено: p-3 на мобильных вместо p-6, скругление rounded-2xl вместо rounded-3xl для компактности */}
+              className="rounded-2xl bg-card p-3 md:p-6 shadow-soft transition-transform duration-300 hover:-translate-y-1 hover:shadow-lift flex flex-col justify-between"
             >
-              <div className="grid aspect-4/5 place-items-center overflow-hidden rounded-2xl bg-secondary">
-                {m.photo ? (
-                  <img src={m.photo} alt={m.name} className="h-full w-full object-cover" />
-                ) : (
-                  <>
-                    <User className="size-10 text-navy/30" aria-hidden="true" />
-                    <span className="sr-only">Фото консультанта (плейсхолдер)</span>
-                  </>
-                )}
+              <div>
+                <div className="grid aspect-4/5 place-items-center overflow-hidden rounded-xl md:rounded-2xl bg-secondary">
+                  {m.photo ? (
+                    <img src={m.photo} alt={m.name} className="h-full w-full object-cover" />
+                  ) : (
+                    <>
+                      <User className="size-6 md:size-10 text-navy/30" aria-hidden="true" />
+                      <span className="sr-only">Фото консультанта (плейсхолдер)</span>
+                    </>
+                  )}
+                </div>
+                
+                {/* Изменено: уменьшены отступы (mt-3) и размер шрифта (text-xs md:text-lg) для имени */}
+                <h3 className="mt-3 text-xs md:text-lg font-bold md:font-normal text-ink leading-tight">
+                  {m.name}
+                </h3>
+                
+                {/* Изменено: размер шрифта text-[10px] md:text-xs для должности */}
+                <p className="mt-1 text-[10px] md:text-xs font-bold tracking-wide text-blue uppercase leading-tight">
+                  {m.role}
+                </p>
+                
+                {/* Изменено: mt-2 и адаптивный размер текста text-[11px] для био */}
+                <p className="mt-2 text-[11px] sm:text-xs md:text-sm leading-snug md:leading-relaxed text-muted-foreground">
+                  {m.bio}
+                </p>
               </div>
-              <h3 className="mt-5 text-lg text-ink">{m.name}</h3>
-              <p className="mt-1 text-xs font-bold tracking-wide text-blue uppercase">{m.role}</p>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{m.bio}</p>
             </Reveal>
           ))}
         </div>
