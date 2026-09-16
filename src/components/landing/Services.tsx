@@ -12,7 +12,11 @@ const tabIcon: Record<string, typeof Building2> = {
 export function Services() {
   const [services] = useContentSection("services");
   const tabs = services.tabs;
-  const defaultTab = tabs!;
+  
+  // Добавлена безопасная проверка на случай, если данные не успели загрузиться
+  if (!tabs || tabs.length === 0) return null;
+
+  const defaultTab = tabs[0];
   const [active, setActive] = useState(defaultTab.id);
 
   const current = tabs.find((t) => t.id === active) ?? defaultTab;
