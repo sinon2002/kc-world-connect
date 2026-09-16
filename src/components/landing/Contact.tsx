@@ -21,7 +21,7 @@ export function Contact() {
   // Формат: код страны + номер, без + и пробелов
   // Например: 996555123456
   // ==========================================
-  const whatsappNumber = "996555123456";
+  const whatsappNumber = "996999490039";
 
   const valid =
     form.name.trim().length > 1 &&
