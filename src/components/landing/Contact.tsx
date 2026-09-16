@@ -19,14 +19,20 @@ export function Contact() {
     form.phone.trim().length > 5;
 
   return (
-    <section id="consult" className="relative overflow-hidden section-pad text-white" style={{ background: "linear-gradient(180deg, #ffffff 0%, #0078c3 260px, #0078c3 100%)" }}>
+    <section
+      id="consult"
+      className="relative overflow-hidden section-pad text-white"
+      style={{
+        background: "#0078c3",
+      }}
+    >
       {/* Плавный переход от светлого фона сверху к синему */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-0 h-64"
         style={{
           background:
-            "linear-gradient(to bottom, #eef8ff 0%, #d9effb 22%, rgba(139, 201, 232, 0.75) 48%, rgba(0, 120, 195, 0) 100%)",
+            "linear-gradient(to bottom, #ffffff 0%, #eef8ff 15%, #d9effb 30%, rgba(139, 201, 232, 0.75) 50%, rgba(0, 120, 195, 0) 100%)",
         }}
       />
 
