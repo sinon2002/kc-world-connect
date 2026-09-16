@@ -1,4 +1,4 @@
-```tsx
+
 import { useState } from "react";
 import { Reveal } from "./Reveal";
 import guyPhoto from "@/assets/contact/kc-guy.png";
@@ -352,4 +352,4 @@ export function Footer() {
     </footer>
   );
 }
-```
+
