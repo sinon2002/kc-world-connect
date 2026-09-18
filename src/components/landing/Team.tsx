@@ -22,9 +22,10 @@ export function Team() {
               key={m.id}
               delay={i * 0.07}
               className="rounded-2xl bg-card p-3 md:p-6 shadow-soft transition-transform duration-300 hover:-translate-y-1 hover:shadow-lift flex flex-col items-center justify-between text-center"
+              style={{ textAlign: "center" }}
             >
-              <div className="w-full flex flex-col items-center text-center">
-                <div className="w-full max-w-[240px] grid aspect-[4/5] place-items-center overflow-hidden rounded-xl md:rounded-2xl bg-secondary mx-auto">
+              <div className="w-full flex flex-col items-center text-center" style={{ textAlign: "center", alignItems: "center" }}>
+                <div className="w-full max-w-[240px] grid aspect-[4/5] place-items-center overflow-hidden rounded-xl md:rounded-2xl bg-secondary mx-auto mb-4">
                   {m.photo ? (
                     <img src={m.photo} alt={m.name} className="h-full w-full object-cover" />
                   ) : (
@@ -35,15 +36,24 @@ export function Team() {
                   )}
                 </div>
                 
-                <h3 className="mt-4 text-xs md:text-lg font-bold md:font-normal text-ink leading-tight max-w-[200px] text-center mx-auto">
+                <h3 
+                  className="mt-2 text-xs md:text-lg font-bold md:font-normal text-ink leading-tight mx-auto"
+                  style={{ textAlign: "center", display: "block", width: "100%" }}
+                >
                   {m.name}
                 </h3>
                 
-                <p className="mt-1.5 text-[10px] md:text-xs font-bold tracking-wide text-blue uppercase leading-tight max-w-[200px] text-center mx-auto">
+                <p 
+                  className="mt-1 text-[10px] md:text-xs font-bold tracking-wide text-blue uppercase leading-tight mx-auto"
+                  style={{ textAlign: "center", display: "block", width: "100%" }}
+                >
                   {m.role}
                 </p>
                 
-                <p className="mt-3 text-[11px] sm:text-xs md:text-sm leading-snug md:leading-relaxed text-muted-foreground max-w-[240px] text-center mx-auto">
+                <p 
+                  className="mt-2 text-[11px] sm:text-xs md:text-sm leading-snug md:leading-relaxed text-muted-foreground mx-auto"
+                  style={{ textAlign: "center", display: "block", width: "100%" }}
+                >
                   {m.bio}
                 </p>
               </div>
