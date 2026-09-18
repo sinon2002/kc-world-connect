@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CalendarDays, Check, ChevronDown, ShieldCheck } from "lucide-react";
+import { CalendarDays, Check, ChevronDown, ShieldCheck, FileText, ExternalLink } from "lucide-react";
 import { Reveal, SectionHeading } from "./Reveal";
 import { useContentSection } from "@/lib/content";
 import fallbackEventsPhoto from "@/assets/events/students-library.jpg";
@@ -71,6 +71,8 @@ export function Certificates() {
         <div className="mx-auto mt-10 max-w-3xl space-y-3">
           {certs.items.map((c, i) => {
             const isOpen = open === i;
+            const isPdf = c.image?.toLowerCase().split(/[?#]/).endsWith(".pdf");
+
             return (
               <Reveal key={c.id} delay={i * 0.06} className="overflow-hidden rounded-2xl bg-card shadow-soft">
                 <h3>
@@ -99,20 +101,33 @@ export function Certificates() {
                   role="region"
                   aria-labelledby={`cert-btn-${i}`}
                   hidden={!isOpen}
-                  className="px-6 pb-5 flex flex-col md:flex-row md:items-start gap-6"
+                  className="px-6 pb-5 flex flex-col md:flex-row md:items-center gap-6"
                 >
                   <div className="flex-1">
                     <p className="text-sm leading-relaxed text-muted-foreground">{c.text}</p>
                   </div>
                   
                   {c.image && (
-                    <div className="w-full md:w-1/3 flex-shrink-0 md:order-last">
-                      <img
-                        src={c.image}
-                        alt={c.title}
-                        loading="lazy"
-                        className="max-h-80 w-full rounded-xl border border-border object-contain bg-secondary/30"
-                      />
+                    <div className="w-full md:w-1/3 flex-shrink-0 flex justify-center md:justify-end md:order-last">
+                      {isPdf ? (
+                        <a
+                          href={c.image}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-2 rounded-xl border border-border bg-secondary/50 px-4 py-3 text-xs font-bold text-ink shadow-sm transition-all hover:bg-secondary hover:text-primary"
+                        >
+                          <FileText className="size-4 text-primary" />
+                          Посмотреть документ
+                          <ExternalLink className="size-3 text-muted-foreground" />
+                        </a>
+                      ) : (
+                        <img
+                          src={c.image}
+                          alt={c.title}
+                          loading="lazy"
+                          className="max-h-80 w-full rounded-xl border border-border object-contain bg-secondary/30"
+                        />
+                      )}
                     </div>
                   )}
                 </div>
