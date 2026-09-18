@@ -21,10 +21,10 @@ export function Team() {
             <Reveal
               key={m.id}
               delay={i * 0.07}
-              className="rounded-2xl bg-card p-3 md:p-6 shadow-soft transition-transform duration-300 hover:-translate-y-1 hover:shadow-lift flex flex-col justify-between"
+              className="rounded-2xl bg-card p-3 md:p-6 shadow-soft transition-transform duration-300 hover:-translate-y-1 hover:shadow-lift flex flex-col items-center text-center justify-between"
             >
-              <div>
-                <div className="grid aspect-4/5 place-items-center overflow-hidden rounded-xl md:rounded-2xl bg-secondary">
+              <div className="w-full flex flex-col items-center">
+                <div className="w-full max-w-[240px] grid aspect-4/5 place-items-center overflow-hidden rounded-xl md:rounded-2xl bg-secondary">
                   {m.photo ? (
                     <img src={m.photo} alt={m.name} className="h-full w-full object-cover" />
                   ) : (
@@ -35,15 +35,15 @@ export function Team() {
                   )}
                 </div>
                 
-                <h3 className="mt-3 text-xs md:text-lg font-bold md:font-normal text-ink leading-tight">
+                <h3 className="mt-3 text-xs md:text-lg font-bold md:font-normal text-ink leading-tight max-w-[200px]">
                   {m.name}
                 </h3>
                 
-                <p className="mt-1 text-[10px] md:text-xs font-bold tracking-wide text-blue uppercase leading-tight">
+                <p className="mt-1 text-[10px] md:text-xs font-bold tracking-wide text-blue uppercase leading-tight max-w-[200px]">
                   {m.role}
                 </p>
                 
-                <p className="mt-2 text-[11px] sm:text-xs md:text-sm leading-snug md:leading-relaxed text-muted-foreground">
+                <p className="mt-2 text-[11px] sm:text-xs md:text-sm leading-snug md:leading-relaxed text-muted-foreground max-w-[240px]">
                   {m.bio}
                 </p>
               </div>
