@@ -72,3 +72,60 @@ export function CertsEditor() {
     </AdminCard>
   );
 }
+
+// === ДОБАВЬТЕ ЭТОТ КОД НИЖЕ ===
+export function FaqEditor() {
+  const [faq, save] = useContentSection("faq");
+  const [local, setLocal] = useState(faq);
+
+  return (
+    <AdminCard title="Часто задаваемые вопросы (FAQ)">
+      <div className="grid gap-4">
+        {local.items.map((item) => (
+          <ListItemShell
+            key={item.id}
+            onRemove={() => setLocal((l) => ({ ...l, items: l.items.filter((it) => it.id !== item.id) }))}
+          >
+            <Field label="Вопрос">
+              <TextInput
+                value={item.q || item.question || ""}
+                onChange={(e) =>
+                  setLocal((l) => ({
+                    ...l,
+                    items: l.items.map((it) => (it.id === item.id ? { ...it, q: e.target.value, question: e.target.value } : it)),
+                  }))
+                }
+              />
+            </Field>
+            <div className="mt-2.5">
+              <Field label="Ответ">
+                <TextArea
+                  rows={3}
+                  value={item.a || item.answer || ""}
+                  onChange={(e) =>
+                    setLocal((l) => ({
+                      ...l,
+                      items: l.items.map((it) => (it.id === item.id ? { ...it, a: e.target.value, answer: e.target.value } : it)),
+                    }))
+                  }
+                />
+              </Field>
+            </div>
+          </ListItemShell>
+        ))}
+      </div>
+      <div className="mt-4">
+        <AddButton
+          onClick={() =>
+            setLocal((l) => ({
+              ...l,
+              items: [...l.items, { id: newId("f"), q: "Новый вопрос", a: "", question: "Новый вопрос", answer: "" }],
+            }))
+          }
+          label="Добавить вопрос"
+        />
+      </div>
+      <SaveBar onSave={() => save(local)} />
+    </AdminCard>
+  );
+}
