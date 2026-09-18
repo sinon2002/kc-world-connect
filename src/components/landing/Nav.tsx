@@ -8,6 +8,7 @@ const links = [
   { href: "#services", label: "Услуги" },
   { href: "#team", label: "Команда" },
   { href: "#events", label: "Мероприятия" },
+  { href: "#certs", label: "Сертификаты" },
   { href: "#faq", label: "FAQ" },
 ];
 
