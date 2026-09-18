@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { GraduationCap, Play, Quote, BookMarked, X } from "lucide-react";
+import { useState, useRef } from "react";
+import { GraduationCap, Play, Quote, BookMarked, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Reveal, SectionHeading } from "./Reveal";
 import { useContentSection } from "@/lib/content";
 
@@ -34,6 +34,23 @@ function VideoModal({ src, name, onClose }: { src: string; name: string; onClose
 export function Stories() {
   const [stories] = useContentSection("stories");
   const [activeVideo, setActiveVideo] = useState<{ src: string; name: string } | null>(null);
+  
+  // Создаем ссылку на контейнер со списком для управления скроллом
+  const scrollContainerRef = useRef<HTMLUListElement>(null);
+
+  // Функция для прокрутки влево/вправо
+  const scroll = (direction: "left" | "right") => {
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      // Определяем ширину одной карточки с учетом отступа
+      const scrollAmount = container.clientWidth * 0.75; 
+      
+      container.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
 
   return (
     <section id="stories" className="section-pad relative overflow-hidden" style={{ backgroundColor: "#0078c3" }}>
@@ -44,15 +61,41 @@ export function Stories() {
       />
 
       <div className="shell relative z-10">
-        <SectionHeading tone="dark" eyebrow="Истории студентов" title={stories.heading} />
+        {/* Контейнер заголовка с кнопками-стрелочками */}
+        <div className="flex items-end justify-between">
+          <SectionHeading tone="dark" eyebrow="Истории студентов" title={stories.heading} />
+          
+          {/* Стрелочки (видимы только на мобилках и планшетах, скрыты на sm и выше) */}
+          <div className="flex gap-2 pb-2 sm:hidden">
+            <button
+              type="button"
+              onClick={() => scroll("left")}
+              aria-label="Предыдущий слайд"
+              className="grid size-10 place-items-center rounded-full border border-white/20 bg-white/10 text-white transition-all active:scale-95 active:bg-white/20"
+            >
+              <ChevronLeft className="size-5" />
+            </button>
+            <button
+              type="button"
+              onClick={() => scroll("right")}
+              aria-label="Следующий слайд"
+              className="grid size-10 place-items-center rounded-full border border-white/20 bg-white/10 text-white transition-all active:scale-95 active:bg-white/20"
+            >
+              <ChevronRight className="size-5" />
+            </button>
+          </div>
+        </div>
 
-        <ul className="mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 sm:grid sm:grid-cols-2 sm:overflow-visible lg:grid-cols-4">
+        <ul 
+          ref={scrollContainerRef}
+          className="mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 scroll-smooth sm:grid sm:grid-cols-2 sm:overflow-visible lg:grid-cols-4"
+        >
           {stories.items.map((s, i) => (
             <Reveal
               as="li"
               key={s.id}
               delay={(i % 3) * 0.08}
-              className="min-w-[68%] max-w-[260px] snap-center rounded-2xl border border-on-navy/12 bg-navy-2/70 p-4 transition-transform duration-300 hover:-translate-y-1 sm:min-w-0 sm:max-w-none"
+              className="min-w-[72%] max-w-[260px] snap-center rounded-2xl border border-on-navy/12 bg-navy-2/70 p-4 transition-transform duration-300 hover:-translate-y-1 sm:min-w-0 sm:max-w-none"
             >
               <div
                 onClick={() => s.video && setActiveVideo({ src: s.video, name: s.name })}
