@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, DragEvent } from "react";
 import { ImageIcon, Loader2, Trash2, Video, Upload } from "lucide-react";
 import { uploadMedia, supabaseEnabled } from "@/lib/supabase";
 
@@ -15,6 +15,7 @@ export function MediaUpload({
 }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
 
   async function handleFile(file: File | null) {
     if (!file) return;
@@ -28,6 +29,26 @@ export function MediaUpload({
     } finally {
       setBusy(false);
     }
+  }
+
+  function handleDragOver(e: DragEvent<HTMLLabelElement>) {
+    e.preventDefault();
+    if (!busy && supabaseEnabled) {
+      setIsDragging(true);
+    }
+  }
+
+  function handleDragLeave() {
+    setIsDragging(false);
+  }
+
+  function handleDrop(e: DragEvent<HTMLLabelElement>) {
+    e.preventDefault();
+    setIsDragging(false);
+    if (busy || !supabaseEnabled) return;
+
+    const file = e.dataTransfer.files?.[0] ?? null;
+    handleFile(file);
   }
 
   return (
@@ -57,7 +78,16 @@ export function MediaUpload({
           </button>
         </div>
       ) : (
-        <label className="flex h-32 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-xl border border-dashed border-border bg-secondary/50 text-muted-foreground transition-colors hover:bg-secondary">
+        <label
+          onDragOver={handleDragOver}
+          onDragLeave={handleDragLeave}
+          onDrop={handleDrop}
+          className={`flex h-32 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-xl border border-dashed text-muted-foreground transition-colors ${
+            isDragging
+              ? "border-primary bg-primary/10 text-primary"
+              : "border-border bg-secondary/50 hover:bg-secondary"
+          }`}
+        >
           {busy ? (
             <Loader2 className="size-5 animate-spin" />
           ) : kind === "image" ? (
@@ -67,7 +97,7 @@ export function MediaUpload({
           )}
           <span className="flex items-center gap-1 text-xs font-medium">
             <Upload className="size-3.5" />
-            {busy ? "Загрузка..." : kind === "image" ? "Загрузить фото" : "Загрузить видео"}
+            {busy ? "Загрузка..." : isDragging ? "Отпустите для загрузки" : kind === "image" ? "Загрузить или перетащить фото" : "Загрузить или перетащить видео"}
           </span>
           <input
             type="file"
