@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CalendarDays, Check, ChevronDown, ShieldCheck, FileText, ExternalLink } from "lucide-react";
+import { CalendarDays, Check, ChevronDown, ShieldCheck } from "lucide-react";
 import { Reveal, SectionHeading } from "./Reveal";
 import { useContentSection } from "@/lib/content";
 import fallbackEventsPhoto from "@/assets/events/students-library.jpg";
@@ -72,7 +72,7 @@ export function Certificates() {
           {certs.items.map((c, i) => {
             const isOpen = open === i;
             
-            // Абсолютно надежная проверка на PDF-формат ссылки
+            // Проверка, является ли файл PDF-документом
             const isPdf = typeof c.image === "string" && c.image.toLowerCase().includes(".pdf");
 
             return (
@@ -103,31 +103,28 @@ export function Certificates() {
                   role="region"
                   aria-labelledby={`cert-btn-${i}`}
                   hidden={!isOpen}
-                  className="px-6 pb-5 flex flex-col md:flex-row md:items-center gap-6"
+                  className="px-6 pb-5 flex flex-col md:flex-row md:items-start gap-6"
                 >
                   <div className="flex-1">
                     <p className="text-sm leading-relaxed text-muted-foreground">{c.text}</p>
                   </div>
                   
                   {c.image && (
-                    <div className="w-full md:w-1/3 flex-shrink-0 flex justify-center md:justify-end md:order-last">
+                    <div className="w-full md:w-1/3 h-80 flex-shrink-0 md:order-last overflow-hidden rounded-xl border border-border bg-secondary/30">
                       {isPdf ? (
-                        <a
-                          href={c.image}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="inline-flex items-center gap-2 rounded-xl border border-border bg-secondary/50 px-4 py-3 text-xs font-bold text-ink shadow-sm transition-all hover:bg-secondary hover:text-primary"
-                        >
-                          <FileText className="size-4 text-primary" />
-                          Посмотреть документ
-                          <ExternalLink className="size-3 text-muted-foreground" />
-                        </a>
+                        /* Если это PDF — встраиваем интерактивное превью через iframe */
+                        <iframe
+                          src={`${c.image}#toolbar=0&navpanes=0&scrollbar=0`}
+                          className="w-full h-full border-none pointer-events-none"
+                          title={c.title}
+                        />
                       ) : (
+                        /* Если обычная картинка (JPG/PNG) */
                         <img
                           src={c.image}
                           alt={c.title}
                           loading="lazy"
-                          className="max-h-80 w-full rounded-xl border border-border object-contain bg-secondary/30"
+                          className="w-full h-full object-contain"
                         />
                       )}
                     </div>
