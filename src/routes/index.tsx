@@ -13,6 +13,7 @@ import { Events, Certificates } from "@/components/landing/EventsCerts";
 import { Faq } from "@/components/landing/Faq";
 import { Contact, Footer } from "@/components/landing/Contact";
 import { WhatsAppWidget } from "@/components/landing/WhatsAppWidget";
+import { ScrollPromoPopup } from "@/components/landing/ScrollPromoPopup";
 
 const title = "KC Education Abroad — учёба за рубежом с Kyrgyz Concept";
 const description =
@@ -52,6 +53,7 @@ function Index() {
       </main>
       <Footer />
       <WhatsAppWidget />
+      <ScrollPromoPopup />
     </div>
   );
 }
