@@ -94,23 +94,31 @@ export function Certificates() {
                   </button>
                 </h3>
                 
-                <div
-                  id={`cert-panel-${i}`}
-                  role="region"
-                  aria-labelledby={`cert-btn-${i}`}
-                  hidden={!isOpen}
-                  className="px-6 pb-5 flex flex-col md:flex-row md:items-start gap-6"
-                >
-                  {c.image && (
-                    <div className="w-full md:w-1/3 flex-shrink-0">
-                      <img
-                        src={c.image}
-                        alt={c.title}
-                        loading="lazy"
-                        className="max-h-80 w-full rounded-xl border border-border object-contain bg-secondary/30"
-                      />
-                    </div>
-                  )}
+               <div
+  id={`cert-panel-${i}`}
+  role="region"
+  aria-labelledby={`cert-btn-${i}`}
+  hidden={!isOpen}
+  className="px-6 pb-5 flex flex-col md:flex-row md:items-start gap-6"
+>
+  {/* Блок с описанием сертификата — теперь идет первым */}
+  <div className="flex-1">
+    <p className="text-sm leading-relaxed text-muted-foreground">{c.text}</p>
+  </div>
+
+  {/* Блок с изображением — теперь идет вторым и отобразится справа */}
+  {c.image && (
+    <div className="w-full md:w-1/3 flex-shrink-0 md:order-last">
+      <img
+        src={c.image}
+        alt={c.title}
+        loading="lazy"
+        className="max-h-80 w-full rounded-xl border border-border object-contain bg-secondary/30"
+      />
+    </div>
+  )}
+</div>
+
                   <div className="flex-1">
                     <p className="text-sm leading-relaxed text-muted-foreground">{c.text}</p>
                   </div>
