@@ -16,18 +16,6 @@ function StoryVideo({ src, name }: { src: string; name: string }) {
     } catch {
       // автоплей может быть заблокирован — плеер всё равно откроется
     }
-    // Открываем видео на весь экран одним нажатием
-    const anyEl = el as HTMLVideoElement & {
-      webkitRequestFullscreen?: () => Promise<void> | void;
-      webkitEnterFullscreen?: () => void;
-    };
-    try {
-      if (el.requestFullscreen) await el.requestFullscreen();
-      else if (anyEl.webkitRequestFullscreen) await anyEl.webkitRequestFullscreen();
-      else if (anyEl.webkitEnterFullscreen) anyEl.webkitEnterFullscreen();
-    } catch {
-      // если полноэкранный режим недоступен — видео всё равно уже играет
-    }
   }
 
   return (
@@ -79,7 +67,7 @@ export function Stories() {
               delay={(i % 3) * 0.08}
               className="min-w-[85%] snap-center rounded-3xl border border-on-navy/12 bg-navy-2/70 p-6 transition-transform duration-300 hover:-translate-y-1 sm:min-w-0"
             >
-              <div className="grid aspect-video place-items-center overflow-hidden rounded-2xl bg-on-navy/8">
+              <div className={`grid place-items-center overflow-hidden rounded-2xl bg-on-navy/8 ${s.video ? "aspect-[9/16]" : "aspect-video"}`}>
                 {s.video ? (
                   <StoryVideo src={s.video} name={s.name} />
                 ) : s.photo ? (
