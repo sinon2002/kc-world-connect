@@ -93,23 +93,31 @@ export function Certificates() {
                     />
                   </button>
                 </h3>
-                             <div
-                  id={`cert-panel-${i}`}
-                  role="region"
-                  aria-labelledby={`cert-btn-${i}`}
-                  hidden={!isOpen}
-                  className="px-6 pb-5"
-                >
-                  {c.image && (
-                    <img
-                      src={c.image}
-                      alt={c.title}
-                      loading="lazy"
-                      className="mb-4 max-h-80 w-full rounded-xl border border-border object-contain bg-secondary/30"
-                    />
-                  )}
-                  <p className="text-sm leading-relaxed text-muted-foreground">{c.text}</p>
-                </div>
+                            <div
+  id={`cert-panel-${i}`}
+  role="region"
+  aria-labelledby={`cert-btn-${i}`}
+  hidden={!isOpen}
+  {/* Добавили flex-col для мобильных и md:flex-row + md:items-start для больших экранов */}
+  className="px-6 pb-5 flex flex-col md:flex-row md:items-start gap-6"
+>
+  {c.image && (
+    {/* Обернули картинку в блок с фиксированной шириной на десктопе, чтобы она не растягивалась */}
+    <div className="w-full md:w-1/3 flex-shrink-0">
+      <img
+        src={c.image}
+        alt={c.title}
+        loading="lazy"
+        {/* Убрали нижний отступ mb-4, так как теперь есть gap-6 */}
+        className="max-h-80 w-full rounded-xl border border-border object-contain bg-secondary/30"
+      />
+    </div>
+  )}
+  {/* Текст теперь займет всю оставшуюся ширину напротив картинки */}
+  <div className="flex-1">
+    <p className="text-sm leading-relaxed text-muted-foreground">{c.text}</p>
+  </div>
+</div>
               </Reveal>
             );
           })}
