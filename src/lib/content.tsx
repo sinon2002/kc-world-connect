@@ -87,6 +87,7 @@ export interface CertItem {
   id: string;
   title: string;
   text: string;
+  image: string | undefined;
 }
 export interface CertsContent {
   items: CertItem[];
