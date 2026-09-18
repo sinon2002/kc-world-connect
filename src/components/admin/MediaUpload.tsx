@@ -1,5 +1,5 @@
 import { useState, DragEvent } from "react";
-import { ImageIcon, Loader2, Trash2, Video, Upload } from "lucide-react";
+import { ImageIcon, Loader2, Trash2, Video, Upload, FileText, ExternalLink } from "lucide-react";
 import { uploadMedia, supabaseEnabled } from "@/lib/supabase";
 
 export function MediaUpload({
@@ -16,6 +16,9 @@ export function MediaUpload({
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isDragging, setIsDragging] = useState(false);
+
+  // Проверяем, является ли загруженный файл PDF-документом
+  const isPdf = value?.toLowerCase().split(/[?#]/)[0].endsWith(".pdf");
 
   async function handleFile(file: File | null) {
     if (!file) return;
@@ -62,16 +65,33 @@ export function MediaUpload({
       )}
 
       {value ? (
-        <div className="relative overflow-hidden rounded-xl border border-border/70 bg-secondary">
-          {kind === "image" ? (
-            <img src={value} alt="" className="h-32 w-full object-cover" />
+        <div className="relative overflow-hidden rounded-xl border border-border/70 bg-secondary p-4 min-h-32 flex items-center justify-center">
+          {isPdf ? (
+            /* Если это PDF — показываем иконку документа и кнопку «Открыть» */
+            <div className="flex flex-col items-center gap-2 py-2">
+              <FileText className="size-10 text-primary" />
+              <a
+                href={value}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline"
+              >
+                Открыть PDF-документ
+                <ExternalLink className="size-3" />
+              </a>
+            </div>
+          ) : kind === "image" ? (
+            /* Если это обычная картинка */
+            <img src={value} alt="" className="absolute inset-0 h-full w-full object-cover" />
           ) : (
-            <video src={value} className="h-32 w-full object-cover" controls />
+            /* Если это видео */
+            <video src={value} className="absolute inset-0 h-full w-full object-cover" controls />
           )}
+          
           <button
             type="button"
             onClick={() => onChange(undefined)}
-            className="absolute top-1.5 right-1.5 inline-flex size-7 items-center justify-center rounded-full bg-black/60 text-white hover:bg-black/80"
+            className="absolute top-1.5 right-1.5 inline-flex size-7 items-center justify-center rounded-full bg-black/60 text-white hover:bg-black/80 z-10"
             aria-label="Удалить файл"
           >
             <Trash2 className="size-3.5" />
@@ -97,11 +117,12 @@ export function MediaUpload({
           )}
           <span className="flex items-center gap-1 text-xs font-medium">
             <Upload className="size-3.5" />
-            {busy ? "Загрузка..." : isDragging ? "Отпустите для загрузки" : kind === "image" ? "Загрузить или перетащить фото" : "Загрузить или перетащить видео"}
+            {busy ? "Загрузка..." : isDragging ? "Отпустите для загрузки" : "Загрузить или перетащить файл"}
           </span>
           <input
             type="file"
-            accept={kind === "image" ? "image/*" : "video/*"}
+            /* Разрешаем выбирать изображения и PDF */
+            accept={kind === "image" ? "image/*,.pdf" : "video/*"}
             className="hidden"
             disabled={busy || !supabaseEnabled}
             onChange={(e) => handleFile(e.target.files?.[0] ?? null)}
