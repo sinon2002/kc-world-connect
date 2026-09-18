@@ -44,7 +44,7 @@ export function Events() {
               ))}
             </ul>
             <a
-              href="https://www.instagram.com/education_kyrgyzconcept?stkn=MWlyMWFsN2ZndmExNg=="
+              href="https://instagram.com"
               target="_blank"
               rel="noreferrer"
               className="mt-8 inline-flex items-center gap-2.5 rounded-full bg-primary px-7 py-4 text-sm font-bold text-primary-foreground shadow-soft transition-transform duration-200 hover:-translate-y-1"
@@ -71,7 +71,9 @@ export function Certificates() {
         <div className="mx-auto mt-10 max-w-3xl space-y-3">
           {certs.items.map((c, i) => {
             const isOpen = open === i;
-            const isPdf = c.image?.toLowerCase().split(/[?#]/).endsWith(".pdf");
+            
+            // Абсолютно надежная проверка на PDF-формат ссылки
+            const isPdf = typeof c.image === "string" && c.image.toLowerCase().includes(".pdf");
 
             return (
               <Reveal key={c.id} delay={i * 0.06} className="overflow-hidden rounded-2xl bg-card shadow-soft">
