@@ -93,14 +93,22 @@ export function Certificates() {
                     />
                   </button>
                 </h3>
-                <div
+                             <div
                   id={`cert-panel-${i}`}
                   role="region"
                   aria-labelledby={`cert-btn-${i}`}
                   hidden={!isOpen}
-                  className="px-6 pb-5 text-sm leading-relaxed text-muted-foreground"
+                  className="px-6 pb-5"
                 >
-                  {c.text}
+                  {c.image && (
+                    <img
+                      src={c.image}
+                      alt={c.title}
+                      loading="lazy"
+                      className="mb-4 max-h-80 w-full rounded-xl border border-border object-contain bg-secondary/30"
+                    />
+                  )}
+                  <p className="text-sm leading-relaxed text-muted-foreground">{c.text}</p>
                 </div>
               </Reveal>
             );
