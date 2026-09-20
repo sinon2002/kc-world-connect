@@ -67,7 +67,7 @@ export function Certificates() {
   return (
     <section id="certs" className="bg-background pb-20 md:pb-28">
       <div className="shell">
-        <SectionHeading eyebrow="Сертификаты" title="Accредитации агентства" />
+        <SectionHeading eyebrow="Сертификаты" title=" Аккредитация агентства" />
 
         <div className="mx-auto mt-10 max-w-3xl space-y-3">
           {certs.items.map((c, i) => {
