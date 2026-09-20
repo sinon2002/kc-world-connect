@@ -417,8 +417,16 @@ export const defaultContent: AllContent = {
       "Ещё не определился(ась)",
     ],
   },
-  footer: {
+   footer: {
     text: "© {year} KC Education Abroad — часть бренда Kyrgyz Concept",
+  },
+  promoPopup: {
+    enabled: true,
+    title: "Получите бесплатную консультацию",
+    description: "Расскажем, какой вуз и страна подойдут именно вам — бесплатно и без обязательств.",
+    address: "Ждем вас по адресу: Тыныстанова, 231",
+    buttonText: "Записаться",
+    image: undefined,
   },
 };
 
