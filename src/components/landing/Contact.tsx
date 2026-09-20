@@ -25,20 +25,15 @@ export function Contact() {
     e.preventDefault();
     if (!valid) return;
 
-    // Формируем сообщение для WhatsApp
     const message = `Новая заявка с сайта\nИмя: ${form.name.trim()}\nТелефон: ${form.phone.trim()}\nИнтересующая страна: ${form.country ? form.country : "Не выбрана"}`;
-    
-    // Кодируем сообщение для URL
     const whatsappUrl = `https://wa.me{whatsappNumber}?text=${encodeURIComponent(message)}`; 
-    
-    // Открываем WhatsApp 
     window.open(whatsappUrl, "_blank");
-    // Показываем экран "Спасибо" 
     setSent(true); 
   };
 
   return (
-    <section id="consult" className="relative overflow-hidden pt-16 pb-24 text-white" style={{ background: "#0078c3" }}>
+    /* ИЗМЕНЕНО: Увеличен pt-32, уменьшен pb-2 для максимального сдвига вниз */
+    <section id="consult" className="relative overflow-hidden pt-32 pb-2 text-white" style={{ background: "#0078c3" }}>
       {/* Сетка */}
       <div aria-hidden="true" className="route-grid pointer-events-none absolute inset-0 opacity-20" />
       {/* Линия маршрута */}
@@ -48,8 +43,8 @@ export function Contact() {
         <circle cx="1330" cy="460" r="7" fill="var(--gold)" /> 
       </svg>
 
-      {/* Изменено выравнивание с items-center на items-end */}
-      <div className="shell relative z-10 grid items-end gap-8 lg:grid-cols-[1fr_320px_1fr] lg:gap-4"> 
+      {/* ИЗМЕНЕНО: Добавлен lg:-mb-10, чтобы прижать всю сетку к футеру на десктопах */}
+      <div className="shell relative z-10 grid items-end gap-8 lg:grid-cols-[1fr_320px_1fr] lg:gap-4 lg:-mb-10"> 
         {/* Левая часть */} 
         <Reveal> 
           <h2 className="font-display text-3xl font-extrabold leading-tight sm:text-4xl"> {contact.heading} </h2> 
@@ -59,13 +54,11 @@ export function Contact() {
           </p> 
           {/* Соцсети */}
           <div className="mt-6 flex gap-3"> 
-            {/* WhatsApp */} 
             <a href={`https://wa.me`} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 transition-colors hover:bg-white/20" > 
               <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" aria-hidden="true" > 
                 <path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.1 14.1c-.2.6-1.2 1.2-1.9 1.2-.5 0-1.2-.1-3.2-1s-3.4-3-3.5-3.2c-.6-.9-1-1.9-.9-2.8 0-.8.5-1.4.8-1.7.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.7 1.7c.1.2 0 .4-.1.6l-.4.5c-.1.2-.2.3 0 .6.3.5.8 1.1 1.3 1.5.6.5 1.1.7 1.4.8.2.1.4.1.5 0l.7-.8c.2-.2.4-.2.6-.1l1.6.8c.3.2.4.3.4.5 0 .2 0 .8-.3 1.1Z" /> 
               </svg> 
             </a> 
-            {/* Instagram */} 
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram Kyrgyz Concept" className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 transition-colors hover:bg-white/20" > 
               <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" aria-hidden="true" > 
                 <path d="M12 2.2c-2.7 0-3 0-4.1.1-1 0-1.8.2-2.4.5-.7.2-1.2.6-1.7 1.1S3 5 2.8 5.6c-.3.6-.4 1.4-.5 2.4-.1 1-.1 1.4-.1 4.1s0 3 .1 4.1c0 1 .2 1.8.5 2.4.2.7.6 1.2 1.1 1.7s1 .8 1.7 1.1c.6.3 1.4.4 2.4.5 1 0 1.4.1 4.1.1s3 0 4.1-.1c1 0 1.8-.2 2.4-.5.7-.3 1.2-.6 1.7-1.1s.8-1 1.1-1.7c.3-.6.4-1.4.5-2.4 0-1 .1-1.4-.1-4.1s0-3-.1-4.1c0-1-.2-1.8-.5-2.4-.2-.7-.6-1.2-1.1-1.7s-1-.8-1.7-1.1c-.6-.3-1.4-.5-2.4-.5-.1-.1-1.4-.1-4.1-.1Zm0 5.1a4.7 4.7 0 1 1 0 9.4 4.7 4.7 0 0 1 0-9.4Zm0 1.8a2.9 2.9 0 1 0 0 5.8 2.9 2.9 0 0 0 0-5.8Zm5.1-2.3a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2Z" /> 
@@ -76,7 +69,8 @@ export function Contact() {
 
         {/* Фото */} 
         <Reveal delay={0.08} className="order-first justify-self-center lg:order-none" > 
-          <img src={guyPhoto} alt="Студент Kyrgyz Concept приглашает записаться на консультацию" width={895} height={1200} className="h-[320px] w-auto drop-shadow-2xl sm:h-[400px] lg:h-[480px]" /> 
+          {/* ИЗМЕНЕНО: Добавлен класс lg:translate-y-8, чтобы парень спустился ровно на надпись */}
+          <img src={guyPhoto} alt="Студент Kyrgyz Concept приглашает записаться на консультацию" width={895} height={1200} className="h-[320px] w-auto drop-shadow-2xl sm:h-[400px] lg:h-[480px] lg:translate-y-8" /> 
         </Reveal> 
 
         {/* Форма */} 
@@ -125,9 +119,9 @@ export function Footer() {
   const text = footer.text.replace("{year}", String(new Date().getFullYear()));
   
   return ( 
-    /* Убран класс -mt-1 */
-    <footer className="pb-8 pt-4 text-white" style={{ background: "#0078c3" }}> 
-      <div className="shell"> 
+    /* ИЗМЕНЕНО: pt-12 (добавлен верхний паддинг), чтобы дать немного пространства тексту внутри футера */
+    <footer className="pb-8 pt-12 text-white" style={{ background: "#0078c3" }}> 
+      <div className="shell relative z-0"> 
         <p aria-hidden="true" className="select-none text-center font-display text-[15vw] leading-none tracking-tight text-white/10 sm:text-[9vw]" style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontStyle: "italic" }}>
           Kyrgyz Concept
         </p>
@@ -139,4 +133,3 @@ export function Footer() {
     </footer>
   );
 }
-
