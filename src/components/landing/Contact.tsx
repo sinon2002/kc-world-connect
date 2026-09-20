@@ -33,8 +33,13 @@ export function Contact() {
 
   return (
     <>
-      {/* Секция с ID consult для точного перехода по клику из шапки */}
-      <section id="consult" className="relative overflow-visible pt-20 pb-6 text-white" style={{ background: "#0078c3" }}>
+      {/* 
+        РЕШЕНИЕ: Невидимый маркер для точного скролла по ссылке. 
+        scroll-margin-top задает комфортный отступ сверху, чтобы шапка не перекрывала текст.
+      */}
+      <div id="consult" className="scroll-mt-24" style={{ background: "#0078c3" }} />
+
+      <section className="relative overflow-visible pt-20 pb-6 text-white" style={{ background: "#0078c3" }}>
         {/* Сетка */}
         <div aria-hidden="true" className="route-grid pointer-events-none absolute inset-0 opacity-20" />
         {/* Линия маршрута */}
@@ -112,7 +117,7 @@ export function Contact() {
         </div> 
       </section>
 
-      {/* Межсекционный блок для декоративного текста — вынесен из основного section */}
+      {/* Блок для декоративного текста */}
       <div className="relative select-none pb-6 text-white" style={{ background: "#0078c3" }}>
         <div className="shell">
           <p aria-hidden="true" className="text-center font-display text-[15vw] leading-none tracking-tight text-white/10 sm:text-[9vw]" style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontStyle: "italic" }}>
