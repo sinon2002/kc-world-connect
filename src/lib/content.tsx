@@ -134,6 +134,7 @@ export interface AllContent {
   footer: FooterContent;
   promoPopup: PromoPopupContent;
 }
+
 /* -------------------------------- Дефолты --------------------------------- */
 /* Это то, что уже есть на сайте сейчас. Пока админка не сохранила свои
    значения в базу — показываются именно эти. */
@@ -189,50 +190,50 @@ export const defaultContent: AllContent = {
         place: "Канада · University of Toronto · Computer Science",
         quote:
           "Мне казалось, что топовые вузы — не про меня. Консультант разложил всё по шагам, и я получила offer с частичной стипендией.",
-      photo: undefined,
-      video: undefined,
-    },
+        photo: undefined,
+        video: undefined,
+      },
       {
         id: "s2",
         name: "Тимур А.",
         place: "Германия · TU Berlin · Mechanical Engineering",
         quote:
           "Самое сложное было с документами и Uni-Assist. KC вели меня буквально за руку, ни один дедлайн не пропущен.",
-      photo: undefined,
-      video: undefined,
-    },
+        photo: undefined,
+        video: undefined,
+      },
       {
         id: "s3",
         name: "Алина К.",
         place: "Италия · Sapienza · Design",
         quote: "Помогли собрать портфолио и мотивационное письмо. Виза — с первого раза.",
-      photo: undefined,
-      video: undefined,
-    },
+        photo: undefined,
+        video: undefined,
+      },
       {
         id: "s4",
         name: "Бекзат Ы.",
         place: "Южная Корея · SKKU · Business",
         quote: "Подобрали программу под мой бюджет и нашли общежитие ещё до отъезда.",
-      photo: undefined,
-      video: undefined,
-    },
+        photo: undefined,
+        video: undefined,
+      },
       {
         id: "s5",
         name: "Мадина С.",
         place: "Великобритания · UCL · Foundation",
         quote: "Начали за год: подготовка к IELTS, потом заявка. Итог — 7.0 и место на foundation.",
-      photo: undefined,
-      video: undefined,
-    },
+        photo: undefined,
+        video: undefined,
+      },
       {
         id: "s6",
         name: "Эрнис Т.",
         place: "Турция · Bilkent · Architecture",
         quote: "Прошёл на грант. Без сопровождения я бы просто не разобрался в требованиях.",
-      photo: undefined,
-      video: undefined,
-    },
+        photo: undefined,
+        video: undefined,
+      },
     ],
   },
   services: {
@@ -337,29 +338,29 @@ export const defaultContent: AllContent = {
         name: "Айгерим Осмонова",
         role: "Руководитель KC Education Abroad",
         bio: "12 лет в образовательном консалтинге, более 900 успешных зачислений в вузы Европы и Северной Америки.",
-      photo: undefined,
-    },
+        photo: undefined,
+      },
       {
         id: "t2",
         name: "Нурбек Жумалиев",
         role: "Консультант: Европа и Германия",
         bio: "Специалист по Uni-Assist, Studienkolleg и немецким Fachhochschule. Сам учился в Берлине.",
-      photo: undefined,
-    },
+        photo: undefined,
+      },
       {
         id: "t3",
         name: "Дилара Абдыкадырова",
         role: "Консультант: языковые курсы и лагеря",
         bio: "Подбирает языковые школы в 15 странах, курирует групповые каникулярные программы.",
-      photo: undefined,
-    },
+        photo: undefined,
+      },
       {
         id: "t4",
         name: "Артур Тен",
         role: "Визовый специалист",
         bio: "Готовит студентов к интервью в посольствах США, Великобритании и Шенгена.",
-      photo: undefined,
-    },
+        photo: undefined,
+      },
     ],
   },
   certs: {
@@ -415,91 +416,3 @@ export const defaultContent: AllContent = {
       "Малайзия",
       "Южная Корея",
       "Ещё не определился(ась)",
-    ],
-  },
-   footer: {
-    text: "© {year} KC Education Abroad — часть бренда Kyrgyz Concept",
-  },
-  promoPopup: {
-    enabled: true,
-    title: "Получите бесплатную консультацию",
-    description: "Расскажем, какой вуз и страна подойдут именно вам — бесплатно и без обязательств.",
-    address: "Ждем вас по адресу: Тыныстанова, 231",
-    buttonText: "Записаться",
-    image: undefined,
-  },
-};
-
-/* --------------------------- Провайдер / хуки ----------------------------- */
-
-type Ctx = {
-  content: AllContent;
-  loading: boolean;
-  save: <K extends keyof AllContent>(key: K, value: AllContent[K]) => Promise<void>;
-};
-
-const ContentContext = createContext<Ctx | null>(null);
-
-export function ContentProvider({ children }: { children: ReactNode }) {
-  const [content, setContent] = useState<AllContent>(defaultContent);
-  const [loading, setLoading] = useState(supabaseEnabled);
-
-  useEffect(() => {
-    if (!supabase) return;
-    let cancelled = false;
-    (async () => {
-      const { data, error } = await supabase.from("site_content").select("key,value");
-      if (!cancelled && !error && data) {
-        setContent((prev) => {
-          const next = { ...prev };
-          for (const row of data as { key: string; value: unknown }[]) {
-            if (row.key in next) {
-              // @ts-expect-error -- ключи гарантированы схемой site_content
-              next[row.key] = row.value;
-            }
-          }
-          return next;
-        });
-      }
-      if (!cancelled) setLoading(false);
-    })();
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
-  const save = useMemo(
-    () =>
-      async <K extends keyof AllContent>(key: K, value: AllContent[K]) => {
-        setContent((prev) => ({ ...prev, [key]: value }));
-        if (!supabase) return;
-        const { error } = await supabase
-          .from("site_content")
-          .upsert({ key, value, updated_at: new Date().toISOString() });
-        if (error) throw error;
-      },
-    []
-  );
-
-  return <ContentContext.Provider value={{ content, loading, save }}>{children}</ContentContext.Provider>;
-}
-
-/** Читает и позволяет сохранить один раздел контента */
-export function useContentSection<K extends keyof AllContent>(
-  key: K
-): [AllContent[K], (value: AllContent[K]) => Promise<void>] {
-  const ctx = useContext(ContentContext);
-  if (!ctx) throw new Error("useContentSection должен вызываться внутри <ContentProvider>");
-  const value = ctx.content[key];
-  const setValue = (v: AllContent[K]) => ctx.save(key, v);
-  return [value, setValue];
-}
-
-export function useContentLoading(): boolean {
-  const ctx = useContext(ContentContext);
-  return ctx ? ctx.loading : false;
-}
-
-export function newId(prefix: string): string {
-  return `${prefix}-${Math.random().toString(36).slice(2, 9)}`;
-}
