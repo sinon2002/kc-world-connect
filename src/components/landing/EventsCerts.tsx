@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CalendarDays, Check, ChevronDown, ShieldCheck } from "lucide-react";
+import { CalendarDays, Check, ChevronDown, ShieldCheck, BookOpen } from "lucide-react";
 import { Reveal, SectionHeading } from "./Reveal";
 import { useContentSection } from "@/lib/content";
 import fallbackEventsPhoto from "@/assets/events/students-library.jpg";
@@ -9,8 +9,9 @@ export function Events() {
   const photo = events.photo ?? fallbackEventsPhoto;
 
   return (
-    <section id="events" className="section-pad">
-      <div className="shell">
+       <section id="events" className="section-pad relative overflow-hidden">
+      <BookOpen aria-hidden="true" strokeWidth={1} className="pointer-events-none absolute -top-6 right-[-70px] size-[360px] rotate-[-10deg] text-primary/10 md:size-[440px]" />
+      <div className="shell relative z-10">
         <Reveal className="overflow-hidden rounded-4xl bg-card shadow-soft md:flex">
           <div className="h-64 md:h-auto md:w-[42%] md:flex-shrink-0">
             <img
