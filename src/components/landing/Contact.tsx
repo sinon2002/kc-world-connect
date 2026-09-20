@@ -13,6 +13,9 @@ export function Contact() {
     country: "",
   });
 
+  const [footer] = useContentSection("footer");
+  const footerText = footer.text.replace("{year}", String(new Date().getFullYear()));
+
   // ==========================================
   // НОМЕР WHATSAPP МЕНЕДЖЕРА
   // Формат: код страны + номер, без + и пробелов
@@ -32,8 +35,8 @@ export function Contact() {
   };
 
   return (
-    /* ИЗМЕНЕНО: Увеличен pt-32, уменьшен pb-2 для максимального сдвига вниз */
-    <section id="consult" className="relative overflow-hidden pt-32 pb-2 text-white" style={{ background: "#0078c3" }}>
+    /* ИЗМЕНЕНО: overflow-hidden заменен на overflow-x-hidden, чтобы нижний край не резался */
+    <section id="consult" className="relative overflow-x-hidden pt-20 pb-12 text-white" style={{ background: "#0078c3" }}>
       {/* Сетка */}
       <div aria-hidden="true" className="route-grid pointer-events-none absolute inset-0 opacity-20" />
       {/* Линия маршрута */}
@@ -43,8 +46,8 @@ export function Contact() {
         <circle cx="1330" cy="460" r="7" fill="var(--gold)" /> 
       </svg>
 
-      {/* ИЗМЕНЕНО: Добавлен lg:-mb-10, чтобы прижать всю сетку к футеру на десктопах */}
-      <div className="shell relative z-10 grid items-end gap-8 lg:grid-cols-[1fr_320px_1fr] lg:gap-4 lg:-mb-10"> 
+      {/* Контейнер элементов — убраны все отрицательные маргины */}
+      <div className="shell relative z-10 grid items-end gap-8 lg:grid-cols-[1fr_320px_1fr] lg:gap-4"> 
         {/* Левая часть */} 
         <Reveal> 
           <h2 className="font-display text-3xl font-extrabold leading-tight sm:text-4xl"> {contact.heading} </h2> 
@@ -69,8 +72,7 @@ export function Contact() {
 
         {/* Фото */} 
         <Reveal delay={0.08} className="order-first justify-self-center lg:order-none" > 
-          {/* ИЗМЕНЕНО: Добавлен класс lg:translate-y-8, чтобы парень спустился ровно на надпись */}
-          <img src={guyPhoto} alt="Студент Kyrgyz Concept приглашает записаться на консультацию" width={895} height={1200} className="h-[320px] w-auto drop-shadow-2xl sm:h-[400px] lg:h-[480px] lg:translate-y-8" /> 
+          <img src={guyPhoto} alt="Студент Kyrgyz Concept приглашает записаться на консультацию" width={895} height={1200} className="h-[320px] w-auto drop-shadow-2xl sm:h-[400px] lg:h-[480px]" /> 
         </Reveal> 
 
         {/* Форма */} 
@@ -110,22 +112,26 @@ export function Contact() {
           </div> 
         </Reveal> 
       </div> 
+
+      {/* ИЗМЕНЕНО: Надпись «Kyrgyz Concept» перенесена внутрь секции Contact с отрицательным mt-6 */}
+      <div className="shell mt-6 relative z-0 select-none"> 
+        <p aria-hidden="true" className="text-center font-display text-[15vw] leading-none tracking-tight text-white/10 sm:text-[9vw]" style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontStyle: "italic" }}>
+          Kyrgyz Concept
+        </p>
+      </div>
     </section> 
   );
 }
 
+{/* Компонент Footer теперь содержит только копирайт и плашку проекта */}
 export function Footer() {
   const [footer] = useContentSection("footer");
   const text = footer.text.replace("{year}", String(new Date().getFullYear()));
   
   return ( 
-    /* ИЗМЕНЕНО: pt-12 (добавлен верхний паддинг), чтобы дать немного пространства тексту внутри футера */
-    <footer className="pb-8 pt-12 text-white" style={{ background: "#0078c3" }}> 
-      <div className="shell relative z-0"> 
-        <p aria-hidden="true" className="select-none text-center font-display text-[15vw] leading-none tracking-tight text-white/10 sm:text-[9vw]" style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontStyle: "italic" }}>
-          Kyrgyz Concept
-        </p>
-        <div className="mt-6 flex flex-col items-center justify-between gap-3 border-t border-white/15 pt-6 text-sm text-white/70 sm:flex-row">
+    <footer className="pb-8 pt-2 text-white" style={{ background: "#0078c3" }}> 
+      <div className="shell"> 
+        <div className="flex flex-col items-center justify-between gap-3 border-t border-white/15 pt-6 text-sm text-white/70 sm:flex-row">
           <p>{text}</p>
           <p className="text-white/50">Демонстрационный проект лендинга</p>
         </div> 
