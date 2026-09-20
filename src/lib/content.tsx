@@ -138,7 +138,6 @@ export interface AllContent {
 /* -------------------------------- Дефолты --------------------------------- */
 /* Это то, что уже есть на сайте сейчас. Пока админка не сохранила свои
    значения в базу — показываются именно эти. */
-
 export const defaultContent: AllContent = {
   hero: {
     eyebrow: "Kyrgyz Concept Education Abroad",
@@ -401,7 +400,7 @@ export const defaultContent: AllContent = {
       { id: "f12", q: "Как проходит первая консультация?", a: "Это бесплатная встреча в офисе или онлайн на 40–60 минут: обсуждаем цели, бюджет, оценки и язык, показываем реалистичные варианты стран и программ, составляем предварительный план и сроки." },
     ],
   },
-   contact: {
+  contact: {
     heading: "Записаться на бесплатную консультацию",
     paragraph:
       "Обсудим ваши цели, бюджет и академический бэкграунд, подберём реальные варианты вузов и составим план поступления. Консультация ни к чему не обязывает.",
@@ -418,3 +417,89 @@ export const defaultContent: AllContent = {
       "Ещё не определился(ась)",
     ],
   },
+  footer: {
+    text: "© {year} KC Education Abroad — часть бренда Kyrgyz Concept",
+  },
+  promoPopup: {
+    enabled: true,
+    title: "Получите бесплатную консультацию",
+    description: "Расскажем, какой вуз и страна подойдут именно вам — бесплатно и без обязательств.",
+    address: "Ждем вас по адресу: Тыныстанова, 231",
+    buttonText: "Записаться",
+    image: undefined,
+  },
+};
+
+/* --------------------------- Провайдер / хуки ----------------------------- */
+
+type Ctx = {
+  content: AllContent;
+  loading: boolean;
+  save: <K extends keyof AllContent>(key: K, value: AllContent[K]) => Promise<void>;
+};
+
+const ContentContext = createContext<Ctx | null>(null);
+
+export function ContentProvider({ children }: { children: ReactNode }) {
+  const [content, setContent] = useState<AllContent>(defaultContent);
+  const [loading, setLoading] = useState(supabaseEnabled);
+
+  useEffect(() => {
+    if (!supabase) return;
+    let cancelled = false;
+    (async () => {
+      const { data, error } = await supabase.from("site_content").select("key,value");
+      if (!cancelled && !error && data) {
+        setContent((prev) => {
+          const next = { ...prev };
+          for (const row of data as { key: string; value: unknown }[]) {
+            if (row.key in next) {
+              // @ts-expect-error -- ключи гарантированы схемой site_content
+              next[row.key] = row.value;
+            }
+          }
+          return next;
+        });
+      }
+      if (!cancelled) setLoading(false);
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const save = useMemo(
+    () =>
+      async <K extends keyof AllContent>(key: K, value: AllContent[K]) => {
+        setContent((prev) => ({ ...prev, [key]: value }));
+        if (!supabase) return;
+        const { error } = await supabase
+          .from("site_content")
+          .upsert({ key, value, updated_at: new Date().toISOString() });
+        if (error) throw error;
+      },
+    []
+  );
+
+  return <ContentContext.Provider value={{ content, loading, save }}>{children}</ContentContext.Provider>;
+}
+
+/** Читает и позволяет сохранить один раздел контента */
+export function useContentSection<K extends keyof AllContent>(
+  key: K
+): [AllContent[K], (value: AllContent[K]) => Promise<void>] {
+  const ctx = useContext(ContentContext);
+  if (!ctx) throw new Error("useContentSection должен вызываться внутри <ContentProvider>");
+  const value = ctx.content[key];
+  const setValue = (v: AllContent[K]) => ctx.save(key, v);
+  return [value, setValue];
+}
+
+export function useContentLoading(): boolean {
+  const ctx = useContext(ContentContext);
+  return ctx ? ctx.loading : false;
+}
+
+export function newId(prefix: string): string {
+  return `${prefix}-${Math.random().toString(36).slice(2, 9)}`;
+}
