@@ -37,21 +37,39 @@ function Index() {
   return (
     <div className="min-h-screen bg-background">
       <Nav />
-      <main>
-        <Hero />
-        <TrustStats />
-        <Trust />
-        <Partners />
-        <Process />
-        <Stories />
-        <Services />
-        <Team />
-        <Events />
-        <Certificates />
-        <Faq />
+
+      {/*
+        СЛОЙ 1: весь обычный контент сайта.
+        relative + z-10 — чтобы он лежал ПОВЕРХ подвала.
+        rounded-b + сплошной bg-background — скруглённый вырез внизу,
+        через который "выглядывает" подвал, когда до него доскроллили.
+      */}
+      <div className="relative z-10 rounded-b-[60px] bg-background sm:rounded-b-[100px]">
+        <main>
+          <Hero />
+          <TrustStats />
+          <Trust />
+          <Partners />
+          <Process />
+          <Stories />
+          <Services />
+          <Team />
+          <Events />
+          <Certificates />
+          <Faq />
+        </main>
+      </div>
+
+      {/*
+        СЛОЙ 2: подвал (форма связи + футер).
+        sticky bottom-0 — "прилипает" ко дну экрана и стоит на месте,
+        пока верхний слой не проскроллится и не откроет его снизу вверх.
+      */}
+      <div className="sticky bottom-0 z-0">
         <Contact />
-      </main>
-      <Footer />
+        <Footer />
+      </div>
+
       <WhatsAppWidget />
       <ScrollPromoPopup />
     </div>
