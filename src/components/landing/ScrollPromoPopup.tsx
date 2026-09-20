@@ -58,10 +58,15 @@ export function ScrollPromoPopup() {
           <p className="font-display text-3xl font-black uppercase leading-[1.05] tracking-tight text-ink sm:text-4xl">{popup.title}</p>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{popup.description}</p>
           {popup.address && (
-            <p className="mt-4 flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-primary">
+            
+              href={`https://2gis.kg/bishkek/search/${encodeURIComponent(popup.address)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-primary underline decoration-primary/30 underline-offset-2 transition-colors hover:text-accent hover:decoration-accent/50"
+            >
               <MapPin className="size-4 flex-shrink-0 text-rose-500" aria-hidden="true" />
               {popup.address}
-            </p>
+            </a>
           )}
           <div className="mt-6 flex items-center gap-3">
             <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-6 py-3 text-sm font-bold text-white shadow-md transition-all hover:scale-[1.02] hover:bg-[#20ba56]">
