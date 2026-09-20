@@ -58,12 +58,7 @@ export function ScrollPromoPopup() {
           <p className="font-display text-3xl font-black uppercase leading-[1.05] tracking-tight text-ink sm:text-4xl">{popup.title}</p>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{popup.description}</p>
           {popup.address && (
-            
-              href={`https://2gis.kg/bishkek/search/${encodeURIComponent(popup.address)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-primary underline decoration-primary/30 underline-offset-2 transition-colors hover:text-accent hover:decoration-accent/50"
-            >
+            <a href={`https://2gis.kg/bishkek/search/${encodeURIComponent(popup.address)}`} target="_blank" rel="noopener noreferrer" className="mt-4 flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-primary underline decoration-primary/30 underline-offset-2 transition-colors hover:text-accent hover:decoration-accent/50">
               <MapPin className="size-4 flex-shrink-0 text-rose-500" aria-hidden="true" />
               {popup.address}
             </a>
