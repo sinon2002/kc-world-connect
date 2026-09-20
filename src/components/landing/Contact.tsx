@@ -33,9 +33,8 @@ export function Contact() {
 
   return (
     <>
-      {/* Секция. Убран overflow-hidden, чтобы элементы не обрезались сверху/снизу */}
       <section className="relative overflow-visible pt-12 pb-6 text-white" style={{ background: "#0078c3" }}>
-        {/* Сетка */}
+        {/* Сетка бэкграунда */}
         <div aria-hidden="true" className="route-grid pointer-events-none absolute inset-0 opacity-20" />
         {/* Линия маршрута */}
         <svg aria-hidden="true" viewBox="0 0 1400 520" preserveAspectRatio="none" className="pointer-events-none absolute inset-0 hidden h-full w-full text-white/35 lg:block">
@@ -45,16 +44,15 @@ export function Contact() {
         </svg>
 
         {/* 
-          ИСПРАВЛЕНО: Сетка элементов. 
-          На мобильных (по умолчанию) элементы идут один за другим строго по порядку разметки.
-          На компьютерах (lg:) включается grid-cols.
+          ИСПРАВЛЕНО: Главный контейнер.
+          На телефонах принудительно делаем вертикальный Flexbox (flex-col) с четким разделением блоков (gap-8).
+          На больших экранах (lg:) сбрасываем flex и включаем привычный трехколоночный Grid.
         */}
-        <div className="shell relative z-10 grid gap-8 lg:grid-cols-[1fr_320px_1fr] lg:gap-4 lg:items-end"> 
+        <div className="shell relative z-10 flex flex-col gap-8 lg:grid lg:grid-cols-[1fr_320px_1fr] lg:gap-4 lg:items-end"> 
           
-          {/* БЛОК 1: ТЕКСТ И СОЦСЕТИ. На мобильных он будет САМЫМ ПЕРВЫМ */} 
-          <div className="order-1 lg:order-none">
+          {/* БЛОК 1: ТЕКСТ И СОЦСЕТИ */} 
+          <div className="w-full">
             <Reveal> 
-              {/* Изменено: добавлен четкий призыв к действию, если заголовка не хватало */}
               <h2 className="font-display text-3xl font-extrabold leading-tight sm:text-4xl"> 
                 Записаться на бесплатную консультацию
               </h2> 
@@ -63,15 +61,13 @@ export function Contact() {
                 <span className="h-2 w-2 rounded-full bg-gold" aria-hidden="true" /> Ответим в течение 30 минут в рабочее время 
               </p> 
               
-              {/* Соцсети под текстом */}
+              {/* Соцсети */}
               <div className="mt-6 flex gap-3"> 
-                {/* WhatsApp */} 
                 <a href={`https://wa.me`} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 transition-colors hover:bg-white/20" > 
                   <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" aria-hidden="true" > 
                     <path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.1 14.1c-.2.6-1.2 1.2-1.9 1.2-.5 0-1.2-.1-3.2-1s-3.4-3-3.5-3.2c-.6-.9-1-1.9-.9-2.8 0-.8.5-1.4.8-1.7.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.7 1.7c.1.2 0 .4-.1.6l-.4.5c-.1.2-.2.3 0 .6.3.5.8 1.1 1.3 1.5.6.5 1.1.7 1.4.8.2.1.4.1.5 0l.7-.8c.2-.2.4-.2.6-.1l1.6.8c.3.2.4.3.4.5 0 .2 0 .8-.3 1.1Z" /> 
                   </svg> 
                 </a> 
-                {/* Instagram */} 
                 <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram Kyrgyz Concept" className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 transition-colors hover:bg-white/20" > 
                   <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" aria-hidden="true" > 
                     <path d="M12 2.2c-2.7 0-3 0-4.1.1-1 0-1.8.2-2.4.5-.7.2-1.2.6-1.7 1.1S3 5 2.8 5.6c-.3.6-.4 1.4-.5 2.4-.1 1-.1 1.4-.1 4.1s0 3 .1 4.1c0 1 .2 1.8.5 2.4.2.7.6 1.2 1.1 1.7s1 .8 1.7 1.1c.6.3 1.4.4 2.4.5 1 0 1.4.1 4.1.1s3 0 4.1-.1c1 0 1.8-.2 2.4-.5.7-.3 1.2-.6 1.7-1.1s.8-1 1.1-1.7c.3-.6.4-1.4.5-2.4 0-1 .1-1.4-.1-4.1s0-3-.1-4.1c0-1-.2-1.8-.5-2.4-.2-.7-.6-1.2-1.1-1.7s-1-.8-1.7-1.1c-.6-.3-1.4-.5-2.4-.5-.1-.1-1.4-.1-4.1-.1Zm0 5.1a4.7 4.7 0 1 1 0 9.4 4.7 4.7 0 0 1 0-9.4Zm0 1.8a2.9 2.9 0 1 0 0 5.8 2.9 2.9 0 0 0 0-5.8Zm5.1-2.3a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2Z" /> 
@@ -81,8 +77,8 @@ export function Contact() {
             </Reveal>
           </div> 
 
-          {/* БЛОК 2: ПАРЕНЬ. На мобильных он встанет ВТОРЫМ (под текстом) */} 
-          <div className="order-2 justify-self-center lg:order-none">
+          {/* БЛОК 2: ФОТО ПАРНЯ */} 
+          <div className="w-full flex justify-center">
             <Reveal delay={0.08}> 
               <img 
                 src={guyPhoto} 
@@ -94,8 +90,8 @@ export function Contact() {
             </Reveal> 
           </div>
 
-          {/* БЛОК 3: ФОРМА ЗАЯВКИ. На мобильных она будет в самом низу, над надписью Kyrgyz Concept */} 
-          <div className="order-3 lg:order-none">
+          {/* БЛОК 3: ФОРМА С ПОЛЯМИ ВВОДА */} 
+          <div className="w-full">
             <Reveal delay={0.15}> 
               <div className="rounded-3xl bg-white p-6 shadow-2xl sm:p-8"> 
                 {sent ? ( 
@@ -152,7 +148,7 @@ export function Footer() {
   const [footer] = useContentSection("footer");
   const text = footer.text.replace("{year}", String(new Date().getFullYear()));
   
-   return ( 
+  return ( 
     <footer className="pb-8 pt-2 text-white" style={{ background: "#0078c3" }}> 
       <div className="shell"> 
         <div className="flex flex-col items-center justify-between gap-3 border-t border-white/15 pt-6 text-sm text-white/70 sm:flex-row">
@@ -163,4 +159,3 @@ export function Footer() {
     </footer>
   );
 }
-
