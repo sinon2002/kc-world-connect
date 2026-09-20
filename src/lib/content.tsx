@@ -112,6 +112,15 @@ export interface FooterContent {
   text: string;
 }
 
+export interface PromoPopupContent {
+  enabled: boolean;
+  title: string;
+  description: string;
+  address: string;
+  buttonText: string;
+  image: string | undefined;
+}
+
 export interface AllContent {
   hero: HeroContent;
   partners: PartnersContent;
@@ -123,8 +132,8 @@ export interface AllContent {
   faq: FaqContent;
   contact: ContactContent;
   footer: FooterContent;
+  promoPopup: PromoPopupContent;
 }
-
 /* -------------------------------- Дефолты --------------------------------- */
 /* Это то, что уже есть на сайте сейчас. Пока админка не сохранила свои
    значения в базу — показываются именно эти. */
