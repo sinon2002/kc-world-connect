@@ -53,7 +53,7 @@ export function Contact() {
   };
 
   return (
-    <section id="consult" className="relative overflow-hidden rounded-tl-[120px] section-pad text-white sm:rounded-tl-[240px]" style={{ background: "#0078c3" }}>
+   <section id="consult" className="relative overflow-hidden section-pad text-white" style={{ background: "#0078c3" }}>
       {/* Сетка */}
       <div aria-hidden="true" className="route-grid pointer-events-none absolute inset-0 opacity-20" />
 
