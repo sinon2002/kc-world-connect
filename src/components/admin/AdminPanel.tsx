@@ -9,6 +9,7 @@ import {
   ShieldCheck,
   HelpCircle,
   PhoneCall,
+  MessageCircleHeart,
 } from "lucide-react";
 import { supabaseEnabled } from "@/lib/supabase";
 import { useContentLoading } from "@/lib/content";
@@ -20,6 +21,7 @@ import { ServicesEditor } from "./sections/ServicesEditor";
 import { TeamEditor } from "./sections/TeamEditor";
 import { CertsEditor, FaqEditor } from "./sections/CertsFaqEditor";
 import { ContactEditor, FooterEditor } from "./sections/ContactEditor";
+import { PromoPopupEditor } from "./sections/PromoPopupEditor";
 
 const tabs = [
   { id: "hero", label: "Шапка", icon: LayoutTemplate, Component: HeroEditor },
@@ -31,6 +33,7 @@ const tabs = [
   { id: "certs", label: "Сертификаты", icon: ShieldCheck, Component: CertsEditor },
   { id: "faq", label: "FAQ", icon: HelpCircle, Component: FaqEditor },
   { id: "contact", label: "Подвал / Заявка", icon: PhoneCall, Component: ContactEditor },
+  { id: "promoPopup", label: "Поп-ап консультации", icon: MessageCircleHeart, Component: PromoPopupEditor },
 ] as const;
 
 export function AdminPanel() {
