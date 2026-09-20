@@ -29,6 +29,7 @@ export function ScrollPromoPopup() {
     return () => window.removeEventListener("scroll", onScroll);
   }, [popup.enabled]);
 
+  // Плавное включение анимации при появлении
   useEffect(() => {
     if (visible && !dismissed) {
       const timer = setTimeout(() => setAnimate(true), 10);
@@ -36,9 +37,10 @@ export function ScrollPromoPopup() {
     }
   }, [visible, dismissed]);
 
+  // Плавное закрытие поп-апа
   const handleClose = () => {
     setAnimate(false);
-    setTimeout(() => setDismissed(true), 300);
+    setTimeout(() => setDismissed(true), 300); // 300мс = длительность transition duration-300
   };
 
   if (!popup.enabled || !visible || dismissed) return null;
@@ -53,7 +55,7 @@ export function ScrollPromoPopup() {
         </button>
 
         <div className="flex flex-col justify-center px-6 py-8 sm:px-8 sm:py-10">
-          <p className="font-display text-2xl font-extrabold leading-tight text-ink sm:text-[28px]">{popup.title}</p>
+          <p className="font-display text-3xl font-black uppercase leading-[1.05] tracking-tight text-ink sm:text-4xl">{popup.title}</p>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{popup.description}</p>
           {popup.address && (
             <p className="mt-4 flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-primary">
@@ -68,7 +70,7 @@ export function ScrollPromoPopup() {
               </svg>
               {popup.buttonText}
             </a>
-            <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" aria-label="Instagram Kyrgyz Concept" className="inline-flex size-11 flex-shrink-0 items-center justify-center rounded-full bg-secondary text-ink transition-all hover:scale-[1.02] hover:bg-secondary/70">
+            <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" aria-label="Instagram Kyrgyz Concept" className="inline-flex size-11 flex-shrink-0 items-center justify-center rounded-full text-white shadow-md transition-transform hover:scale-[1.05]" style={{ background: "radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%)" }}>
               <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" aria-hidden="true">
                 <path d="M12 2.2c-2.7 0-3 0-4.1.1-1 0-1.8.2-2.4.5-.7.2-1.2.6-1.7 1.1S3 5 2.8 5.6c-.3.6-.4 1.4-.5 2.4-.1 1-.1 1.4-.1 4.1s0 3 .1 4.1c0 1 .2 1.8.5 2.4.2.7.6 1.2 1.1 1.7s1 .8 1.7 1.1c.6.3 1.4.4 2.4.5 1 0 1.4.1 4.1.1s3 0 4.1-.1c1 0 1.8-.2 2.4-.5.7-.3 1.2-.6 1.7-1.1s.8-1 1.1-1.7c.3-.6.4-1.4.5-2.4 0-1 .1-1.4-.1-4.1s0-3-.1-4.1c0-1-.2-1.8-.5-2.4-.2-.7-.6-1.2-1.1-1.7s-1-.8-1.7-1.1c-.6-.3-1.4-.5-2.4-.5-.1-.1-1.4-.1-4.1-.1Zm0 5.1a4.7 4.7 0 1 1 0 9.4 4.7 4.7 0 0 1 0-9.4Zm0 1.8a2.9 2.9 0 1 0 0 5.8 2.9 2.9 0 0 0 0-5.8Zm5.1-2.3a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2Z" />
               </svg>
@@ -76,8 +78,10 @@ export function ScrollPromoPopup() {
           </div>
         </div>
 
-        <div className={`order-first h-44 sm:order-none sm:h-auto ${popup.image ? "" : "bg-secondary/40 p-4"}`}>
-          <img src={popup.image ?? guyPhoto} alt="" className={`h-full w-full ${popup.image ? "object-cover" : "object-contain"}`} />
+        <div className="order-first flex h-44 items-center justify-center p-3 sm:order-none sm:h-auto sm:py-4 sm:pr-4">
+          <div className={`h-full w-full overflow-hidden rounded-2xl ${popup.image ? "" : "flex items-center justify-center bg-secondary/40 p-4"}`}>
+            <img src={popup.image ?? guyPhoto} alt="" className={`h-full w-full ${popup.image ? "object-cover" : "object-contain"}`} />
+          </div>
         </div>
       </div>
     </div>
