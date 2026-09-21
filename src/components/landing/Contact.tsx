@@ -135,9 +135,9 @@ export function Contact() {
       {/* Блок для фонового текста под элементами */}
       <div className="relative select-none pb-6 text-white" style={{ background: "#0078c3" }}>
         <div className="shell">
-          <p aria-hidden="true" className="text-center font-display text-[15vw] leading-none tracking-tight text-white/10 sm:text-[9vw]" style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontStyle: "italic" }}>
-            Kyrgyz Concept
-          </p>
+                  <p aria-hidden="true" className="select-none text-center font-display text-[15vw] font-bold leading-none tracking-tight text-white/10 sm:text-[9vw]">
+          Kyrgyz Concept
+        </p>
         </div>
       </div>
     </>
