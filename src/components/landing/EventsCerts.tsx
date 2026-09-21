@@ -27,10 +27,7 @@ export function Events() {
             <span className="inline-flex items-center gap-2 rounded bg-secondary px-4 py-1.5 text-xs font-bold tracking-[0.16em] text-primary uppercase">
               {events.badge}
             </span>
-            <h2
-              className="mt-5 text-2xl leading-snug text-ink md:text-3xl"
-              style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
-            >
+                        <h2 className="font-display mt-5 text-2xl leading-snug text-ink md:text-3xl">
               {events.heading}
             </h2>
             <p className="mt-4 border-l-2 border-primary pl-3 text-xs font-bold tracking-[0.1em] text-primary uppercase">
