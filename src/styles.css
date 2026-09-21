@@ -86,8 +86,8 @@
 }
 
 @utility shell {
-  width: 100%; margin-inline: auto; max-width: 82rem; padding-inline: 1.25rem;
-  @media (min-width: 768px) { padding-inline: 2.5rem; }
+  width: 100%; margin-inline: auto; max-width: 96rem; padding-inline: 1.25rem;
+  @media (min-width: 768px) { padding-inline: 3rem; }
 }
 
 @utility route-grid {
