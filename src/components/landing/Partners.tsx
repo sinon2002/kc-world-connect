@@ -16,10 +16,7 @@ export function Partners() {
       }}
     >
       <div className="shell text-center">
-        <h2
-          className="text-3xl font-bold uppercase tracking-wide text-ink md:text-4xl"
-          style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
-        >
+               <h2 className="font-display text-3xl font-bold uppercase tracking-wide text-ink md:text-4xl">
           {partners.heading}
         </h2>
 
