@@ -112,6 +112,21 @@ export interface FooterContent {
   text: string;
 }
 
+export interface TrustStatItem {
+  id: string;
+  number: string;
+  label: string;
+  text: string;
+}
+export interface TrustStatsContent {
+  heading: string;
+  subheading: string;
+  items: TrustStatItem[];
+  highlightTitle: string;
+  highlightSubtitle: string;
+  highlightText: string;
+}
+
 export interface PromoPopupContent {
   enabled: boolean;
   title: string;
@@ -123,6 +138,7 @@ export interface PromoPopupContent {
 
 export interface AllContent {
   hero: HeroContent;
+  trustStats: TrustStatsContent;
   partners: PartnersContent;
   events: EventsContent;
   stories: StoriesContent;
@@ -138,6 +154,7 @@ export interface AllContent {
 /* -------------------------------- Дефолты --------------------------------- */
 /* Это то, что уже есть на сайте сейчас. Пока админка не сохранила свои
    значения в базу — показываются именно эти. */
+
 export const defaultContent: AllContent = {
   hero: {
     eyebrow: "Kyrgyz Concept Education Abroad",
@@ -153,6 +170,18 @@ export const defaultContent: AllContent = {
     cityFrom: "Бишкек",
     cityTo: "Лондон",
     dreamBadge: "Кампус мечты",
+  },
+  trustStats: {
+    heading: "Учёба за границей. Получите образование в лучших университетах мира",
+    subheading: "Нам доверяют абитуриенты и университеты по всему миру",
+    items: [
+      { id: "ts1", number: "10 000+", label: "студентов", text: "Успешно поступили и обучаются за рубежом с нашей поддержкой и полным сопровождением." },
+      { id: "ts2", number: "90+", label: "направлений", text: "Широкий выбор стран, университетов и языковых программ по всему земному шару." },
+      { id: "ts3", number: "35+ лет", label: "опыта на рынке", text: "Многолетняя история, сильная экспертиза и репутационное доверие клиентов в Кыргызстане." },
+    ],
+    highlightTitle: "Высокий шанс",
+    highlightSubtitle: "на зачисление",
+    highlightText: "Мы пошагово ведём по системе, снижая риск отказа до минимума.",
   },
   partners: {
     heading: "Университеты-партнёры",
