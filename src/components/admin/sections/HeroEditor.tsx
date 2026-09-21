@@ -21,7 +21,7 @@ export function HeroEditor() {
         <Field label="Заголовок, обычная часть">
           <TextInput value={local.titleLine} onChange={(e) => set("titleLine", e.target.value)} />
         </Field>
-              <Field label="Заголовок, выделенная синим часть (Enter — перенос строки в нужном месте)">
+        <Field label="Заголовок, выделенная синим часть (Enter — перенос строки в нужном месте)">
           <TextArea rows={2} value={local.titleHighlight} onChange={(e) => set("titleHighlight", e.target.value)} />
         </Field>
         <Field label="Плашка строка 1">
