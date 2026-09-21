@@ -42,9 +42,6 @@ export function HeroEditor() {
         <Field label="Текст второй кнопки">
           <TextInput value={local.ctaSecondary} onChange={(e) => set("ctaSecondary", e.target.value)} />
         </Field>
-        <Field label="Подпись у видео-ссылки">
-          <TextInput value={local.videoLabel} onChange={(e) => set("videoLabel", e.target.value)} />
-        </Field>
       </div>
       <div className="mt-4">
         <Field label="Абзац с описанием">
