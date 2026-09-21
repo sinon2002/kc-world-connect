@@ -18,7 +18,7 @@ export function Hero() {
       <div className="shell relative grid min-h-[740px] items-center gap-7 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
         <div className="hero-copy-intro relative z-20 pt-8 lg:pr-4 lg:pt-0">
           <motion.div {...reveal(1.05)} className="flex items-center gap-3 text-xs font-bold uppercase text-primary"><span className="h-px w-10 bg-primary" />{hero.eyebrow}</motion.div>
-                   <h1 className="mt-6 max-w-3xl whitespace-pre-line text-[2.75rem] leading-[1.02] text-ink sm:text-6xl lg:text-[4.45rem]">{hero.titleLine} <span className="text-primary">{hero.titleHighlight}</span></h1>
+          <h1 className="mt-6 max-w-3xl whitespace-pre-line text-[2.75rem] leading-[1.02] text-ink sm:text-6xl lg:text-[4.45rem]">{hero.titleLine} <span className="text-primary">{hero.titleHighlight}</span></h1>
           <motion.div {...reveal(1.2)} className="mt-6 inline-flex border-l-2 border-accent bg-secondary px-4 py-3 text-sm font-bold uppercase text-ink">{hero.badgeLine1}<br />{hero.badgeLine2}</motion.div>
           <motion.p {...reveal(1.3)} className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">{hero.paragraph}</motion.p>
           <motion.div {...reveal(1.4)} className="mt-8 flex flex-col gap-3 sm:flex-row">
