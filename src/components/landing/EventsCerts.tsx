@@ -1,8 +1,75 @@
-import { useState } from "react";
-import { CalendarDays, Check, ChevronDown, ShieldCheck, BookOpen } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { CalendarDays, Check, ChevronDown, ShieldCheck, BookOpen, Loader2 } from "lucide-react";
 import { Reveal, SectionHeading } from "./Reveal";
 import { useContentSection } from "@/lib/content";
 import fallbackEventsPhoto from "@/assets/events/students-library.jpg";
+
+/**
+ * Рендерит первую страницу PDF-файла как картинку (canvas) прямо в браузере.
+ * Работает одинаково на компьютере и на телефоне — без "скачать" / "открыть".
+ */
+function PdfThumbnail({ url, alt }: { url: string; alt: string }) {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [status, setStatus] = useState<"loading" | "ready" | "error">("loading");
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function render() {
+      try {
+        const pdfjsLib = await import("pdfjs-dist");
+        const workerUrl = (await import("pdfjs-dist/build/pdf.worker.min.mjs?url")).default;
+        pdfjsLib.GlobalWorkerOptions.workerSrc = workerUrl;
+
+        const pdf = await pdfjsLib.getDocument(url).promise;
+        const page = await pdf.getPage(1);
+        const viewport = page.getViewport({ scale: 2 });
+
+        const canvas = canvasRef.current;
+        if (!canvas || cancelled) return;
+
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+        const context = canvas.getContext("2d");
+        if (!context) throw new Error("no canvas context");
+
+        await page.render({ canvasContext: context, viewport }).promise;
+        if (!cancelled) setStatus("ready");
+      } catch {
+        if (!cancelled) setStatus("error");
+      }
+    }
+
+    render();
+    return () => {
+      cancelled = true;
+    };
+  }, [url]);
+
+  if (status === "error") {
+    return (
+      <span className="flex h-full w-full items-center justify-center text-center text-xs text-muted-foreground px-3">
+        Не удалось показать превью файла.
+      </span>
+    );
+  }
+
+  return (
+    <>
+      {status === "loading" && (
+        <span className="flex h-full w-full items-center justify-center">
+          <Loader2 className="size-5 animate-spin text-muted-foreground" aria-hidden="true" />
+        </span>
+      )}
+      <canvas
+        ref={canvasRef}
+        role="img"
+        aria-label={alt}
+        className={"h-full w-full object-contain " + (status === "ready" ? "" : "hidden")}
+      />
+    </>
+  );
+}
 
 export function Events() {
   const [events] = useContentSection("events");
@@ -134,28 +201,11 @@ export function Certificates() {
                   
                   {c.image && (
                     <div className="w-full md:w-1/4 flex-shrink-0 md:order-last flex flex-col gap-2">
-                      {isPdf ? (
-                        <>
-                          {/* Показываем PDF напрямую в браузере — без стороннего вьювера, без принудительного скачивания */}
-                          <div className="h-64 overflow-hidden rounded-xl border border-border bg-secondary/30">
-                            <iframe
-                              src={fileUrl}
-                              className="w-full h-full border-none"
-                              title={c.title}
-                            />
-                          </div>
-                          <a
-                            href={fileUrl}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="text-center text-xs font-semibold text-primary hover:underline"
-                          >
-                            Открыть в новой вкладке
-                          </a>
-                        </>
-                      ) : (
-                        /* Если обычная картинка (JPG/PNG) */
-                        <div className="h-64 overflow-hidden rounded-xl border border-border bg-secondary/30">
+                      <div className="h-64 overflow-hidden rounded-xl border border-border bg-secondary/30">
+                        {isPdf ? (
+                          <PdfThumbnail url={fileUrl} alt={c.title} />
+                        ) : (
+                          /* JPG / PNG — обычная картинка */
                           <img
                             src={c.image}
                             alt={c.title}
@@ -175,7 +225,17 @@ export function Certificates() {
                               }
                             }}
                           />
-                        </div>
+                        )}
+                      </div>
+                      {isPdf && (
+                        <a
+                          href={fileUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-center text-xs font-semibold text-primary hover:underline"
+                        >
+                          Открыть PDF-документ целиком
+                        </a>
                       )}
                     </div>
                   )}
