@@ -10,10 +10,12 @@ import {
   HelpCircle,
   PhoneCall,
   MessageCircleHeart,
+  BarChart3,
 } from "lucide-react";
 import { supabaseEnabled } from "@/lib/supabase";
 import { useContentLoading } from "@/lib/content";
 import { HeroEditor } from "./sections/HeroEditor";
+import { TrustStatsEditor } from "./sections/TrustStatsEditor";
 import { PartnersEditor } from "./sections/PartnersEditor";
 import { EventsEditor } from "./sections/EventsEditor";
 import { StoriesEditor } from "./sections/StoriesEditor";
@@ -25,6 +27,7 @@ import { PromoPopupEditor } from "./sections/PromoPopupEditor";
 
 const tabs = [
   { id: "hero", label: "Шапка", icon: LayoutTemplate, Component: HeroEditor },
+  { id: "trustStats", label: "Статистика (10 000+ и т.д.)", icon: BarChart3, Component: TrustStatsEditor },
   { id: "partners", label: "Университеты", icon: Building2, Component: PartnersEditor },
   { id: "events", label: "Мероприятия", icon: CalendarDays, Component: EventsEditor },
   { id: "stories", label: "Истории студентов", icon: GraduationCap, Component: StoriesEditor },
