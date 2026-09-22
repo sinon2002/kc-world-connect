@@ -108,7 +108,7 @@ export function Certificates() {
                   </div>
                   
                   {c.image && (
-                    <div className="w-full md:w-1/3 h-80 flex-shrink-0 md:order-last overflow-hidden rounded-xl border border-border bg-secondary/30">
+                  <div className="w-full md:w-1/4 h-64 flex-shrink-0 md:order-last overflow-hidden rounded-xl border border-border bg-secondary/30">
                       {isPdf ? (
                         /* Если это PDF — встраиваем интерактивное превью через iframe */
                         <iframe
