@@ -93,7 +93,9 @@ export function Certificates() {
 
             // Корректно формируем абсолютную ссылку на файл для Vercel
             const fileUrl = isPdf && typeof c.image === "string"
-              ? c.image.startsWith("http") ? c.image : `https://vercel.app${c.image}`
+              ? c.image.startsWith("http")
+                ? c.image
+                : `${typeof window !== "undefined" ? window.location.origin : ""}${c.image}`
               : "";
 
             return (
@@ -135,7 +137,7 @@ export function Certificates() {
                       {isPdf ? (
                         /* Безопасное встраивание PDF-документов через Google Docs Viewer для ПК и телефонов */
                         <iframe
-                          src={`https://google.com{encodeURIComponent(fileUrl)}&embedded=true`}
+                          src={`https://docs.google.com/viewer?url=${encodeURIComponent(fileUrl)}&embedded=true`}
                           className="w-full h-full border-none"
                           title={c.title}
                         />
@@ -146,6 +148,19 @@ export function Certificates() {
                           alt={c.title}
                           loading="lazy"
                           className="w-full h-full object-contain"
+                          onError={(e) => {
+                            const el = e.currentTarget;
+                            el.onerror = null;
+                            el.style.display = "none";
+                            const parent = el.parentElement;
+                            if (parent && !parent.querySelector("[data-fallback]")) {
+                              const span = document.createElement("span");
+                              span.dataset.fallback = "true";
+                              span.className = "flex h-full w-full items-center justify-center text-center text-xs text-muted-foreground px-3";
+                              span.textContent = "Файл не загрузился. Загрузите его заново в админ-панели.";
+                              parent.appendChild(span);
+                            }
+                          }}
                         />
                       )}
                     </div>
