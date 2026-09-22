@@ -27,7 +27,8 @@ export function Events() {
           </div>
           {/* Изменили md:w-[58%] на md:w-[65%], чтобы компенсировать уменьшение фото */}
           <div className="p-8 md:w-[65%] md:p-14">
-            <span className="inline-flex items-center gap-2 rounded bg-secondary px-4 py-1.5 text-xs font-bold tracking-[0.16em] text-primary uppercase">
+            {/* ИЗМЕНЕНИЕ ТУТ: заменили text-xs на text-sm для увеличения слова МЕРОПРИЯТИЯ и поправили отступы px-4 py-2 */}
+            <span className="inline-flex items-center gap-2 rounded bg-secondary px-4 py-2 text-sm font-bold tracking-[0.16em] text-primary uppercase">
               {events.badge}
             </span>
             <h2 className="font-display mt-5 text-2xl leading-snug text-ink md:text-3xl">
