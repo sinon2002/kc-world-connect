@@ -13,7 +13,7 @@ export function Events() {
       <BookOpen aria-hidden="true" strokeWidth={1} className="pointer-events-none absolute -top-6 right-[-70px] size-[360px] rotate-[-10deg] text-primary/10 md:size-[440px]" />
       <div className="shell relative z-10">
         <Reveal className="overflow-hidden rounded-4xl bg-card shadow-soft md:flex items-center">
-          {/* Изменили md:w-[42%] на md:w-[35%] для уменьшения размера фото, добавили md:p-6 для отступов */}
+          {/* НАСТРОЙКА РАЗМЕРА: на мобилках h-64 и ширина на весь экран, на ПК (md:) ширина 35% и аккуратные отступы p-6 */}
           <div className="h-64 md:h-auto md:w-[35%] md:flex-shrink-0 md:p-6 flex items-center justify-center">
             <img
               src={photo}
@@ -21,13 +21,12 @@ export function Events() {
               width={720}
               height={900}
               loading="lazy"
-              /* Изменили object-cover на object-contain, чтобы коллаж не обрезался при уменьшении */
-              className="h-full w-full object-contain"
+              /* На мобилках картинка заполняет блок (object-cover), на ПК аккуратно вписывается (md:object-contain) */
+              className="h-full w-full object-cover md:object-contain"
             />
           </div>
-          {/* Изменили md:w-[58%] на md:w-[65%], чтобы компенсировать уменьшение фото */}
+          {/* ТЕКСТОВЫЙ БЛОК: на мобилках занимает всю ширину, на ПК расширяется до 65% */}
           <div className="p-8 md:w-[65%] md:p-14">
-            {/* ИЗМЕНЕНИЕ ТУТ: заменили text-xs на text-sm для увеличения слова МЕРОПРИЯТИЯ и поправили отступы px-4 py-2 */}
             <span className="inline-flex items-center gap-2 rounded bg-secondary px-4 py-2 text-sm font-bold tracking-[0.16em] text-primary uppercase">
               {events.badge}
             </span>
