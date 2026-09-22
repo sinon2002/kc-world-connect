@@ -48,6 +48,7 @@ export interface StoryItem {
   quote: string;
   photo: string | undefined;
   video: string | undefined;
+  videoCover: string | undefined;
 }
 export interface StoriesContent {
   heading: string;
@@ -270,6 +271,7 @@ export const defaultContent: AllContent = {
           "Мне казалось, что топовые вузы — не про меня. Консультант разложил всё по шагам, и я получила offer с частичной стипендией.",
         photo: undefined,
         video: undefined,
+        videoCover: undefined,
       },
       {
         id: "s2",
@@ -279,6 +281,7 @@ export const defaultContent: AllContent = {
           "Самое сложное было с документами и Uni-Assist. KC вели меня буквально за руку, ни один дедлайн не пропущен.",
         photo: undefined,
         video: undefined,
+        videoCover: undefined,
       },
       {
         id: "s3",
@@ -287,6 +290,7 @@ export const defaultContent: AllContent = {
         quote: "Помогли собрать портфолио и мотивационное письмо. Виза — с первого раза.",
         photo: undefined,
         video: undefined,
+        videoCover: undefined,
       },
       {
         id: "s4",
@@ -295,6 +299,7 @@ export const defaultContent: AllContent = {
         quote: "Подобрали программу под мой бюджет и нашли общежитие ещё до отъезда.",
         photo: undefined,
         video: undefined,
+        videoCover: undefined,
       },
       {
         id: "s5",
@@ -303,6 +308,7 @@ export const defaultContent: AllContent = {
         quote: "Начали за год: подготовка к IELTS, потом заявка. Итог — 7.0 и место на foundation.",
         photo: undefined,
         video: undefined,
+        videoCover: undefined,
       },
       {
         id: "s6",
@@ -311,6 +317,7 @@ export const defaultContent: AllContent = {
         quote: "Прошёл на грант. Без сопровождения я бы просто не разобрался в требованиях.",
         photo: undefined,
         video: undefined,
+        videoCover: undefined,
       },
     ],
   },
