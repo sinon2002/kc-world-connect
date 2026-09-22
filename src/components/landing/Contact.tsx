@@ -80,13 +80,13 @@ export function Contact() {
           {/* БЛОК 2: ФОТО ПАРНЯ */} 
           <div className="w-full flex justify-center">
             <Reveal delay={0.08}> 
-              <img 
-                src={guyPhoto} 
-                alt="Студент Kyrgyz Concept приглашает записаться на консультацию" 
-                width={895} 
-                height={1200} 
-                className="h-[280px] w-auto drop-shadow-2xl sm:h-[360px] lg:h-[480px]" 
-              /> 
+              <img
+  src={guyPhoto}
+  alt="Студенты Kyrgyz Concept приглашают записаться на консультацию"
+  width={373}
+  height={669}
+  className="h-[300px] w-auto drop-shadow-2xl sm:h-[380px] lg:h-[460px]"
+/>
             </Reveal> 
           </div>
 
