@@ -11,14 +11,14 @@ export function Trust() {
 
       <div className="shell relative z-10">
         <div className="flex items-start justify-between gap-6">
-          <Reveal className="max-w-3xl space-y-4">
+          <Reveal className="max-w-5xl space-y-4">
             <span className="inline-flex items-center rounded-full bg-gold/15 px-4 py-1.5 text-xs font-bold tracking-[0.16em] text-gold uppercase">
               {trust.badge}
             </span>
-            <h2 className="text-3xl leading-tight text-on-navy md:text-4xl lg:text-[2.75rem]">
+            <h2 className="whitespace-pre-line text-3xl leading-tight text-on-navy md:text-4xl lg:text-[2.3rem]">
               {trust.heading}
             </h2>
-            <p className="text-base text-on-navy-muted md:text-lg">
+            <p className="max-w-3xl text-base text-on-navy-muted md:text-lg">
               {trust.paragraph}
             </p>
           </Reveal>
