@@ -25,7 +25,7 @@ export function TrustStats() {
                 <Reveal key={s.id} delay={i * 0.08} className="flex min-h-[230px] flex-col rounded-[1.75rem] bg-card p-7 shadow-soft">
                   <div className="font-display text-3xl font-extrabold text-primary">{s.number}</div>
                   <div className="mt-2 text-sm font-bold text-ink">{s.label}</div>
-                  <p className="mt-auto pt-6 text-xs leading-relaxed text-muted-foreground">{s.text}</p>
+                  <p className="mt-auto pt-6 text-sm leading-relaxed text-muted-foreground">{s.text}</p>
                 </Reveal>
               ))}
 
@@ -33,7 +33,7 @@ export function TrustStats() {
               <Reveal delay={0.32} className="flex min-h-[230px] rotate-[3deg] flex-col rounded-[1.75rem] bg-gradient-to-br from-[#2CE08A] to-[#19B368] p-7 shadow-gold">
                 <div className="font-display text-2xl font-extrabold leading-tight text-white">{trustStats.highlightTitle}</div>
                 <div className="mt-2 text-sm font-bold text-white">{trustStats.highlightSubtitle}</div>
-                <p className="mt-auto pt-6 text-xs leading-relaxed text-white/90">{trustStats.highlightText}</p>
+                <p className="mt-auto pt-6 text-sm leading-relaxed text-white/90">{trustStats.highlightText}</p>
               </Reveal>
             </div>
           </div>
