@@ -14,11 +14,11 @@ export function Events() {
       <div className="shell relative z-10">
         <Reveal className="overflow-hidden rounded-4xl bg-card shadow-soft p-6 md:p-0 md:flex items-center">
           
-          {/* ОБЩИЙ КОНТЕЙНЕР ДЛЯ МОБИЛОК: выстраивает фото и плашку "Мероприятия" в одну строку */}
-          <div className="flex items-start gap-4 md:block md:w-[35%] md:flex-shrink-0 md:p-6">
+          {/* ОБЩИЙ КОНТЕЙНЕР ДЛЯ МОБИЛОК: изменили items-start на items-center для выравнивания по центру */}
+          <div className="flex items-center gap-4 md:block md:w-[35%] md:flex-shrink-0 md:p-6">
             
-            {/* БЛОК С ФОТО: на мобилках занимает 45% ширины от строки */}
-            <div className="h-44 w-[45%] flex-shrink-0 flex items-center justify-center md:h-auto md:w-full">
+            {/* БЛОК С ФОТО: увеличили ширину на мобилках до 55% (было w-[45%]), чтобы сделать фото побольше */}
+            <div className="h-44 w-[55%] flex-shrink-0 flex items-center justify-center md:h-auto md:w-full">
               <img
                 src={photo}
                 alt="Студенты готовятся к поступлению за рубежом"
@@ -29,8 +29,8 @@ export function Events() {
               />
             </div>
 
-            {/* ПЛАШКА МЕРОПРИЯТИЯ ДЛЯ МОБИЛОК: видна только на телефонах (md:hidden) и находится справа от фото */}
-            <div className="flex-1 pt-8 md:hidden">
+            {/* ПЛАШКА МЕРОПРИЯТИЯ ДЛЯ МОБИЛОК: убрали большой отступ pt-8, заменили на небольшой pt-2 */}
+            <div className="flex-1 pt-2 md:hidden">
               <span className="inline-flex items-center gap-2 rounded bg-secondary px-4 py-2 text-sm font-bold tracking-[0.16em] text-primary uppercase">
                 {events.badge}
               </span>
