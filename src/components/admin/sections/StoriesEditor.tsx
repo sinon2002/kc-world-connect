@@ -16,7 +16,7 @@ export function StoriesEditor() {
   const addItem = () =>
     setLocal((l) => ({
       ...l,
-      items: [...l.items, { id: newId("s"), name: "Имя Ф.", place: "Страна · Вуз · Программа", quote: "", photo: undefined, video: undefined }],
+      items: [...l.items, { id: newId("s"), name: "Имя Ф.", place: "Страна · Вуз · Программа", quote: "", photo: undefined, video: undefined, videoCover: undefined }],
     }));
 
   return (
@@ -32,6 +32,11 @@ export function StoriesEditor() {
               <MediaUpload kind="image" value={item.photo} onChange={(url) => updateItem(item.id, { photo: url })} label="Фото" />
               <MediaUpload kind="video" value={item.video} onChange={(url) => updateItem(item.id, { video: url })} label="Видео (необязательно)" />
             </div>
+            {item.video && (
+              <div className="mt-2">
+                <MediaUpload kind="image" value={item.videoCover} onChange={(url) => updateItem(item.id, { videoCover: url })} label="Обложка для видео (необязательно)" />
+              </div>
+            )}
             <div className="mt-3 space-y-2.5">
               <Field label="Имя">
                 <TextInput value={item.name} onChange={(e) => updateItem(item.id, { name: e.target.value })} />
