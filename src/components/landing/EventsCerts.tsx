@@ -13,19 +13,19 @@ export function Events() {
       <BookOpen aria-hidden="true" strokeWidth={1} className="pointer-events-none absolute -top-6 right-[-70px] size-[360px] rotate-[-10deg] text-primary/10 md:size-[440px]" />
       <div className="shell relative z-10">
         <Reveal className="overflow-hidden rounded-4xl bg-card shadow-soft md:flex items-center">
-          {/* НАСТРОЙКА РАЗМЕРА: на мобилках h-64 и ширина на весь экран, на ПК (md:) ширина 35% и аккуратные отступы p-6 */}
-          <div className="h-64 md:h-auto md:w-[35%] md:flex-shrink-0 md:p-6 flex items-center justify-center">
+          {/* НАСТРОЙКА РАЗМЕРА: на мобильных уменьшили ширину до 90% (max-w-[90%]) и отцентрировали (mx-auto mt-6), на ПК вернули 35% */}
+          <div className="h-64 w-full max-w-[90%] mx-auto mt-6 md:mt-0 md:h-auto md:w-[35%] md:max-w-none md:flex-shrink-0 md:p-6 flex items-center justify-center">
             <img
               src={photo}
               alt="Студенты готовятся к поступлению за рубежом"
               width={720}
               height={900}
               loading="lazy"
-              /* На мобилках картинка заполняет блок (object-cover), на ПК аккуратно вписывается (md:object-contain) */
-              className="h-full w-full object-cover md:object-contain"
+              /* object-contain теперь и на мобилках, чтобы фото не обрезалось сверху и снизу */
+              className="h-full w-full object-contain"
             />
           </div>
-          {/* ТЕКСТОВЫЙ БЛОК: на мобилках занимает всю ширину, на ПК расширяется до 65% */}
+          {/* ТЕКСТОВЫЙ БЛОК */}
           <div className="p-8 md:w-[65%] md:p-14">
             <span className="inline-flex items-center gap-2 rounded bg-secondary px-4 py-2 text-sm font-bold tracking-[0.16em] text-primary uppercase">
               {events.badge}
