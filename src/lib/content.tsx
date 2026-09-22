@@ -112,6 +112,18 @@ export interface FooterContent {
   text: string;
 }
 
+export interface ProcessStepItem {
+  id: string;
+  title: string;
+  text: string;
+}
+export interface ProcessContent {
+  eyebrow: string;
+  heading: string;
+  subtitle: string;
+  steps: ProcessStepItem[];
+}
+
 export interface TrustCardItem {
   id: string;
   title: string;
@@ -152,6 +164,7 @@ export interface AllContent {
   hero: HeroContent;
   trustStats: TrustStatsContent;
   trust: TrustContent;
+  process: ProcessContent;
   partners: PartnersContent;
   events: EventsContent;
   stories: StoriesContent;
@@ -205,6 +218,19 @@ export const defaultContent: AllContent = {
       { id: "tr2", title: "Широкий портфель", text: "Бакалавриат, магистратура, школьные программы, летние/зимние курсы, визовый консалтинг — более 15 стран" },
       { id: "tr3", title: "Сформированная база", text: "Готовая база клиентов и сеть консультантов с опытом сопровождения студентов" },
       { id: "tr4", title: "Экспертиза в поступлении", text: "Сильнейшая компетенция — визовый консалтинг и приёмная кампания, по оценке отраслевого аудита" },
+    ],
+  },
+  process: {
+    eyebrow: "Маршрут поступления",
+    heading: "Учёба за границей. Получите образование в лучших университетах мира",
+    subtitle: "Шесть понятных шагов — вы всегда знаете, что происходит сейчас и что будет дальше.",
+    steps: [
+      { id: "pr1", title: "Диагностика", text: "Бесплатная консультация: оцениваем цели, бюджет и академический бэкграунд." },
+      { id: "pr2", title: "Подбор вуза и программы", text: "Формируем список из 3–5 учебных заведений с реальными шансами на поступление." },
+      { id: "pr3", title: "Подготовка к тестам", text: "Помогаем выбрать курсы и график подготовки к IELTS, TOEFL, SAT." },
+      { id: "pr4", title: "Документы и эссе", text: "Мотивационные письма, резюме, рекомендации — вычитываем и доводим до уровня вуза." },
+      { id: "pr5", title: "Виза", text: "Готовим полный пакет документов и тренируем собеседование в посольстве." },
+      { id: "pr6", title: "Сопровождение после зачисления", text: "Жильё, страховка, перелёт и адаптация на месте — остаёмся с вами." },
     ],
   },
   partners: {
