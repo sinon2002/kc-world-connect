@@ -18,7 +18,7 @@ export function Events() {
           <div className="flex items-center gap-4 md:block md:w-[35%] md:flex-shrink-0 md:p-6">
             
             {/* БЛОК С ФОТО: увеличили ширину на мобилках до 55% (было w-[45%]), чтобы сделать фото побольше */}
-            <div className="h-44 w-[65%] flex-shrink-0 flex items-center justify-center md:h-auto md:w-full">
+            <div className="h-44 w-[55%] flex-shrink-0 flex items-center justify-center md:h-auto md:w-full">
               <img
                 src={photo}
                 alt="Студенты готовятся к поступлению за рубежом"
