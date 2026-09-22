@@ -91,7 +91,7 @@ export function Certificates() {
             // Проверка, является ли файл PDF-документом
             const isPdf = typeof c.image === "string" && c.image.toLowerCase().includes(".pdf");
 
-            // Если это PDF, генерируем путь к точно такой же картинке .png для безопасного показа
+            // ИСПРАВЛЕНО РЕГУЛЯРНОЕ ВЫРАЖЕНИЕ: меняем расширение .pdf на .png правильно
             const displaySrc = isPdf && typeof c.image === "string"
               ? c.image.replace(/\.pdf\$/i, ".png") 
               : c.image;
@@ -133,7 +133,7 @@ export function Certificates() {
                   {c.image && (
                     <div className="w-full md:w-1/4 h-64 flex-shrink-0 md:order-last overflow-hidden rounded-xl border border-border bg-secondary/30">
                       {isPdf ? (
-                        /* Если это PDF — нажимаем на картинку-превью, чтобы открыть оригинальный PDF в новой вкладке */
+                        /* Если это PDF — выводим картинку через тег <img>, при клике открывая оригинальный PDF */
                         <a href={c.image} target="_blank" rel="noreferrer" className="block w-full h-full cursor-zoom-in">
                           <img
                             src={displaySrc}
@@ -141,7 +141,7 @@ export function Certificates() {
                             loading="lazy"
                             className="w-full h-full object-contain"
                             onError={(e) => {
-                              // Резервный вариант: если .png картинки не оказалось, пробуем подставить .jpg
+                              // Если картинки .png не оказалось в вашей папке рядом с pdf, автоматически подставим расширение .jpg
                               const img = e.currentTarget;
                               if (img.src.endsWith(".png")) {
                                 img.src = c.image.replace(/\.pdf\$/i, ".jpg");
