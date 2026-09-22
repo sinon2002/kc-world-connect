@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CalendarDays, Check, ChevronDown, ShieldCheck, BookOpen, FileText } from "lucide-react";
+import { CalendarDays, Check, ChevronDown, ShieldCheck, BookOpen } from "lucide-react";
 import { Reveal, SectionHeading } from "./Reveal";
 import { useContentSection } from "@/lib/content";
 import fallbackEventsPhoto from "@/assets/events/students-library.jpg";
@@ -91,6 +91,13 @@ export function Certificates() {
             // Проверка, является ли файл PDF-документом
             const isPdf = typeof c.image === "string" && c.image.toLowerCase().includes(".pdf");
 
+            // Формируем абсолютную ссылку для корректной работы внешнего рендерера картинок
+            const absoluteFileUrl = typeof window !== "undefined" && c.image
+              ? c.image.startsWith("http") 
+                ? c.image 
+                : `${window.location.origin}${c.image}`
+              : "";
+
             return (
               <Reveal key={c.id} delay={i * 0.06} className="overflow-hidden rounded-2xl bg-card shadow-soft">
                 <h3>
@@ -126,34 +133,22 @@ export function Certificates() {
                   </div>
                   
                   {c.image && (
-                    <div className="w-full md:w-1/4 min-h-[16rem] flex-shrink-0 md:order-last overflow-hidden rounded-xl border border-border bg-secondary/30">
+                    <div className="w-full md:w-1/4 h-64 flex-shrink-0 md:order-last overflow-hidden rounded-xl border border-border bg-secondary/30">
                       {isPdf ? (
-                        /* ИСПОЛЬЗУЕМ ВСТРОЕННЫЙ OBJECT С АВТОМАТИЧЕСКИМ РЕЗЕРВНЫМ ВАРИАНТОМ ДЛЯ МОБИЛЬНЫХ ТЕЛЕФОНОВ */
-                        <object
-                          data={`${c.image}#toolbar=0&navpanes=0&scrollbar=0`}
-                          type="application/pdf"
-                          className="w-full h-64"
-                        >
-                          {/* Этот блок покажется ТОЛЬКО на смартфонах, которые не умеют открывать PDF внутри тега */}
-                          <div className="flex h-full w-full flex-col items-center justify-center p-4 text-center">
-                            <FileText className="size-12 text-primary/40 mb-3" />
-                            <a
-                              href={c.image}
-                              target="_blank"
-                              rel="noreferrer"
-                              className="inline-flex items-center justify-center rounded-lg bg-primary px-4 py-2.5 text-xs font-bold text-primary-foreground shadow-soft transition-transform active:scale-95"
-                            >
-                              Посмотреть сертификат PDF
-                            </a>
-                          </div>
-                        </object>
+                        /* ТЕПЕРЬ ОТОБРАЖАЕМ КАРТИНКУ PDF ЧЕРЕЗ СТАБИЛЬНЫЙ ВСТРОЕННЫЙ ПРОСМОТРЩИК MICROSOFT OFFICE */
+                        <iframe
+                          src={`https://live.com{encodeURIComponent(absoluteFileUrl)}`}
+                          className="w-full h-full border-none"
+                          title={c.title}
+                          scrolling="no"
+                        />
                       ) : (
-                        /* Если обычная картинка (JPG/PNG/WEBP) */
+                        /* Если обычная картинка (JPG/PNG) */
                         <img
                           src={c.image}
                           alt={c.title}
                           loading="lazy"
-                          className="w-full h-64 object-contain"
+                          className="w-full h-full object-contain"
                         />
                       )}
                     </div>
