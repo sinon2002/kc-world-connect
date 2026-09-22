@@ -105,21 +105,21 @@ export function Contact() {
             2. Фото
             3. Форма
         ========================================== */}
-        <div
-          className="
-            shell
-            relative
-            z-10
-            flex
-            flex-col
-            gap-8
+       <div
+  className="
+    shell
+    relative
+    z-10
+    flex
+    flex-col
+    gap-8
 
-            lg:grid
-            lg:grid-cols-[1fr_320px_1fr]
-            lg:gap-4
-            lg:items-end
-          "
-        >
+    lg:grid
+    lg:grid-cols-[1fr_320px_1fr]
+    lg:gap-4
+    lg:items-end
+  "
+>
 
           {/* ==========================================
               БЛОК 1 — ТЕКСТ + СОЦСЕТИ
