@@ -16,7 +16,7 @@ export function Contact() {
   });
 
   // ==========================================
-  // НОМЕР WHATSAPP МЕНЕДЖЕРА
+  // WHATSAPP МЕНЕДЖЕРА
   // Формат: код страны + номер, без + и пробелов
   // ==========================================
   const whatsappNumber = "996999490039";
@@ -25,6 +25,9 @@ export function Contact() {
     form.name.trim().length > 1 &&
     form.phone.trim().length > 5;
 
+  // ==========================================
+  // ОТПРАВКА ФОРМЫ
+  // ==========================================
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -48,26 +51,57 @@ export function Contact() {
 
   return (
     <>
+      {/* =====================================================
+          CONTACT
+      ===================================================== */}
+
       <section
-        className="relative overflow-visible pt-12 pb-6 text-white"
+        className="
+          relative
+          overflow-visible
+          pt-12
+          pb-6
+          text-white
+
+          sm:pt-16
+        "
         style={{ background: "#0078c3" }}
       >
-        {/* ==========================================
-            СЕТКА ФОНА
-        ========================================== */}
+        {/* =====================================================
+            ФОНОВАЯ СЕТКА
+        ===================================================== */}
+
         <div
           aria-hidden="true"
-          className="route-grid pointer-events-none absolute inset-0 opacity-20"
+          className="
+            route-grid
+            pointer-events-none
+            absolute
+            inset-0
+            opacity-20
+          "
         />
 
-        {/* ==========================================
+        {/* =====================================================
             ЛИНИЯ МАРШРУТА
-        ========================================== */}
+            Только desktop
+        ===================================================== */}
+
         <svg
           aria-hidden="true"
           viewBox="0 0 1400 520"
           preserveAspectRatio="none"
-          className="pointer-events-none absolute inset-0 hidden h-full w-full text-white/35 lg:block"
+          className="
+            pointer-events-none
+            absolute
+            inset-0
+            hidden
+            h-full
+            w-full
+            text-white/35
+
+            lg:block
+          "
         >
           <path
             d="M20 70 C 300 40, 480 230, 740 270 S 1140 400, 1330 460"
@@ -92,58 +126,72 @@ export function Contact() {
           />
         </svg>
 
-        {/* ==========================================
+        {/* =====================================================
             ГЛАВНЫЙ КОНТЕЙНЕР
+        ===================================================== */}
 
-            MOBILE:
-            1. Текст
-            2. Форма
-            3. Фото
+        <div
+          className="
+            shell
+            relative
+            z-10
+            flex
+            flex-col
+            gap-8
 
-            DESKTOP:
-            1. Текст
-            2. Фото
-            3. Форма
-        ========================================== */}
-       <div
-  className="
-    shell
-    relative
-    z-10
-    flex
-    flex-col
-    gap-8
+            lg:grid
+            lg:grid-cols-[1fr_320px_1fr]
+            lg:items-end
+            lg:gap-4
+          "
+        >
 
-    lg:grid
-    lg:grid-cols-[1fr_320px_1fr]
-    lg:gap-4
-    lg:items-end
-  "
->
+          {/* ===================================================
+              БЛОК 1
+              ЗАГОЛОВОК + ТЕКСТ + СОЦСЕТИ
 
-          {/* ==========================================
-              БЛОК 1 — ТЕКСТ + СОЦСЕТИ
+              MOBILE — сверху
+              DESKTOP — первая колонка
+          =================================================== */}
 
-              MOBILE: ПЕРВЫМ
-              DESKTOP: ПЕРВЫМ
-          ========================================== */}
-          <div className="order-1 w-full lg:order-none">
+          <div
+            className="
+              order-1
+              w-full
+
+              lg:order-none
+            "
+          >
             <Reveal>
+
+              {/* ЗАГОЛОВОК */}
+
               <h2
                 className="
                   font-display
                   text-3xl
                   font-extrabold
                   leading-tight
+
                   sm:text-4xl
                 "
               >
                 Записаться на бесплатную консультацию
               </h2>
 
-              <p className="mt-4 max-w-xl text-white/75">
+              {/* ОПИСАНИЕ */}
+
+              <p
+                className="
+                  mt-4
+                  max-w-xl
+                  text-white/75
+                "
+              >
                 {contact.paragraph}
               </p>
+
+              {/* ОТВЕТИМ */}
 
               <p
                 className="
@@ -160,19 +208,26 @@ export function Contact() {
                 "
               >
                 <span
-                  className="h-2 w-2 rounded-full bg-gold"
+                  className="
+                    h-2
+                    w-2
+                    rounded-full
+                    bg-gold
+                  "
                   aria-hidden="true"
                 />
 
                 Ответим в течение 30 минут в рабочее время
               </p>
 
-              {/* ==========================================
+              {/* =================================================
                   СОЦСЕТИ
-              ========================================== */}
+              ================================================= */}
+
               <div className="mt-6 flex gap-3">
 
                 {/* WHATSAPP */}
+
                 <a
                   href={`https://wa.me/${whatsappNumber}`}
                   target="_blank"
@@ -200,6 +255,7 @@ export function Contact() {
                 </a>
 
                 {/* INSTAGRAM */}
+
                 <a
                   href="https://www.instagram.com/education_kyrgyzconcept"
                   target="_blank"
@@ -231,328 +287,443 @@ export function Contact() {
           </div>
 
 
-          {/* ==========================================
-              БЛОК 2 — ФОТО
+          {/* ===================================================
+              МОБИЛЬНЫЙ КОНТЕЙНЕР
 
-              В JSX стоит вторым,
-              но:
+              MOBILE:
+              ФОТО + ФОРМА находятся рядом
 
-              MOBILE → order-3
-              DESKTOP → обычное второе место
-          ========================================== */}
-          <div
-            className="
-              order-3
-              flex
-              w-full
-              justify-center
+              DESKTOP:
+              lg:contents позволяет вернуть
+              фото и форму в отдельные grid-колонки
+          =================================================== */}
 
-              lg:order-none
-            "
-          >
-            <Reveal delay={0.08}>
-              <img
-                src={guyPhoto}
-                alt="Студенты Kyrgyz Concept приглашают записаться на консультацию"
-                width={373}
-                height={669}
-                className="
-                  h-[300px]
-                  w-auto
-                  drop-shadow-2xl
-
-                  sm:h-[380px]
-
-                  lg:h-[460px]
-                "
-              />
-            </Reveal>
-          </div>
-
-
-          {/* ==========================================
-              БЛОК 3 — ФОРМА
-
-              MOBILE → ВТОРОЙ
-              DESKTOP → ТРЕТИЙ
-          ========================================== */}
           <div
             className="
               order-2
+              grid
               w-full
+              grid-cols-[38%_62%]
+              items-center
+              gap-2
 
-              lg:order-none
+              lg:contents
             "
           >
-            <Reveal delay={0.15}>
-              <div
-                className="
-                  rounded-3xl
-                  bg-white
-                  p-6
-                  shadow-2xl
-                  sm:p-8
-                "
-              >
 
-                {sent ? (
+            {/* =================================================
+                ФОТО
+            ================================================= */}
 
-                  /* =====================================
-                     ПОСЛЕ ОТПРАВКИ
-                  ===================================== */
-                  <div
-                    role="status"
-                    className="py-10 text-center"
-                  >
-                    <p
+            <div
+              className="
+                order-1
+                flex
+                min-w-0
+                w-full
+                justify-center
+
+                lg:order-none
+              "
+            >
+              <Reveal delay={0.08}>
+
+                <img
+                  src={guyPhoto}
+                  alt="Студенты Kyrgyz Concept приглашают записаться на консультацию"
+                  width={373}
+                  height={669}
+                  className="
+                    h-auto
+                    max-h-[280px]
+                    w-full
+                    object-contain
+                    drop-shadow-2xl
+
+                    sm:max-h-[360px]
+
+                    lg:h-[460px]
+                    lg:w-auto
+                    lg:max-h-none
+                  "
+                />
+
+              </Reveal>
+            </div>
+
+
+            {/* =================================================
+                ФОРМА
+            ================================================= */}
+
+            <div
+              className="
+                order-2
+                min-w-0
+                w-full
+
+                lg:order-none
+              "
+            >
+              <Reveal delay={0.15}>
+
+                <div
+                  className="
+                    rounded-2xl
+                    bg-white
+                    p-3
+                    shadow-2xl
+
+                    sm:rounded-3xl
+                    sm:p-6
+
+                    lg:p-8
+                  "
+                >
+
+                  {/* ==========================================
+                      ПОСЛЕ ОТПРАВКИ
+                  ========================================== */}
+
+                  {sent ? (
+
+                    <div
+                      role="status"
                       className="
-                        font-display
-                        text-xl
-                        font-bold
-                        text-ink
+                        py-6
+                        text-center
+
+                        sm:py-10
                       "
                     >
-                      Спасибо, {form.name.trim()}!
-                    </p>
+                      <p
+                        className="
+                          font-display
+                          text-base
+                          font-bold
+                          text-ink
 
-                    <p className="mt-3 text-muted-foreground">
-                      Ваша заявка открыта в WhatsApp.
-                      <br />
-                      Осталось только нажать кнопку
-                      отправки сообщения.
-                    </p>
+                          sm:text-xl
+                        "
+                      >
+                        Спасибо, {form.name.trim()}!
+                      </p>
 
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setSent(false);
-                        setForm({
-                          name: "",
-                          phone: "",
-                          country: "",
-                        });
-                      }}
+                      <p
+                        className="
+                          mt-2
+                          text-xs
+                          text-muted-foreground
+
+                          sm:mt-3
+                          sm:text-sm
+                        "
+                      >
+                        Ваша заявка открыта в WhatsApp.
+                        <br />
+                        Осталось только нажать кнопку
+                        отправки сообщения.
+                      </p>
+
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setSent(false);
+
+                          setForm({
+                            name: "",
+                            phone: "",
+                            country: "",
+                          });
+                        }}
+                        className="
+                          mt-4
+                          text-xs
+                          font-semibold
+                          text-blue
+                          underline
+
+                          sm:mt-6
+                          sm:text-sm
+                        "
+                      >
+                        Отправить ещё одну заявку
+                      </button>
+                    </div>
+
+                  ) : (
+
+                    /* ========================================
+                       ФОРМА
+                    ======================================== */
+
+                    <form
                       className="
-                        mt-6
-                        text-sm
-                        font-semibold
-                        text-blue
-                        underline
+                        space-y-2.5
+
+                        sm:space-y-5
                       "
+                      noValidate
+                      onSubmit={handleSubmit}
                     >
-                      Отправить ещё одну заявку
-                    </button>
-                  </div>
 
-                ) : (
+                      {/* =====================================
+                          ИМЯ
+                      ===================================== */}
 
-                  /* =====================================
-                     ФОРМА
-                  ===================================== */
-                  <form
-                    className="space-y-5"
-                    noValidate
-                    onSubmit={handleSubmit}
-                  >
+                      <div>
+                        <label
+                          htmlFor="kc-name"
+                          className="
+                            block
+                            text-[11px]
+                            font-semibold
+                            text-ink
 
-                    {/* ИМЯ */}
-                    <div>
-                      <label
-                        htmlFor="kc-name"
-                        className="
-                          block
-                          text-sm
-                          font-semibold
-                          text-ink
-                        "
-                      >
-                        Имя
-                      </label>
+                            sm:text-sm
+                          "
+                        >
+                          Имя
+                        </label>
 
-                      <input
-                        id="kc-name"
-                        name="name"
-                        required
-                        autoComplete="name"
-                        value={form.name}
-                        onChange={(e) =>
-                          setForm((f) => ({
-                            ...f,
-                            name: e.target.value,
-                          }))
-                        }
-                        className="
-                          mt-2
-                          w-full
-                          rounded-2xl
-                          border
-                          border-black/10
-                          bg-cream
-                          px-4
-                          py-3
-                          text-ink
-                          outline-none
-                          transition
-                          focus:border-blue
-                          focus:ring-2
-                          focus:ring-blue/20
-                        "
-                        placeholder="Айсулуу"
-                      />
-                    </div>
+                        <input
+                          id="kc-name"
+                          name="name"
+                          required
+                          autoComplete="name"
+                          value={form.name}
+                          onChange={(e) =>
+                            setForm((f) => ({
+                              ...f,
+                              name: e.target.value,
+                            }))
+                          }
+                          className="
+                            mt-1
+                            w-full
+                            rounded-xl
+                            border
+                            border-black/10
+                            bg-cream
+                            px-2.5
+                            py-2
+                            text-[11px]
+                            text-ink
+                            outline-none
+                            transition
+                            focus:border-blue
+                            focus:ring-2
+                            focus:ring-blue/20
+
+                            sm:mt-2
+                            sm:rounded-2xl
+                            sm:px-4
+                            sm:py-3
+                            sm:text-sm
+                          "
+                          placeholder="Айсулуу"
+                        />
+                      </div>
 
 
-                    {/* ТЕЛЕФОН */}
-                    <div>
-                      <label
-                        htmlFor="kc-phone"
-                        className="
-                          block
-                          text-sm
-                          font-semibold
-                          text-ink
-                        "
-                      >
-                        Телефон / WhatsApp
-                      </label>
+                      {/* =====================================
+                          ТЕЛЕФОН
+                      ===================================== */}
 
-                      <input
-                        id="kc-phone"
-                        name="phone"
-                        type="tel"
-                        required
-                        autoComplete="tel"
-                        value={form.phone}
-                        onChange={(e) =>
-                          setForm((f) => ({
-                            ...f,
-                            phone: e.target.value,
-                          }))
-                        }
-                        className="
-                          mt-2
-                          w-full
-                          rounded-2xl
-                          border
-                          border-black/10
-                          bg-cream
-                          px-4
-                          py-3
-                          text-ink
-                          outline-none
-                          transition
-                          focus:border-blue
-                          focus:ring-2
-                          focus:ring-blue/20
-                        "
-                        placeholder="+996 700 000 000"
-                      />
-                    </div>
+                      <div>
+                        <label
+                          htmlFor="kc-phone"
+                          className="
+                            block
+                            text-[11px]
+                            font-semibold
+                            text-ink
+
+                            sm:text-sm
+                          "
+                        >
+                          Телефон / WhatsApp
+                        </label>
+
+                        <input
+                          id="kc-phone"
+                          name="phone"
+                          type="tel"
+                          required
+                          autoComplete="tel"
+                          value={form.phone}
+                          onChange={(e) =>
+                            setForm((f) => ({
+                              ...f,
+                              phone: e.target.value,
+                            }))
+                          }
+                          className="
+                            mt-1
+                            w-full
+                            rounded-xl
+                            border
+                            border-black/10
+                            bg-cream
+                            px-2.5
+                            py-2
+                            text-[11px]
+                            text-ink
+                            outline-none
+                            transition
+                            focus:border-blue
+                            focus:ring-2
+                            focus:ring-blue/20
+
+                            sm:mt-2
+                            sm:rounded-2xl
+                            sm:px-4
+                            sm:py-3
+                            sm:text-sm
+                          "
+                          placeholder="+996 700 000 000"
+                        />
+                      </div>
 
 
-                    {/* СТРАНА */}
-                    <div>
-                      <label
-                        htmlFor="kc-country"
-                        className="
-                          block
-                          text-sm
-                          font-semibold
-                          text-ink
-                        "
-                      >
-                        Интересующая страна
-                      </label>
+                      {/* =====================================
+                          СТРАНА
+                      ===================================== */}
 
-                      <select
-                        id="kc-country"
-                        name="country"
-                        value={form.country}
-                        onChange={(e) =>
-                          setForm((f) => ({
-                            ...f,
-                            country: e.target.value,
-                          }))
-                        }
-                        className="
-                          mt-2
-                          w-full
-                          rounded-2xl
-                          border
-                          border-black/10
-                          bg-cream
-                          px-4
-                          py-3
-                          text-ink
-                          outline-none
-                          transition
-                          focus:border-blue
-                          focus:ring-2
-                          focus:ring-blue/20
-                        "
-                      >
-                        <option value="">
-                          Выберите страну
-                        </option>
+                      <div>
+                        <label
+                          htmlFor="kc-country"
+                          className="
+                            block
+                            text-[11px]
+                            font-semibold
+                            text-ink
 
-                        {countries.map((c) => (
-                          <option
-                            key={c}
-                            value={c}
-                          >
-                            {c}
+                            sm:text-sm
+                          "
+                        >
+                          Интересующая страна
+                        </label>
+
+                        <select
+                          id="kc-country"
+                          name="country"
+                          value={form.country}
+                          onChange={(e) =>
+                            setForm((f) => ({
+                              ...f,
+                              country: e.target.value,
+                            }))
+                          }
+                          className="
+                            mt-1
+                            w-full
+                            rounded-xl
+                            border
+                            border-black/10
+                            bg-cream
+                            px-2.5
+                            py-2
+                            text-[11px]
+                            text-ink
+                            outline-none
+                            transition
+                            focus:border-blue
+                            focus:ring-2
+                            focus:ring-blue/20
+
+                            sm:mt-2
+                            sm:rounded-2xl
+                            sm:px-4
+                            sm:py-3
+                            sm:text-sm
+                          "
+                        >
+                          <option value="">
+                            Выберите страну
                           </option>
-                        ))}
-                      </select>
-                    </div>
+
+                          {countries.map((country) => (
+                            <option
+                              key={country}
+                              value={country}
+                            >
+                              {country}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
 
 
-                    {/* КНОПКА */}
-                    <button
-                      type="submit"
-                      disabled={!valid}
-                      className="
-                        w-full
-                        rounded-2xl
-                        bg-gold
-                        px-6
-                        py-4
-                        font-display
-                        text-base
-                        font-bold
-                        text-navy
-                        shadow-lg
-                        transition-all
-                        hover:-translate-y-0.5
-                        hover:brightness-105
-                        disabled:cursor-not-allowed
-                        disabled:opacity-50
-                      "
-                    >
-                      Отправить заявку
-                    </button>
+                      {/* =====================================
+                          КНОПКА
+                      ===================================== */}
+
+                      <button
+                        type="submit"
+                        disabled={!valid}
+                        className="
+                          w-full
+                          rounded-xl
+                          bg-gold
+                          px-2
+                          py-2.5
+                          font-display
+                          text-[11px]
+                          font-bold
+                          text-navy
+                          shadow-lg
+                          transition-all
+                          hover:-translate-y-0.5
+                          hover:brightness-105
+                          disabled:cursor-not-allowed
+                          disabled:opacity-50
+
+                          sm:rounded-2xl
+                          sm:px-6
+                          sm:py-4
+                          sm:text-base
+                        "
+                      >
+                        Отправить заявку
+                      </button>
 
 
-                    {/* СОГЛАСИЕ */}
-                    <p className="text-xs text-muted-foreground">
-                      Нажимая кнопку, вы соглашаетесь
-                      на обработку персональных данных.
-                    </p>
+                      {/* =====================================
+                          СОГЛАСИЕ
+                      ===================================== */}
 
-                  </form>
-                )}
+                      <p
+                        className="
+                          text-[8px]
+                          leading-tight
+                          text-muted-foreground
 
-              </div>
-            </Reveal>
+                          sm:text-xs
+                        "
+                      >
+                        Нажимая кнопку, вы соглашаетесь
+                        на обработку персональных данных.
+                      </p>
+
+                    </form>
+                  )}
+
+                </div>
+
+              </Reveal>
+            </div>
+
           </div>
 
         </div>
       </section>
 
 
-      {/* ==========================================
+      {/* =====================================================
           БОЛЬШОЙ KYRGYZ CONCEPT
-      ========================================== */}
+      ===================================================== */}
+
       <div
         className="
           relative
@@ -563,6 +734,7 @@ export function Contact() {
         style={{ background: "#0078c3" }}
       >
         <div className="shell">
+
           <p
             aria-hidden="true"
             className="
@@ -580,6 +752,7 @@ export function Contact() {
           >
             Kyrgyz Concept
           </p>
+
         </div>
       </div>
     </>
@@ -587,9 +760,9 @@ export function Contact() {
 }
 
 
-/* ==========================================
+/* =========================================================
    FOOTER
-========================================== */
+========================================================= */
 
 export function Footer() {
   const [footer] = useContentSection("footer");
@@ -601,7 +774,11 @@ export function Footer() {
 
   return (
     <footer
-      className="pb-8 pt-2 text-white"
+      className="
+        pb-8
+        pt-2
+        text-white
+      "
       style={{ background: "#0078c3" }}
     >
       <div className="shell">
@@ -622,11 +799,15 @@ export function Footer() {
             sm:flex-row
           "
         >
-          <p>{text}</p>
+
+          <p>
+            {text}
+          </p>
 
           <p className="text-white/50">
             Демонстрационный проект лендинга
           </p>
+
         </div>
 
       </div>
