@@ -29,7 +29,7 @@ export function Hero() {
 
         <motion.div style={{ y: photoY }} className="relative mx-auto h-[500px] w-full max-w-[590px] sm:h-[620px] lg:ml-auto lg:h-[690px]">
           {/* Добавлены классы scale-135 (увеличение на 35%) и translate-y-4 (сдвиг вниз), чтобы компенсировать пустые поля на прозрачном PNG */}
-          <div className="hero-girl-intro absolute inset-x-0 bottom-0 z-20 mx-auto h-[95%] scale-120 translate-y-4 origin-bottom">
+          <div className="hero-girl-intro absolute inset-x-0 bottom-0 z-20 mx-auto h-[95%] scale-115 translate-y-4 origin-bottom">
             <img 
               src={hero.imageUrl || heroGirl} 
               alt="Команда Kyrgyz Concept готовит студентов к поступлению" 
