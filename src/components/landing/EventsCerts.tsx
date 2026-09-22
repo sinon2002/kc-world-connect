@@ -91,10 +91,10 @@ export function Certificates() {
             // Проверка, является ли файл PDF-документом
             const isPdf = typeof c.image === "string" && c.image.toLowerCase().includes(".pdf");
 
-            // ИСПРАВЛЕНО РЕГУЛЯРНОЕ ВЫРАЖЕНИЕ: меняем расширение .pdf на .png правильно
-            const displaySrc = isPdf && typeof c.image === "string"
-              ? c.image.replace(/\.pdf\$/i, ".png") 
-              : c.image;
+            // Корректно формируем абсолютную ссылку на файл для Vercel
+            const fileUrl = isPdf && typeof c.image === "string"
+              ? c.image.startsWith("http") ? c.image : `https://vercel.app${c.image}`
+              : "";
 
             return (
               <Reveal key={c.id} delay={i * 0.06} className="overflow-hidden rounded-2xl bg-card shadow-soft">
@@ -133,22 +133,12 @@ export function Certificates() {
                   {c.image && (
                     <div className="w-full md:w-1/4 h-64 flex-shrink-0 md:order-last overflow-hidden rounded-xl border border-border bg-secondary/30">
                       {isPdf ? (
-                        /* Если это PDF — выводим картинку через тег <img>, при клике открывая оригинальный PDF */
-                        <a href={c.image} target="_blank" rel="noreferrer" className="block w-full h-full cursor-zoom-in">
-                          <img
-                            src={displaySrc}
-                            alt={c.title}
-                            loading="lazy"
-                            className="w-full h-full object-contain"
-                            onError={(e) => {
-                              // Если картинки .png не оказалось в вашей папке рядом с pdf, автоматически подставим расширение .jpg
-                              const img = e.currentTarget;
-                              if (img.src.endsWith(".png")) {
-                                img.src = c.image.replace(/\.pdf\$/i, ".jpg");
-                              }
-                            }}
-                          />
-                        </a>
+                        /* Безопасное встраивание PDF-документов через Google Docs Viewer для ПК и телефонов */
+                        <iframe
+                          src={`https://google.com{encodeURIComponent(fileUrl)}&embedded=true`}
+                          className="w-full h-full border-none"
+                          title={c.title}
+                        />
                       ) : (
                         /* Если обычная картинка (JPG/PNG) */
                         <img
