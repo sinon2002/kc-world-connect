@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Reveal } from "./Reveal";
-import guyPhoto from "@/assets/contact/kc-guy.png";
+import guyPhoto from "@/assets/contact/kc-couple.png";
 import { useContentSection } from "@/lib/content";
 
 export function Contact() {
