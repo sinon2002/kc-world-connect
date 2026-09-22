@@ -112,6 +112,18 @@ export interface FooterContent {
   text: string;
 }
 
+export interface TrustCardItem {
+  id: string;
+  title: string;
+  text: string;
+}
+export interface TrustContent {
+  badge: string;
+  heading: string;
+  paragraph: string;
+  cards: TrustCardItem[];
+}
+
 export interface TrustStatItem {
   id: string;
   number: string;
@@ -139,6 +151,7 @@ export interface PromoPopupContent {
 export interface AllContent {
   hero: HeroContent;
   trustStats: TrustStatsContent;
+  trust: TrustContent;
   partners: PartnersContent;
   events: EventsContent;
   stories: StoriesContent;
@@ -182,6 +195,17 @@ export const defaultContent: AllContent = {
     highlightTitle: "Высокий шанс",
     highlightSubtitle: "на зачисление",
     highlightText: "Мы пошагово ведём по системе, снижая риск отказа до минимума.",
+  },
+  trust: {
+    badge: "О нас",
+    heading: "Kyrgyz Concept Образование за рубежом",
+    paragraph: "Часть бренда Kyrgyz Concept с историей на рынке образовательного консалтинга Кыргызстана",
+    cards: [
+      { id: "tr1", title: "Узнаваемый бренд", text: "Многолетняя история и репутационное доверие клиентов в Кыргызстане" },
+      { id: "tr2", title: "Широкий портфель", text: "Бакалавриат, магистратура, школьные программы, летние/зимние курсы, визовый консалтинг — более 15 стран" },
+      { id: "tr3", title: "Сформированная база", text: "Готовая база клиентов и сеть консультантов с опытом сопровождения студентов" },
+      { id: "tr4", title: "Экспертиза в поступлении", text: "Сильнейшая компетенция — визовый консалтинг и приёмная кампания, по оценке отраслевого аудита" },
+    ],
   },
   partners: {
     heading: "Университеты-партнёры",
