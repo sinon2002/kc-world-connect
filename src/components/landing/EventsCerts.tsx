@@ -9,25 +9,28 @@ export function Events() {
   const photo = events.photo ?? fallbackEventsPhoto;
 
   return (
-       <section id="events" className="section-pad relative overflow-hidden">
+    <section id="events" className="section-pad relative overflow-hidden">
       <BookOpen aria-hidden="true" strokeWidth={1} className="pointer-events-none absolute -top-6 right-[-70px] size-[360px] rotate-[-10deg] text-primary/10 md:size-[440px]" />
       <div className="shell relative z-10">
-        <Reveal className="overflow-hidden rounded-4xl bg-card shadow-soft md:flex">
-          <div className="h-64 md:h-auto md:w-[42%] md:flex-shrink-0">
+        <Reveal className="overflow-hidden rounded-4xl bg-card shadow-soft md:flex items-center">
+          {/* Изменили md:w-[42%] на md:w-[35%] для уменьшения размера фото, добавили md:p-6 для отступов */}
+          <div className="h-64 md:h-auto md:w-[35%] md:flex-shrink-0 md:p-6 flex items-center justify-center">
             <img
               src={photo}
               alt="Студенты готовятся к поступлению за рубежом"
               width={720}
               height={900}
               loading="lazy"
-              className="h-full w-full object-cover"
+              /* Изменили object-cover на object-contain, чтобы коллаж не обрезался при уменьшении */
+              className="h-full w-full object-contain"
             />
           </div>
-          <div className="p-8 md:w-[58%] md:p-14">
+          {/* Изменили md:w-[58%] на md:w-[65%], чтобы компенсировать уменьшение фото */}
+          <div className="p-8 md:w-[65%] md:p-14">
             <span className="inline-flex items-center gap-2 rounded bg-secondary px-4 py-1.5 text-xs font-bold tracking-[0.16em] text-primary uppercase">
               {events.badge}
             </span>
-                        <h2 className="font-display mt-5 text-2xl leading-snug text-ink md:text-3xl">
+            <h2 className="font-display mt-5 text-2xl leading-snug text-ink md:text-3xl">
               {events.heading}
             </h2>
             <p className="mt-4 border-l-2 border-primary pl-3 text-xs font-bold tracking-[0.1em] text-primary uppercase">
@@ -108,7 +111,7 @@ export function Certificates() {
                   </div>
                   
                   {c.image && (
-                  <div className="w-full md:w-1/4 h-64 flex-shrink-0 md:order-last overflow-hidden rounded-xl border border-border bg-secondary/30">
+                    <div className="w-full md:w-1/4 h-64 flex-shrink-0 md:order-last overflow-hidden rounded-xl border border-border bg-secondary/30">
                       {isPdf ? (
                         /* Если это PDF — встраиваем интерактивное превью через iframe */
                         <iframe
