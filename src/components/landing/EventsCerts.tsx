@@ -128,12 +128,20 @@ export function Certificates() {
                   {c.image && (
                     <div className="w-full md:w-1/4 h-64 flex-shrink-0 md:order-last overflow-hidden rounded-xl border border-border bg-secondary/30">
                       {isPdf ? (
-                        /* Если это PDF — встраиваем интерактивное превью через iframe */
-                        <iframe
-                          src={`${c.image}#toolbar=0&navpanes=0&scrollbar=0`}
-                          className="w-full h-full border-none pointer-events-none"
-                          title={c.title}
-                        />
+                        /* ТЕПЕРЬ ИСПОЛЬЗУЕМ СВЯЗКУ OBJECT + GOOGLE VIEWER ДЛЯ СТАБИЛЬНОГО ОТОБРАЖЕНИЯ НА МОБИЛЬНЫХ */
+                        <object
+                          data={`${c.image}#toolbar=0&navpanes=0&scrollbar=0`}
+                          type="application/pdf"
+                          className="w-full h-full"
+                        >
+                          <iframe
+                            src={`https://google.com{encodeURIComponent(
+                              window.location.origin + c.image
+                            )}&embedded=true`}
+                            className="w-full h-full border-none"
+                            title={c.title}
+                          />
+                        </object>
                       ) : (
                         /* Если обычная картинка (JPG/PNG) */
                         <img
