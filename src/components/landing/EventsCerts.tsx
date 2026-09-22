@@ -82,7 +82,8 @@ export function Events() {
         <Reveal className="overflow-hidden rounded-4xl bg-card shadow-soft p-6 md:p-0 md:flex items-center">
           
           {/* ОБЩИЙ КОНТЕЙНЕР ДЛЯ МОБИЛОК: изменили items-start на items-center для выравнивания по центру */}
-     <div className="flex flex-col md:flex-col-reverse items-center justify-center gap-6 md:block md:w-[35%] md:flex-shrink-0 md:p-6 scale-125 origin-center sm:scale-100">
+    <div className="flex flex-col-reverse items-center justify-center gap-1 md:block md:w-[35%] md:flex-shrink-0 md:p-6 scale-125 origin-center sm:scale-100">
+
 
 
 
