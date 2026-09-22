@@ -133,35 +133,49 @@ export function Certificates() {
                   </div>
                   
                   {c.image && (
-                    <div className="w-full md:w-1/4 h-64 flex-shrink-0 md:order-last overflow-hidden rounded-xl border border-border bg-secondary/30">
+                    <div className="w-full md:w-1/4 flex-shrink-0 md:order-last flex flex-col gap-2">
                       {isPdf ? (
-                        /* Безопасное встраивание PDF-документов через Google Docs Viewer для ПК и телефонов */
-                        <iframe
-                          src={`https://docs.google.com/viewer?url=${encodeURIComponent(fileUrl)}&embedded=true`}
-                          className="w-full h-full border-none"
-                          title={c.title}
-                        />
+                        <>
+                          {/* Показываем PDF напрямую в браузере — без стороннего вьювера, без принудительного скачивания */}
+                          <div className="h-64 overflow-hidden rounded-xl border border-border bg-secondary/30">
+                            <iframe
+                              src={fileUrl}
+                              className="w-full h-full border-none"
+                              title={c.title}
+                            />
+                          </div>
+                          <a
+                            href={fileUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-center text-xs font-semibold text-primary hover:underline"
+                          >
+                            Открыть в новой вкладке
+                          </a>
+                        </>
                       ) : (
                         /* Если обычная картинка (JPG/PNG) */
-                        <img
-                          src={c.image}
-                          alt={c.title}
-                          loading="lazy"
-                          className="w-full h-full object-contain"
-                          onError={(e) => {
-                            const el = e.currentTarget;
-                            el.onerror = null;
-                            el.style.display = "none";
-                            const parent = el.parentElement;
-                            if (parent && !parent.querySelector("[data-fallback]")) {
-                              const span = document.createElement("span");
-                              span.dataset.fallback = "true";
-                              span.className = "flex h-full w-full items-center justify-center text-center text-xs text-muted-foreground px-3";
-                              span.textContent = "Файл не загрузился. Загрузите его заново в админ-панели.";
-                              parent.appendChild(span);
-                            }
-                          }}
-                        />
+                        <div className="h-64 overflow-hidden rounded-xl border border-border bg-secondary/30">
+                          <img
+                            src={c.image}
+                            alt={c.title}
+                            loading="lazy"
+                            className="w-full h-full object-contain"
+                            onError={(e) => {
+                              const el = e.currentTarget;
+                              el.onerror = null;
+                              el.style.display = "none";
+                              const parent = el.parentElement;
+                              if (parent && !parent.querySelector("[data-fallback]")) {
+                                const span = document.createElement("span");
+                                span.dataset.fallback = "true";
+                                span.className = "flex h-full w-full items-center justify-center text-center text-xs text-muted-foreground px-3";
+                                span.textContent = "Файл не загрузился. Загрузите его заново в админ-панели.";
+                                parent.appendChild(span);
+                              }
+                            }}
+                          />
+                        </div>
                       )}
                     </div>
                   )}
