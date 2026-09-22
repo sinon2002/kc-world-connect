@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CalendarDays, Check, ChevronDown, ShieldCheck, BookOpen } from "lucide-react";
+import { CalendarDays, Check, ChevronDown, ShieldCheck, BookOpen, FileText } from "lucide-react";
 import { Reveal, SectionHeading } from "./Reveal";
 import { useContentSection } from "@/lib/content";
 import fallbackEventsPhoto from "@/assets/events/students-library.jpg";
@@ -126,29 +126,34 @@ export function Certificates() {
                   </div>
                   
                   {c.image && (
-                    <div className="w-full md:w-1/4 h-64 flex-shrink-0 md:order-last overflow-hidden rounded-xl border border-border bg-secondary/30">
+                    <div className="w-full md:w-1/4 min-h-[16rem] flex-shrink-0 md:order-last overflow-hidden rounded-xl border border-border bg-secondary/30">
                       {isPdf ? (
-                        /* ТЕПЕРЬ ИСПОЛЬЗУЕМ СВЯЗКУ OBJECT + GOOGLE VIEWER ДЛЯ СТАБИЛЬНОГО ОТОБРАЖЕНИЯ НА МОБИЛЬНЫХ */
+                        /* ИСПОЛЬЗУЕМ ВСТРОЕННЫЙ OBJECT С АВТОМАТИЧЕСКИМ РЕЗЕРВНЫМ ВАРИАНТОМ ДЛЯ МОБИЛЬНЫХ ТЕЛЕФОНОВ */
                         <object
                           data={`${c.image}#toolbar=0&navpanes=0&scrollbar=0`}
                           type="application/pdf"
-                          className="w-full h-full"
+                          className="w-full h-64"
                         >
-                          <iframe
-                            src={`https://google.com{encodeURIComponent(
-                              window.location.origin + c.image
-                            )}&embedded=true`}
-                            className="w-full h-full border-none"
-                            title={c.title}
-                          />
+                          {/* Этот блок покажется ТОЛЬКО на смартфонах, которые не умеют открывать PDF внутри тега */}
+                          <div className="flex h-full w-full flex-col items-center justify-center p-4 text-center">
+                            <FileText className="size-12 text-primary/40 mb-3" />
+                            <a
+                              href={c.image}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="inline-flex items-center justify-center rounded-lg bg-primary px-4 py-2.5 text-xs font-bold text-primary-foreground shadow-soft transition-transform active:scale-95"
+                            >
+                              Посмотреть сертификат PDF
+                            </a>
+                          </div>
                         </object>
                       ) : (
-                        /* Если обычная картинка (JPG/PNG) */
+                        /* Если обычная картинка (JPG/PNG/WEBP) */
                         <img
                           src={c.image}
                           alt={c.title}
                           loading="lazy"
-                          className="w-full h-full object-contain"
+                          className="w-full h-64 object-contain"
                         />
                       )}
                     </div>
