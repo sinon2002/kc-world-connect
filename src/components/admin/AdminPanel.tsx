@@ -11,11 +11,13 @@ import {
   PhoneCall,
   MessageCircleHeart,
   BarChart3,
+  Award,
 } from "lucide-react";
 import { supabaseEnabled } from "@/lib/supabase";
 import { useContentLoading } from "@/lib/content";
 import { HeroEditor } from "./sections/HeroEditor";
 import { TrustStatsEditor } from "./sections/TrustStatsEditor";
+import { TrustEditor } from "./sections/TrustEditor";
 import { PartnersEditor } from "./sections/PartnersEditor";
 import { EventsEditor } from "./sections/EventsEditor";
 import { StoriesEditor } from "./sections/StoriesEditor";
@@ -28,6 +30,7 @@ import { PromoPopupEditor } from "./sections/PromoPopupEditor";
 const tabs = [
   { id: "hero", label: "Шапка", icon: LayoutTemplate, Component: HeroEditor },
   { id: "trustStats", label: "Статистика (10 000+ и т.д.)", icon: BarChart3, Component: TrustStatsEditor },
+  { id: "trust", label: "О нас (4 карточки)", icon: Award, Component: TrustEditor },
   { id: "partners", label: "Университеты", icon: Building2, Component: PartnersEditor },
   { id: "events", label: "Мероприятия", icon: CalendarDays, Component: EventsEditor },
   { id: "stories", label: "Истории студентов", icon: GraduationCap, Component: StoriesEditor },
