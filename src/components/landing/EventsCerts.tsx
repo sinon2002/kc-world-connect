@@ -91,12 +91,10 @@ export function Certificates() {
             // Проверка, является ли файл PDF-документом
             const isPdf = typeof c.image === "string" && c.image.toLowerCase().includes(".pdf");
 
-            // Формируем абсолютную ссылку для корректной работы внешнего рендерера картинок
-            const absoluteFileUrl = typeof window !== "undefined" && c.image
-              ? c.image.startsWith("http") 
-                ? c.image 
-                : `${window.location.origin}${c.image}`
-              : "";
+            // Если это PDF, генерируем путь к точно такой же картинке .png для безопасного показа
+            const displaySrc = isPdf && typeof c.image === "string"
+              ? c.image.replace(/\.pdf\$/i, ".png") 
+              : c.image;
 
             return (
               <Reveal key={c.id} delay={i * 0.06} className="overflow-hidden rounded-2xl bg-card shadow-soft">
@@ -135,13 +133,22 @@ export function Certificates() {
                   {c.image && (
                     <div className="w-full md:w-1/4 h-64 flex-shrink-0 md:order-last overflow-hidden rounded-xl border border-border bg-secondary/30">
                       {isPdf ? (
-                        /* ТЕПЕРЬ ОТОБРАЖАЕМ КАРТИНКУ PDF ЧЕРЕЗ СТАБИЛЬНЫЙ ВСТРОЕННЫЙ ПРОСМОТРЩИК MICROSOFT OFFICE */
-                        <iframe
-                          src={`https://live.com{encodeURIComponent(absoluteFileUrl)}`}
-                          className="w-full h-full border-none"
-                          title={c.title}
-                          scrolling="no"
-                        />
+                        /* Если это PDF — нажимаем на картинку-превью, чтобы открыть оригинальный PDF в новой вкладке */
+                        <a href={c.image} target="_blank" rel="noreferrer" className="block w-full h-full cursor-zoom-in">
+                          <img
+                            src={displaySrc}
+                            alt={c.title}
+                            loading="lazy"
+                            className="w-full h-full object-contain"
+                            onError={(e) => {
+                              // Резервный вариант: если .png картинки не оказалось, пробуем подставить .jpg
+                              const img = e.currentTarget;
+                              if (img.src.endsWith(".png")) {
+                                img.src = c.image.replace(/\.pdf\$/i, ".jpg");
+                              }
+                            }}
+                          />
+                        </a>
                       ) : (
                         /* Если обычная картинка (JPG/PNG) */
                         <img
