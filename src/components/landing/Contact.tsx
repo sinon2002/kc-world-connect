@@ -282,11 +282,10 @@ export function Contact() {
                   </svg>
                 </a>
 
-                {/* YOUTUBE
-                    TODO: замени href на настоящую ссылку на канал YouTube */}
+                {/* YOUTUBE */}
 
                 <a
-                  href="https://www.youtube.com/@kyrgyzconcept"
+                  href="https://www.youtube.com/@kyrgyzconcepteducationabroad"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="YouTube Kyrgyz Concept"
@@ -341,11 +340,10 @@ export function Contact() {
                   +996 553 900 885
                 </a>
 
-                {/* EMAIL
-                    TODO: замени href и текст на настоящий email */}
+                {/* EMAIL */}
 
                 <a
-                  href="mailto:info@kyrgyzconcept.kg"
+                  href="mailto:education@concept.kg"
                   aria-label="Написать на email"
                   className="
                     inline-flex
@@ -870,6 +868,46 @@ export function Footer() {
       style={{ background: "#0078c3" }}
     >
       <div className="shell">
+
+        <div
+          className="
+            mb-6
+            flex
+            flex-col
+            items-center
+            gap-1
+
+            sm:items-start
+          "
+        >
+          <a
+            href="tel:+996553900885"
+            className="
+              text-2xl
+              font-extrabold
+              tracking-tight
+              text-gold
+              transition-colors
+              hover:text-white
+
+              sm:text-3xl
+            "
+          >
+            +996 553 900 885
+          </a>
+
+          <a
+            href="mailto:education@concept.kg"
+            className="
+              text-sm
+              text-white/60
+              transition-colors
+              hover:text-white/90
+            "
+          >
+            education@concept.kg
+          </a>
+        </div>
 
         <div
           className="
