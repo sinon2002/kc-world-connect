@@ -141,7 +141,7 @@ export function Contact() {
 
             lg:grid
             lg:grid-cols-[1fr_320px_1fr]
-            lg:items-end
+            lg:items-center
             lg:gap-4
           "
         >
@@ -224,7 +224,7 @@ export function Contact() {
                   СОЦСЕТИ
               ================================================= */}
 
-              <div className="mt-6 flex gap-3">
+              <div className="mt-6 flex flex-wrap gap-3">
 
                 {/* WHATSAPP */}
 
@@ -279,6 +279,92 @@ export function Contact() {
                     aria-hidden="true"
                   >
                     <path d="M12 2.2c-2.7 0-3 0-4.1.1-1 0-1.8.2-2.4.5-.7.2-1.2.6-1.7 1.1S3 5 2.8 5.6c-.3.6-.4 1.4-.5 2.4-.1 1-.1 1.4-.1 4.1s0 3 .1 4.1c0 1 .2 1.8.5 2.4.2.7.6 1.2 1.1 1.7s1 .8 1.7 1.1c.6.3 1.4.4 2.4.5 1 0 1.4.1 4.1.1s3 0 4.1-.1c1 0 1.8-.2 2.4-.5.7-.3 1.2-.6 1.7-1.1s.8-1 1.1-1.7c.3-.6.4-1.4.5-2.4 0-1 .1-1.4-.1-4.1s0-3-.1-4.1c0-1-.2-1.8-.5-2.4-.2-.7-.6-1.2-1.1-1.7s-1-.8-1.7-1.1c-.6-.3-1.4-.5-2.4-.5-.1-.1-1.4-.1-4.1-.1Zm0 5.1a4.7 4.7 0 1 1 0 9.4 4.7 4.7 0 0 1 0-9.4Zm0 1.8a2.9 2.9 0 1 0 0 5.8 2.9 2.9 0 0 0 0-5.8Zm5.1-2.3a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2Z" />
+                  </svg>
+                </a>
+
+                {/* YOUTUBE
+                    TODO: замени href на настоящую ссылку на канал YouTube */}
+
+                <a
+                  href="https://www.youtube.com/@kyrgyzconcept"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="YouTube Kyrgyz Concept"
+                  className="
+                    inline-flex
+                    h-11
+                    w-11
+                    items-center
+                    justify-center
+                    rounded-2xl
+                    bg-white/10
+                    transition-colors
+                    hover:bg-white/20
+                  "
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="h-5 w-5 fill-current"
+                    aria-hidden="true"
+                  >
+                    <path d="M21.6 7.2c-.2-1-1-1.8-2-2C17.9 4.8 12 4.8 12 4.8s-5.9 0-7.6.4c-1 .2-1.8 1-2 2C2 8.9 2 12 2 12s0 3.1.4 4.8c.2 1 1 1.8 2 2 1.7.4 7.6.4 7.6.4s5.9 0 7.6-.4c1-.2 1.8-1 2-2 .4-1.7.4-4.8.4-4.8s0-3.1-.4-4.8ZM10 15.3V8.7L15.8 12 10 15.3Z" />
+                  </svg>
+                </a>
+
+                {/* ТЕЛЕФОН */}
+
+                <a
+                  href={`tel:+${whatsappNumber}`}
+                  aria-label="Позвонить"
+                  className="
+                    inline-flex
+                    h-11
+                    items-center
+                    justify-center
+                    gap-2
+                    rounded-2xl
+                    bg-white/10
+                    px-4
+                    text-sm
+                    font-semibold
+                    transition-colors
+                    hover:bg-white/20
+                  "
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="h-5 w-5 flex-shrink-0 fill-current"
+                    aria-hidden="true"
+                  >
+                    <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.3 21 3 13.7 3 4.9c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8Z" />
+                  </svg>
+                  +996 553 900 885
+                </a>
+
+                {/* EMAIL
+                    TODO: замени href и текст на настоящий email */}
+
+                <a
+                  href="mailto:info@kyrgyzconcept.kg"
+                  aria-label="Написать на email"
+                  className="
+                    inline-flex
+                    h-11
+                    w-11
+                    items-center
+                    justify-center
+                    rounded-2xl
+                    bg-white/10
+                    transition-colors
+                    hover:bg-white/20
+                  "
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="h-5 w-5 fill-current"
+                    aria-hidden="true"
+                  >
+                    <path d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm1.5 2 6.2 4.7a.5.5 0 0 0 .6 0L18.5 7H5.5Zm-.5 1.4V17h16V8.4l-6.8 5.1a2 2 0 0 1-2.4 0L5 8.4Z" />
                   </svg>
                 </a>
 
@@ -364,7 +450,7 @@ export function Contact() {
                 mt-4
 
                 lg:order-none
-                lg:mt-14
+                lg:mt-0
               "
             >
               <Reveal delay={0.15}>
