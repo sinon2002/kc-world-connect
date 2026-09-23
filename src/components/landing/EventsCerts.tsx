@@ -135,9 +135,10 @@ export function Events() {
               ))}
             </ul>
             <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noreferrer"
+           
+  href="https://www.instagram.com/education_kyrgyzconcept/"
+  target="_blank"
+  rel="noreferrer"
               className="mt-8 inline-flex items-center gap-2.5 rounded-full bg-primary px-7 py-4 text-sm font-bold text-primary-foreground shadow-soft transition-transform duration-200 hover:-translate-y-1"
             >
               <CalendarDays className="size-5" aria-hidden="true" />
