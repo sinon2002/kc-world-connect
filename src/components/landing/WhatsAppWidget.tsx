@@ -1,4 +1,4 @@
-const WHATSAPP_NUMBER = "996999490039";
+const WHATSAPP_NUMBER = "996553900885";
 const WHATSAPP_MESSAGE = "Здравствуйте! Хочу узнать подробнее об учёбе за рубежом.";
 
 export function WhatsAppWidget() {
