@@ -77,7 +77,7 @@ export function Services() {
               </ul>
 
               <a
-                href=" https://wa.me/996999490039"
+                href=" https://wa.me/996553900885"
                 target="_blank"
                 rel="noreferrer"
                 className="group relative mt-6 block overflow-hidden rounded-2xl bg-gold px-5 py-4 transition-transform duration-200 hover:-translate-y-0.5"
