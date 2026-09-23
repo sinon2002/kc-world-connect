@@ -19,6 +19,7 @@ export interface HeroContent {
   cityFrom: string;
   cityTo: string;
   dreamBadge: string;
+  photo: string | undefined;
 }
 
 export interface PartnerItem {
@@ -197,6 +198,7 @@ export const defaultContent: AllContent = {
     cityFrom: "Бишкек",
     cityTo: "Лондон",
     dreamBadge: "Кампус мечты",
+    photo: undefined,
   },
   trustStats: {
     heading: "Учёба за границей. Получите образование в лучших университетах мира",
