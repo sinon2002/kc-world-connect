@@ -1,6 +1,5 @@
 import { ArrowDownRight, Building2, GraduationCap, MapPin, Plane } from "lucide-react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
-import defaultHeroPhoto from "@/assets/hero-photo.png";
 import { useContentSection } from "@/lib/content";
 
 export function Hero() {
@@ -15,7 +14,7 @@ export function Hero() {
     <section id="hero" className="relative overflow-hidden bg-background pt-24 pb-12 md:pt-28 md:pb-16">
       <div className="route-grid pointer-events-none absolute inset-0 opacity-40" aria-hidden="true" />
       <div className="pointer-events-none absolute inset-x-0 top-24 h-px bg-border/70" aria-hidden="true" />
-      <div className="shell relative grid min-h-[740px] items-center gap-7 lg:grid-cols-[1.3fr_0.7fr] lg:gap-10">
+      <div className="shell relative grid min-h-[740px] items-center gap-7 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8">
         <div className="hero-copy-intro relative z-20 pt-8 lg:pr-4 lg:pt-0">
           <motion.div {...reveal(1.05)} className="flex items-center gap-3 text-xs font-bold uppercase text-primary"><span className="h-px w-10 bg-primary" />{hero.eyebrow}</motion.div>
           <h1 className="mt-6 max-w-3xl whitespace-pre-line text-[2.75rem] leading-[1.05] text-ink sm:text-6xl lg:text-[3.4rem] xl:text-[3.9rem]">{hero.titleLine} <span className="text-primary">{hero.titleHighlight}</span></h1>
@@ -27,10 +26,12 @@ export function Hero() {
           </motion.div>
         </div>
 
-               <motion.div style={{ y: photoY }} className="relative mx-auto h-[620px] w-full max-w-[730px] sm:h-[770px] lg:ml-auto lg:h-[860px]">
-          <div className="hero-girl-intro absolute inset-x-[8%] bottom-0 z-20 mx-auto h-[92%] sm:inset-x-[15%] lg:inset-x-[12%]">
-            <img src={hero.photo ?? defaultHeroPhoto} alt="Команда Kyrgyz Concept готовит студентов к поступлению" width={375} height={666} fetchPriority="high" className="h-full w-full object-contain object-bottom drop-shadow-[0_26px_30px_color-mix(in_oklab,var(--brand)_18%,transparent)]" />
-          </div>
+        <motion.div style={{ y: photoY }} className="relative mx-auto h-[560px] w-full max-w-[640px] sm:h-[700px] lg:ml-auto lg:h-[780px]">
+          {hero.photo && (
+            <div className="hero-girl-intro absolute inset-x-[2%] bottom-0 z-20 mx-auto h-[92%] sm:inset-x-[4%]">
+              <img src={hero.photo} alt="Команда Kyrgyz Concept готовит студентов к поступлению" fetchPriority="high" className="h-full w-full object-contain object-bottom drop-shadow-[0_26px_30px_color-mix(in_oklab,var(--brand)_18%,transparent)]" />
+            </div>
+          )}
 
           <motion.div {...appear(1.65)} className="absolute top-[7%] right-[2%] z-30 text-primary sm:right-[5%]" aria-hidden="true">
             <Plane className="hero-plane size-20 fill-secondary stroke-[1.4] sm:size-28" />
