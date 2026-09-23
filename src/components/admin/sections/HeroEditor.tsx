@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useContentSection } from "@/lib/content";
 import { AdminCard, Field, TextInput, TextArea, SaveBar } from "../AdminUi";
-import { MediaUpload } from "../MediaUpload"; // Импортируем стандартный загрузчик медиафайлов
+import { MediaUpload } from "../MediaUpload";
 
 export function HeroEditor() {
   const [hero, save] = useContentSection("hero");
@@ -12,6 +12,11 @@ export function HeroEditor() {
 
   return (
     <AdminCard title="Шапка сайта (Hero)">
+      <div className="mb-4">
+        <Field label="Фото человека справа">
+          <MediaUpload kind="image" value={local.photo} onChange={(url) => set("photo", url)} />
+        </Field>
+      </div>
       <div className="grid gap-4 sm:grid-cols-2">
         <Field label="Верхняя строка (маленькая, над заголовком)">
           <TextInput value={local.eyebrow} onChange={(e) => set("eyebrow", e.target.value)} />
@@ -44,29 +49,11 @@ export function HeroEditor() {
           <TextInput value={local.ctaSecondary} onChange={(e) => set("ctaSecondary", e.target.value)} />
         </Field>
       </div>
-      
       <div className="mt-4">
         <Field label="Абзац с описанием">
           <TextArea rows={4} value={local.paragraph} onChange={(e) => set("paragraph", e.target.value)} />
         </Field>
       </div>
-
-      {/* Секция загрузки изображения шапки без деформации размеров */}
-      <div className="mt-6 pt-4 border-t border-slate-100">
-        <Field label="Изображение со студентами (Правая часть)">
-          <div className="mt-2 rounded-lg border border-dashed border-slate-200 p-4 bg-slate-50/50">
-            <MediaUpload
-              value={local.imageUrl || ""}
-              onChange={(url) => set("imageUrl", url)}
-              bucketName="public"
-            />
-            <p className="text-xs text-slate-400 mt-2">
-              Вы можете загрузить любое изображение. Оно автоматически заполнит область иллюстрации без изменения её оригинальных размеров на сайте.
-            </p>
-          </div>
-        </Field>
-      </div>
-
       <SaveBar onSave={() => save(local)} />
     </AdminCard>
   );
