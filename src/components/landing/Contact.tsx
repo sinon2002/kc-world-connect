@@ -310,62 +310,40 @@ export function Contact() {
                   </svg>
                 </a>
 
-                {/* ТЕЛЕФОН */}
+              </div>
 
+              {/* =================================================
+                  НОМЕР ТЕЛЕФОНА + EMAIL (крупно)
+              ================================================= */}
+
+              <div className="mt-6 flex flex-col gap-1">
                 <a
                   href={`tel:+${whatsappNumber}`}
-                  aria-label="Позвонить"
                   className="
-                    inline-flex
-                    h-11
-                    items-center
-                    justify-center
-                    gap-2
-                    rounded-2xl
-                    bg-white/10
-                    px-4
-                    text-sm
-                    font-semibold
+                    text-2xl
+                    font-extrabold
+                    tracking-tight
+                    text-gold
                     transition-colors
-                    hover:bg-white/20
+                    hover:text-white
+
+                    sm:text-3xl
                   "
                 >
-                  <svg
-                    viewBox="0 0 24 24"
-                    className="h-5 w-5 flex-shrink-0 fill-current"
-                    aria-hidden="true"
-                  >
-                    <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.3 21 3 13.7 3 4.9c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8Z" />
-                  </svg>
                   +996 553 900 885
                 </a>
 
-                {/* EMAIL */}
-
                 <a
                   href="mailto:education@concept.kg"
-                  aria-label="Написать на email"
                   className="
-                    inline-flex
-                    h-11
-                    w-11
-                    items-center
-                    justify-center
-                    rounded-2xl
-                    bg-white/10
+                    text-sm
+                    text-white/60
                     transition-colors
-                    hover:bg-white/20
+                    hover:text-white/90
                   "
                 >
-                  <svg
-                    viewBox="0 0 24 24"
-                    className="h-5 w-5 fill-current"
-                    aria-hidden="true"
-                  >
-                    <path d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm1.5 2 6.2 4.7a.5.5 0 0 0 .6 0L18.5 7H5.5Zm-.5 1.4V17h16V8.4l-6.8 5.1a2 2 0 0 1-2.4 0L5 8.4Z" />
-                  </svg>
+                  education@concept.kg
                 </a>
-
               </div>
             </Reveal>
           </div>
@@ -868,46 +846,6 @@ export function Footer() {
       style={{ background: "#0078c3" }}
     >
       <div className="shell">
-
-        <div
-          className="
-            mb-6
-            flex
-            flex-col
-            items-center
-            gap-1
-
-            sm:items-start
-          "
-        >
-          <a
-            href="tel:+996553900885"
-            className="
-              text-2xl
-              font-extrabold
-              tracking-tight
-              text-gold
-              transition-colors
-              hover:text-white
-
-              sm:text-3xl
-            "
-          >
-            +996 553 900 885
-          </a>
-
-          <a
-            href="mailto:education@concept.kg"
-            className="
-              text-sm
-              text-white/60
-              transition-colors
-              hover:text-white/90
-            "
-          >
-            education@concept.kg
-          </a>
-        </div>
 
         <div
           className="
