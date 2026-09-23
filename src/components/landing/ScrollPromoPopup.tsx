@@ -3,7 +3,7 @@ import { X, MapPin } from "lucide-react";
 import { useContentSection } from "@/lib/content";
 import guyPhoto from "@/assets/contact/kc-guy.png";
 
-const WHATSAPP_NUMBER = "996999490039";
+const WHATSAPP_NUMBER = "996553900885";
 const INSTAGRAM_URL = "https://www.instagram.com/education_kyrgyzconcept/";
 
 export function ScrollPromoPopup() {
