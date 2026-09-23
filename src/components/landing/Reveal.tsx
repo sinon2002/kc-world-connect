@@ -13,7 +13,7 @@ export function Reveal({ children, delay = 0, className, as = "div" }: RevealPro
 export function SectionHeading({ eyebrow, title, subtitle, tone = "light", align = "center" }: { eyebrow?: string; title: string; subtitle?: string; tone?: "light" | "dark"; align?: "center" | "left" }) {
   const dark = tone === "dark";
   return (
-    <Reveal className={`${align === "center" ? "mx-auto max-w-4xl text-center" : "max-w-4xl"} space-y-5`}>
+    <Reveal className={`${align === "center" ? "mx-auto max-w-4xl text-center" : "max-w-6xl"} space-y-5`}>
       {eyebrow ? <div className={`flex items-center gap-3 text-xs font-bold uppercase ${align === "center" ? "justify-center" : ""} ${dark ? "text-on-navy-muted" : "text-primary"}`}><span className={`h-px w-9 ${dark ? "bg-accent" : "bg-primary"}`} />{eyebrow}</div> : null}
       <h2 className={`text-3xl leading-[1.08] md:text-5xl ${dark ? "text-on-navy" : "text-ink"}`}>{title}</h2>
       {subtitle ? <p className={`max-w-2xl text-base leading-relaxed md:text-lg ${align === "center" ? "mx-auto" : ""} ${dark ? "text-on-navy-muted" : "text-muted-foreground"}`}>{subtitle}</p> : null}
