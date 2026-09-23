@@ -90,7 +90,7 @@ export function Events() {
 
             
             {/* БЛОК С ФОТО: увеличили ширину на мобилках до 55% (было w-[45%]), чтобы сделать фото побольше */}
-           <div className="h-56 w-[65%] flex-shrink-0 flex items-center justify-center md:h-auto md:w-full">
+          <div className="h-64 w-[78%] flex-shrink-0 flex items-center justify-center md:h-auto md:w-full">
 
 
               <img
