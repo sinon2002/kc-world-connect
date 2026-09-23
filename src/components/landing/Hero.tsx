@@ -27,7 +27,7 @@ export function Hero() {
           </motion.div>
         </div>
 
-        <motion.div style={{ y: photoY }} className="relative mx-auto h-[560px] w-full max-w-[660px] sm:h-[700px] lg:ml-auto lg:h-[780px]">
+               <motion.div style={{ y: photoY }} className="relative mx-auto h-[620px] w-full max-w-[730px] sm:h-[770px] lg:ml-auto lg:h-[860px]">
           <div className="hero-girl-intro absolute inset-x-[8%] bottom-0 z-20 mx-auto h-[92%] sm:inset-x-[15%] lg:inset-x-[12%]">
             <img src={hero.photo ?? defaultHeroPhoto} alt="Команда Kyrgyz Concept готовит студентов к поступлению" width={375} height={666} fetchPriority="high" className="h-full w-full object-contain object-bottom drop-shadow-[0_26px_30px_color-mix(in_oklab,var(--brand)_18%,transparent)]" />
           </div>
