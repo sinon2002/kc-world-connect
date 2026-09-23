@@ -16,16 +16,15 @@ export function Team() {
       <div className="shell relative z-10">
         <SectionHeading eyebrow="Команда" title={team.heading} />
 
-        <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4">
+        <div className="mt-8 flex flex-wrap justify-center gap-3 sm:gap-6">
           {team.items.map((m, i) => (
             <Reveal
               key={m.id}
               delay={i * 0.07}
-              className="rounded-2xl bg-card p-3 md:p-6 shadow-soft transition-transform duration-300 hover:-translate-y-1 hover:shadow-lift flex flex-col items-center justify-between text-center"
-              style={{ textAlign: "center" }}
+              className="w-[calc(50%-0.375rem)] sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)] rounded-2xl bg-card p-3 md:p-6 shadow-soft transition-transform duration-300 hover:-translate-y-1 hover:shadow-lift flex flex-col justify-between"
             >
-              <div className="w-full flex flex-col items-center text-center" style={{ textAlign: "center", alignItems: "center" }}>
-                <div className="w-full max-w-[240px] grid aspect-[4/5] place-items-center overflow-hidden rounded-xl md:rounded-2xl bg-secondary mx-auto mb-4">
+              <div>
+                <div className="grid aspect-4/5 place-items-center overflow-hidden rounded-xl md:rounded-2xl bg-secondary">
                   {m.photo ? (
                     <img src={m.photo} alt={m.name} className="h-full w-full object-cover" />
                   ) : (
@@ -36,24 +35,15 @@ export function Team() {
                   )}
                 </div>
                 
-                <h3 
-                  className="mt-2 text-xs md:text-lg font-bold md:font-normal text-ink leading-tight mx-auto"
-                  style={{ textAlign: "center", display: "block", width: "100%" }}
-                >
+                <h3 className="mt-3 text-xs md:text-lg font-bold md:font-normal text-ink leading-tight">
                   {m.name}
                 </h3>
                 
-                <p 
-                  className="mt-1 text-[10px] md:text-xs font-bold tracking-wide text-blue uppercase leading-tight mx-auto"
-                  style={{ textAlign: "center", display: "block", width: "100%" }}
-                >
+                <p className="mt-1 text-[10px] md:text-xs font-bold tracking-wide text-blue uppercase leading-tight">
                   {m.role}
                 </p>
                 
-                <p 
-                  className="mt-2 text-[11px] sm:text-xs md:text-sm leading-snug md:leading-relaxed text-muted-foreground mx-auto"
-                  style={{ textAlign: "center", display: "block", width: "100%" }}
-                >
+                <p className="mt-2 text-[11px] sm:text-xs md:text-sm leading-snug md:leading-relaxed text-muted-foreground">
                   {m.bio}
                 </p>
               </div>
