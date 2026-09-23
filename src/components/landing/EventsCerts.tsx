@@ -82,17 +82,10 @@ export function Events() {
         <Reveal className="overflow-hidden rounded-4xl bg-card shadow-soft p-6 md:p-0 md:flex items-center">
           
           {/* ОБЩИЙ КОНТЕЙНЕР ДЛЯ МОБИЛОК: изменили items-start на items-center для выравнивания по центру */}
-    <div className="flex flex-col-reverse items-center justify-center gap-1 md:block md:w-[35%] md:flex-shrink-0 md:p-6 scale-125 origin-center sm:scale-100">
-
-
-
-
-
+          <div className="flex items-center gap-4 md:block md:w-[35%] md:flex-shrink-0 md:p-6">
             
             {/* БЛОК С ФОТО: увеличили ширину на мобилках до 55% (было w-[45%]), чтобы сделать фото побольше */}
-          <div className="h-64 w-[78%] flex-shrink-0 flex items-center justify-center md:h-auto md:w-full">
-
-
+            <div className="h-44 w-[55%] flex-shrink-0 flex items-center justify-center md:h-auto md:w-full">
               <img
                 src={photo}
                 alt="Студенты готовятся к поступлению за рубежом"
@@ -105,8 +98,7 @@ export function Events() {
 
             {/* ПЛАШКА МЕРОПРИЯТИЯ ДЛЯ МОБИЛОК: убрали большой отступ pt-8, заменили на небольшой pt-2 */}
             <div className="flex-1 pt-2 md:hidden">
-              <span className="flex whitespace-normal text-center items-center justify-center gap-2 rounded-md bg-secondary px-3 py-2 text-xs sm:text-sm font-bold tracking-[0.11em] text-primary uppercase">
-
+              <span className="inline-flex items-center gap-2 rounded bg-secondary px-4 py-2 text-sm font-bold tracking-[0.16em] text-primary uppercase">
                 {events.badge}
               </span>
             </div>
@@ -135,10 +127,9 @@ export function Events() {
               ))}
             </ul>
             <a
-
-  href="https://www.instagram.com/education_kyrgyzconcept/"
-  target="_blank"
-  rel="noreferrer"
+              href="https://www.instagram.com/education_kyrgyzconcept/"
+              target="_blank"
+              rel="noreferrer"
               className="mt-8 inline-flex items-center gap-2.5 rounded-full bg-primary px-7 py-4 text-sm font-bold text-primary-foreground shadow-soft transition-transform duration-200 hover:-translate-y-1"
             >
               <CalendarDays className="size-5" aria-hidden="true" />
