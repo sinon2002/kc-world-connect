@@ -1,6 +1,6 @@
 import { ArrowDownRight, Building2, GraduationCap, MapPin, Plane } from "lucide-react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
-import heroGirl from "@/assets/hero-photo.png";
+
 import { useContentSection } from "@/lib/content";
 
 export function Hero() {
