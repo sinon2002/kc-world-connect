@@ -19,7 +19,7 @@ export function Contact() {
   // WHATSAPP МЕНЕДЖЕРА
   // Формат: код страны + номер, без + и пробелов
   // ==========================================
-  const whatsappNumber = "996999490039";
+  const whatsappNumber = "996553900885";
 
   const valid =
     form.name.trim().length > 1 &&
@@ -257,7 +257,7 @@ export function Contact() {
                 {/* INSTAGRAM */}
 
                 <a
-                  href="https://www.instagram.com/education_kyrgyzconcept"
+                  href="https://www.instagram.com/education_kyrgyzconcept/"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Instagram Kyrgyz Concept"
@@ -361,8 +361,10 @@ export function Contact() {
                 order-2
                 min-w-0
                 w-full
+                mt-4
 
                 lg:order-none
+                lg:mt-14
               "
             >
               <Reveal delay={0.15}>
