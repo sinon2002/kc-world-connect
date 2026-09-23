@@ -1,6 +1,6 @@
 import { ArrowDownRight, Building2, GraduationCap, MapPin, Plane } from "lucide-react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
-
+import defaultHeroPhoto from "@/assets/hero-photo.png";
 import { useContentSection } from "@/lib/content";
 
 export function Hero() {
@@ -29,7 +29,7 @@ export function Hero() {
 
         <motion.div style={{ y: photoY }} className="relative mx-auto h-[500px] w-full max-w-[590px] sm:h-[620px] lg:ml-auto lg:h-[690px]">
           <div className="hero-girl-intro absolute inset-x-[8%] bottom-0 z-20 mx-auto h-[92%] sm:inset-x-[15%] lg:inset-x-[12%]">
-            <img src={heroGirl} alt="Команда Kyrgyz Concept готовит студентов к поступлению" width={375} height={666} fetchPriority="high" className="h-full w-full object-contain object-bottom drop-shadow-[0_26px_30px_color-mix(in_oklab,var(--brand)_18%,transparent)]" />
+            <img src={hero.photo ?? defaultHeroPhoto} alt="Команда Kyrgyz Concept готовит студентов к поступлению" width={375} height={666} fetchPriority="high" className="h-full w-full object-contain object-bottom drop-shadow-[0_26px_30px_color-mix(in_oklab,var(--brand)_18%,transparent)]" />
           </div>
 
           <motion.div {...appear(1.65)} className="absolute top-[7%] right-[2%] z-30 text-primary sm:right-[5%]" aria-hidden="true">
