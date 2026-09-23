@@ -6,7 +6,11 @@ export function Team() {
   const [team] = useContentSection("team");
 
   return (
-    <section id="team" className="bg-background section-pad relative overflow-hidden">
+    /* 
+      Заменили общий класс section-pad на точечные отступы: 
+      pt-16 (сверху на мобилках), md:pt-24 (сверху на ПК), pb-0 (полностью убрали отступ снизу).
+    */
+    <section id="team" className="bg-background pt-16 md:pt-24 pb-0 relative overflow-hidden">
       <Heart
         aria-hidden="true"
         strokeWidth={1}
