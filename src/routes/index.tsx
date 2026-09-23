@@ -104,6 +104,8 @@ function Index() {
 
           lg:sticky
           lg:bottom-0
+          lg:max-h-screen
+          lg:overflow-y-auto
         "
       >
         <Contact />
