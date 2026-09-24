@@ -80,7 +80,7 @@ export function ScrollPromoPopup() {
 
         <div className="order-first flex h-64 items-center justify-center p-3 sm:order-none sm:h-auto sm:py-4 sm:pr-4">
           <div className={`h-full w-full overflow-hidden rounded-2xl ${popup.image ? "" : "flex items-center justify-center bg-secondary/40 p-4"}`}>
-           <img src={popup.image ?? guyPhoto} alt="" className={`h-full w-full object-center ${popup.image ? "object-cover" : "object-contain"}`} />
+           <img src={popup.image ?? guyPhoto} alt="" className={`h-full w-full object-[center_42%] ${popup.image ? "object-cover" : "object-contain"}`} />
           </div>
         </div>
       </div>
