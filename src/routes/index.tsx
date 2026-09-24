@@ -104,7 +104,7 @@ function Index() {
 
           lg:sticky
           lg:bottom-0
-          lg:max-h-screen
+          lg:max-h-[calc(100vh-5.25rem)]
           lg:overflow-y-auto
         "
       >
