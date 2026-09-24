@@ -120,7 +120,7 @@ export function Events() {
               {events.badge}
             </span>
             
-            <h2 className="font-display mt-5 text-2xl leading-snug text-ink md:text-3xl">
+            <h2 className="font-display mt-5 pt-1 text-2xl leading-[1.4] text-ink sm:pt-0 sm:leading-snug md:text-3xl">
               {events.heading}
             </h2>
             <p className="mt-4 border-l-2 border-primary pl-3 text-xs font-bold tracking-[0.1em] text-primary uppercase">
