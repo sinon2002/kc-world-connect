@@ -391,7 +391,7 @@ export function Contact() {
               <Reveal delay={0.08}>
 
                 <img
-                  src={guyPhoto}
+                  src={contact.image ?? guyPhoto}
                   alt="Студенты Kyrgyz Concept приглашают записаться на консультацию"
                   width={373}
                   height={669}
