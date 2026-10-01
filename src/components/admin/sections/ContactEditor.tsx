@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useContentSection } from "@/lib/content";
 import { AdminCard, Field, TextInput, TextArea, AddButton, SaveBar } from "../AdminUi";
+import { MediaUpload } from "../MediaUpload";
 import { Trash2 } from "lucide-react";
 
 export function ContactEditor() {
@@ -9,9 +10,14 @@ export function ContactEditor() {
 
   return (
     <AdminCard title="Блок «Записаться на консультацию»">
-      <Field label="Заголовок">
-        <TextInput value={local.heading} onChange={(e) => setLocal((l) => ({ ...l, heading: e.target.value }))} />
+      <Field label="Фото (справа от формы)">
+        <MediaUpload kind="image" value={local.image} onChange={(url) => setLocal((l) => ({ ...l, image: url }))} />
       </Field>
+      <div className="mt-3">
+        <Field label="Заголовок">
+          <TextInput value={local.heading} onChange={(e) => setLocal((l) => ({ ...l, heading: e.target.value }))} />
+        </Field>
+      </div>
       <div className="mt-3">
         <Field label="Текст-описание">
           <TextArea rows={3} value={local.paragraph} onChange={(e) => setLocal((l) => ({ ...l, paragraph: e.target.value }))} />
