@@ -50,6 +50,22 @@ export function PromoPopupEditor() {
             onChange={(e) => setLocal((l) => ({ ...l, buttonText: e.target.value }))}
           />
         </Field>
+
+        <Field label="Текст второй кнопки (например «Зарегистрироваться»)">
+          <TextInput
+            value={local.secondButtonText ?? ""}
+            onChange={(e) => setLocal((l) => ({ ...l, secondButtonText: e.target.value }))}
+            placeholder="Зарегистрироваться"
+          />
+        </Field>
+
+        <Field label="Ссылка второй кнопки (куда вести при нажатии)">
+          <TextInput
+            value={local.secondButtonUrl ?? ""}
+            onChange={(e) => setLocal((l) => ({ ...l, secondButtonUrl: e.target.value }))}
+            placeholder="https://..."
+          />
+        </Field>
       </div>
 
       <SaveBar onSave={() => save(local)} />
