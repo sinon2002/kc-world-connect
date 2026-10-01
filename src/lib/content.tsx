@@ -107,6 +107,7 @@ export interface ContactContent {
   heading: string;
   paragraph: string;
   countries: string[];
+  image: string | undefined;
 }
 
 export interface FooterContent {
@@ -504,6 +505,7 @@ export const defaultContent: AllContent = {
       "Южная Корея",
       "Ещё не определился(ась)",
     ],
+    image: undefined,
   },
   footer: {
     text: "© {year} KC Education Abroad — часть бренда Kyrgyz Concept",
