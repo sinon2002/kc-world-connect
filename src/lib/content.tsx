@@ -19,7 +19,6 @@ export interface HeroContent {
   cityFrom: string;
   cityTo: string;
   dreamBadge: string;
-  photo: string | undefined;
 }
 
 export interface PartnerItem {
@@ -160,6 +159,8 @@ export interface PromoPopupContent {
   address: string;
   buttonText: string;
   image: string | undefined;
+  secondButtonText: string;
+  secondButtonUrl: string;
 }
 
 export interface AllContent {
@@ -198,7 +199,6 @@ export const defaultContent: AllContent = {
     cityFrom: "Бишкек",
     cityTo: "Лондон",
     dreamBadge: "Кампус мечты",
-    photo: undefined,
   },
   trustStats: {
     heading: "Учёба за границей. Получите образование в лучших университетах мира",
@@ -515,6 +515,8 @@ export const defaultContent: AllContent = {
     address: "Ждем вас по адресу: Тыныстанова, 231",
     buttonText: "Записаться",
     image: undefined,
+    secondButtonText: "",
+    secondButtonUrl: "",
   },
 };
 
